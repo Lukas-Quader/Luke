@@ -8,7 +8,43 @@ html, body {
   font-family: 'Roboto', sans-serif;
 }
 
-#output {
-  padding: 20px;
+
+h1 {
   text-align: center;
+  color: yellow;
+  text-shadow: 2px 2px crimson;
+  text-decoration-line: overline underline;
 }
+
+
+.wrapper {
+  position: relative;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  background-color: cornflowerblue;
+  background-image: url("background.png"); 
+  background-repeat: no-repeat;
+  background-size: contain;
+
+}
+
+.buttons {
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: scroll;
+  margin: 10px;  
+}
+
+.box_level {
+  margin: 10px;
+  padding-top: 40px;
+  padding-bottom: 40px; 
+}
+
+.box_start {
+  margin: 50% 5% 0% 5% ;
+  padding: 5% 40% 5% 40%; 
+  }
+
+
