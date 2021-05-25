@@ -6,6 +6,10 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+    background-color: cornflowerblue;
+  background-image: url("background.png"); 
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 
@@ -22,10 +26,7 @@ h1 {
   display: grid; 
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  background-color: cornflowerblue;
-  background-image: url("background.png"); 
-  background-repeat: no-repeat;
-  background-size: contain;
+
 
 }
 
@@ -42,9 +43,10 @@ h1 {
   padding-bottom: 40px; 
 }
 
-.box_start {
+.startButton {
   margin: 50% 5% 0% 5% ;
   padding: 5% 40% 5% 40%; 
   }
+
 
 
