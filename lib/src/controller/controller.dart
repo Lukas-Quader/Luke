@@ -5,6 +5,9 @@ class Controller {
 
   Controller() {
     view.generateLevel();
-    view.startButton.onClick.listen((_) {});
+    view.startButton.onClick.listen((_) {
+      view.menu.style.display = "none";
+      view.generateMap();
+    });
   }
 }
