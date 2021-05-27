@@ -11,3 +11,5 @@ part 'src/models/feinde.dart';
 part 'src/models/position.dart';
 part 'src/controller/controller.dart';
 part 'src/view/view.dart';
+part 'src/models/powerUp.dart';
+part 'src/models/turm.dart';
