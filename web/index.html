@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, minimal-ui" />
     <meta name="scaffolded-by" content="https://github.com/google/stagehand">
     <title>ImmunityTD</title>
     <link rel="stylesheet" href="styles.css">
@@ -14,27 +14,34 @@
 </head>
 
 <body>
-  <div id="Menu">
-    
-    <div class="wrapper">
-      <div>
-        <h1>ImmunityTD</h1>
-        <button class="box_start">Start</button>       
-      </div>
-      <div class="buttons">
-        <button class="box_level">Level 1</button>
-        <button class="box_level">Level 2</button>
-        <button class="box_level">Level 3</button>
-        <button class="box_level">Level 4</button>
-        <button class="box_level">Level 5</button>
-        <button class="box_level">Level 6</button>
-        <button class="box_level">Level 7</button>
-        <button class="box_level">Level 8</button>
-        <button class="box_level">Level 9</button>
-        <button class="box_level">Level 10</button>
-      </div>
-      
+  <div id="menu">
+    <div>
+      <h1>ImmunityTD</h1>
+      <button id="startButton">Start</button>
     </div>
+    <div id="buttons"></div>
+  </div>
+  <div id="level">
+    <div id="map">
+      <table id="field">
+      </table>
+
+    </div>
+
+    <div id="infobar">
+      <div id="ak"></div>
+      <div id="tp"></div>
+      <div id="wavecount"></div>
+    </div>
+    
+    
+    <div id="buymenu_wrapper">
+      <div id=buymenu>
+          
+      </div>
+    </div>
+    <div id="powerupMenu"></div>
+    
   </div>
 </body>
 </html>

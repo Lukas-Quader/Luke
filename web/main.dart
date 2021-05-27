@@ -1,6 +1,3 @@
-import 'dart:html';
+import 'package:ImmunityTD/imports.dart';
 
-void main() {
-  querySelector('#output').text =
-      'Hooray, your first barebones Dart app is running!??';
-}
+main() => Controller();
