@@ -1,6 +1,15 @@
 part of ImmunityTD;
 
 abstract class Feinde {
+  bool boss;
+  int id;
+  int laufgeschwindigkeit;
+  int leben;
+  Position pos;
+  Position dir;
+  List<Position> way;
+  Position goal;
+
   void treffer(int schaden, int effekt);
   void bewegen();
   int getLaufgeschwindigkeit();

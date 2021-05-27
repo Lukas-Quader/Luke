@@ -26,7 +26,14 @@ class Lunge implements Turm {
   int effekt;
 
   Lunge(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {}
+      int kosten, int effekt) {
+    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
+    this.schaden = schaden;
+    this.reichweite = reichweite;
+    this.level = level;
+    this.kosten = kosten;
+    this.effekt = effekt;
+  }
 
   void upgrade() {
     return null;
@@ -80,7 +87,14 @@ class Auge implements Turm {
   int effekt;
 
   Auge(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {}
+      int kosten, int effekt) {
+    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
+    this.schaden = schaden;
+    this.reichweite = reichweite;
+    this.level = level;
+    this.kosten = kosten;
+    this.effekt = effekt;
+  }
 
   void upgrade() {
     return null;
@@ -134,7 +148,14 @@ class Niere implements Turm {
   int effekt;
 
   Niere(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {}
+      int kosten, int effekt) {
+    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
+    this.schaden = schaden;
+    this.reichweite = reichweite;
+    this.level = level;
+    this.kosten = kosten;
+    this.effekt = effekt;
+  }
 
   void upgrade() {
     return null;
@@ -188,7 +209,15 @@ class Herz implements Turm {
   int effekt;
 
   Herz(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {}
+      int kosten, int effekt) {
+    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
+    this.schaden = schaden;
+    this.reichweite = reichweite;
+    this.level = level;
+    this.kosten = kosten;
+    this.effekt = effekt;
+  }
+
   int getAngriffsgeschwindigkeit() {
     return angriffsgeschwindigkeit;
   }
@@ -241,7 +270,14 @@ class Blutzelle implements Turm {
   int effekt;
 
   Blutzelle(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {}
+      int kosten, int effekt) {
+    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
+    this.schaden = schaden;
+    this.reichweite = reichweite;
+    this.level = level;
+    this.kosten = kosten;
+    this.effekt = effekt;
+  }
 
   void upgrade() {
     return null;

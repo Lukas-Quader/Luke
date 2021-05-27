@@ -4,12 +4,12 @@ class Karte {
   List<List<Position>> wege;
   List<Feld> felder;
 
-  Karte(List<List> f, List<int> type, List<List<Position>> w) {
+  Karte(List<List<HtmlElement>> f, List<int> type, List<List<Position>> w) {
     int i = 0;
     for (var row in f) {
       for (var field in row) {
-        final r = field.getBoundingClientRect().toInt();
-        final c = field.getBoundingClientRect().toInt();
+        final r = field.getBoundingClientRect().top.toInt();
+        final c = field.getBoundingClientRect().left.toInt();
         felder.add(new Feld(r, c, type[i]));
         i++;
       }

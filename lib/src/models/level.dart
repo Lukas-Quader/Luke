@@ -10,8 +10,14 @@ class Level {
   List<Turm> turm;
   Karte karte;
 
-  Level(int anti, List<Turm> kauf, List<List<Feinde>> welle, List<List> felder,
-      List<int> typ, List<List<Position>> wege, List<PowerUp> pu) {
+  Level(
+      int anti,
+      List<Turm> kauf,
+      List<List<Feinde>> welle,
+      List<List<HtmlElement>> felder,
+      List<int> typ,
+      List<List<Position>> wege,
+      List<PowerUp> pu) {
     wellen = welle;
     gameOver = false;
     ak = anti;
@@ -26,5 +32,11 @@ class Level {
 
   void turmAngriff() {
     //TODO turmAngriff impen
+  }
+
+  Feinde spawn() {
+    Feinde f = wellen[0][0];
+    wellen[0].removeAt(0);
+    return f;
   }
 }

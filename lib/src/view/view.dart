@@ -11,10 +11,11 @@ class View {
 
   final levelview = querySelector('#level');
 
-  final map = querySelector('#field');
+  final field = querySelector('#field');
+
+  final map = querySelector('#map');
 
   HtmlElement get startButton => querySelector('#startButton');
-  int count = 0;
 
   void generateLevel() {
     levelview.style.display = "none";
@@ -26,18 +27,27 @@ class View {
   }
 
   void generateMap() {
-    levelview.style.display = "none";
     String table = "";
     for (int row = 1; row < 9; row++) {
       table += "<tr>";
       for (int col = 1; col < 17; col++) {
-        table += "<td>$row + $col</td>";
+        table += "<td></td>";
       }
       table += "</tr>\n";
     }
-    map.innerHtml = table;
+    field.innerHtml = table;
     generateBuyMenu();
     levelview.style.display = "grid";
+  }
+
+  void spawn(Feinde f) {
+    String name = 'corona';
+    map.innerHtml += '<div class=$name id=${name}_${f.id}></div>';
+    var corona = querySelector('#${name}_${f.id}');
+    f.setPos(new Position(map.getBoundingClientRect().left.toInt(),
+        map.getBoundingClientRect().height.toInt() / 8 * 3));
+    corona?.style.left = "${f.getPos().x}px";
+    corona?.style.top = "${f.getPos().y}px";
   }
 
   void generateBuyMenu() {
