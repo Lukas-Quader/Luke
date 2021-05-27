@@ -25,8 +25,7 @@ class Level {
     feinde = [];
   }
 
-  void feindeBewegen(bool spawn) {
-    print("JOLO");
+  void feindeBewegen() {
     if (!feinde.isEmpty) {
       for(Feinde f in feinde) {
         f.bewegen();
@@ -40,14 +39,19 @@ class Level {
         }
       }
     }
-    if(spawn && !wellen.isEmpty) {
-      feinde.add(wellen[0][0]);
-      if(!wellen[0].isEmpty) wellen[0].removeAt(0);
-      else wellen.removeAt(0);
-    }
   }
 
   void turmAngriff() {
     //TODO turmAngriff impen
+  }
+
+  void spawn() {
+    if(wellen.length > 0) {
+      if(wellen[0].length > 0){
+        feinde.add(wellen[0][0]); 
+        wellen[0].removeAt(0);
+        if(wellen[0].isEmpty) wellen.removeAt(0);
+      } 
+    }
   }
 }

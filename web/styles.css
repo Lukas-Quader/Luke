@@ -65,6 +65,13 @@ h1 {
   background-size: 100% 100%;
 }
 
+.wp {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  position: absolute;
+}
+
 /*#field td {
   position: relative;
 }*/

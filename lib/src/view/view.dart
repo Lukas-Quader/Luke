@@ -32,10 +32,28 @@ class View {
         var feind = querySelector('#${f.name}_${f.id}');
         feind?.style.left = "${f.getPos().x}px";
         feind?.style.top = "${f.getPos().y}px";
+        if(f.fin) feind.style.display = "none";
       }
     }
   }
 
+  void showPoints(List<Position> way) {
+    int i = 0;
+    for(Position p in way) {
+          var pos = querySelector('#wp_$i');
+          pos?.style.left = "${p.x}px";
+          pos?.style.top = "${p.y}px";
+          i++;
+      }
+  }
+
+  void generatePoints(List<Position> way) {
+    int i = 0;
+    for(Position p in way) {
+          map.innerHtml += '<div class=wp id=wp_$i></div>';
+          i++;
+    }
+  }
   void generateLevel() {
     levelview.style.display = "none";
     String level = "";
@@ -61,8 +79,7 @@ class View {
 
   void spawn(Feinde f) {
     map.innerHtml += '<div class=${f.name} id=${f.name}_${f.id}></div>';
-    f.setPos(new Position(map.getBoundingClientRect().left.toInt(),
-        map.getBoundingClientRect().height.toInt() / 8 * 3));
+    f.setPos(f.goal);
   }
 
   void generateBuyMenu() {

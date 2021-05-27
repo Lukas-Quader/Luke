@@ -21,6 +21,7 @@ abstract class Feinde {
   Position getDir();
   void setDir(Position d);
   void redirect();
+  void setWay(List<Position> w);
 }
 
 class Corona implements Feinde {
@@ -53,15 +54,14 @@ class Corona implements Feinde {
   void bewegen() {
     if(!way.isEmpty) {
       if(pos.dist(goal) <= laufgeschwindigkeit) {
-        Position extra = (pos+(dir*laufgeschwindigkeit) - goal);
         pos = goal;
         goal = way[0];
         way.removeAt(0);
         dir = (goal - pos).uni();
-        pos += dir * extra.length();
       }
       else {
         pos += dir*laufgeschwindigkeit;
+        redirect();
       }
     } 
     else if(pos.dist(goal) > laufgeschwindigkeit) pos += dir*laufgeschwindigkeit;
@@ -111,5 +111,11 @@ class Corona implements Feinde {
 
   void redirect() {
     dir = (goal - pos).uni();
+  }
+  
+  void setWay(List<Position> w) {
+    way = w;
+    goal = way[0];
+    pos = goal;
   }
 }

@@ -12,6 +12,6 @@ class Position {
 
   num length() => Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
   Position uni() => this * (1/this.length());
-  num dist(Position anderer) => Math.sqrt(
-      Math.pow(this.x - anderer.x, 2) + Math.pow(this.y - anderer.y, 2));
+  num dist(Position next) => Math.sqrt(
+      Math.pow(this.x - next.x, 2) + Math.pow(this.y - next.y, 2));
 }
