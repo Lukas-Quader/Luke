@@ -7,7 +7,11 @@ class Position {
 
   operator +(Position next) => new Position(x + next.x, y + next.y);
   operator -(Position next) => new Position(x - next.x, y - next.y);
+  operator *(num speed) => new Position( x * speed, y * speed);
+  operator <=(num next) => this.x <= next && this.y <= next;
 
+  num length() => Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+  Position uni() => this * (1/this.length());
   num dist(Position anderer) => Math.sqrt(
       Math.pow(this.x - anderer.x, 2) + Math.pow(this.y - anderer.y, 2));
 }

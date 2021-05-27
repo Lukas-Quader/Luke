@@ -1,5 +1,6 @@
 library ImmunityTD;
 
+import 'dart:collection';
 import 'dart:html';
 import 'dart:async';
 import 'dart:math' as Math;

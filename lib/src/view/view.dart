@@ -1,6 +1,9 @@
 part of ImmunityTD;
 
 class View {
+  
+  Level model;
+
   final text = querySelector('#text');
 
   final buttons = querySelector('#buttons');
@@ -16,6 +19,22 @@ class View {
   final map = querySelector('#map');
 
   HtmlElement get startButton => querySelector('#startButton');
+
+  View();
+
+  void setModel (Level model) {
+    this.model = model;
+  }
+
+  void update() {
+    if(!model.feinde.isEmpty){
+      for(Feinde f in model.feinde) {
+        var feind = querySelector('#${f.name}_${f.id}');
+        feind?.style.left = "${f.getPos().x}px";
+        feind?.style.top = "${f.getPos().y}px";
+      }
+    }
+  }
 
   void generateLevel() {
     levelview.style.display = "none";
@@ -41,13 +60,9 @@ class View {
   }
 
   void spawn(Feinde f) {
-    String name = 'corona';
-    map.innerHtml += '<div class=$name id=${name}_${f.id}></div>';
-    var corona = querySelector('#${name}_${f.id}');
+    map.innerHtml += '<div class=${f.name} id=${f.name}_${f.id}></div>';
     f.setPos(new Position(map.getBoundingClientRect().left.toInt(),
         map.getBoundingClientRect().height.toInt() / 8 * 3));
-    corona?.style.left = "${f.getPos().x}px";
-    corona?.style.top = "${f.getPos().y}px";
   }
 
   void generateBuyMenu() {

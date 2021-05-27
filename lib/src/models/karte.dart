@@ -3,35 +3,6 @@ part of ImmunityTD;
 class Karte {
   List<List<Position>> wege;
   List<Feld> felder;
-
-  Karte(List<List<HtmlElement>> f, List<int> type, List<List<Position>> w) {
-    int i = 0;
-    for (var row in f) {
-      for (var field in row) {
-        final r = field.getBoundingClientRect().top.toInt();
-        final c = field.getBoundingClientRect().left.toInt();
-        felder.add(new Feld(r, c, type[i]));
-        i++;
-      }
-    }
-    wege = w;
-  }
-
-  List<Feld> getFelder() {
-    return felder;
-  }
-
-  void setFelder(List<Feld> f) {
-    felder = f;
-  }
-
-  List<List<Position>> getWege() {
-    return wege;
-  }
-
-  void setWege(List<List<Position>> w) {
-    wege = w;
-  }
 }
 
 class Feld {
