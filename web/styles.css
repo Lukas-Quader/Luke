@@ -6,6 +6,8 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  background-color: cornflowerblue;
+  position: relative;
 }
 
 
@@ -17,19 +19,17 @@ h1 {
 }
 
 
-.wrapper {
+#menu {
   position: relative;
   display: grid; 
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  background-color: cornflowerblue;
   background-image: url("background.png"); 
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
-.buttons {
+#buttons {
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr;
   overflow: scroll;
@@ -38,13 +38,92 @@ h1 {
 
 .box_level {
   margin: 10px;
-  padding-top: 40px;
-  padding-bottom: 40px; 
+  padding-top: 30px;
+  padding-bottom: 30px; 
 }
 
-.box_start {
+#startButton {
   margin: 50% 5% 0% 5% ;
   padding: 5% 40% 5% 40%; 
-  }
+}
 
+#level {
+  display: grid; 
+  grid-template-columns: repeat(21, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  position: relative;
+
+}
+
+#map {
+  grid-area: 1 / 1 / 9 / 17;
+  background-color: limegreen;
+  position: relative;
+  padding-bottom: 1px;
+}
+
+/*#field td {
+  position: relative;
+}*/
+#infobar {
+  grid-area: 9 / 1 / 9 / 17;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  background-color: magenta;
+}
+
+#ak {
+  color: green;
+}
+
+#tp {
+  color: red;
+}
+
+#wavecount {
+  color: black;
+}
+
+#buymenu_wrapper {
+  display: grid;
+  grid-area: 1 / 17 / 8 / 22; 
+  grid-template-columns: 1fr 1fr;
+  overflow: scroll;
+  background-color: yellow;
+}
+
+#buymenu {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: scroll;
+  margin: 10px;  
+}
+
+#powerupMenu {
+  grid-area: 8 / 17 / 10 / 22;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  background-color: turquoise;
+}
+
+.feind {
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background: dodgerblue;
+  
+  /* Positionierung */ 
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.turm {
+  height: 10px;
+  width: 10px;
+  background: darkgoldenrod;
+  position: absolute;
+}
 
