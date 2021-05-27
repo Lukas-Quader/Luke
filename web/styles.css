@@ -60,6 +60,9 @@ h1 {
   background-color: limegreen;
   position: relative;
   padding-bottom: 1px;
+  background-image: url(img/map_1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /*#field td {
