@@ -5,11 +5,13 @@ class View {
 
   final buttons = querySelector('#buttons');
 
+  final buemenue = querySelector('#buymenu_wrapper');
+
   final menu = querySelector('#menu');
 
   final levelview = querySelector('#level');
 
-  final map = querySelector('#map');
+  final map = querySelector('#field');
 
   HtmlElement get startButton => querySelector('#startButton');
   int count = 0;
@@ -34,6 +36,15 @@ class View {
       table += "</tr>\n";
     }
     map.innerHtml = table;
+    generateBuyMenu();
     levelview.style.display = "grid";
+  }
+
+  void generateBuyMenu() {
+    String level = "";
+    for (int levels = 1; levels <= 4; levels++) {
+      level += "<button class='box_level'>Level $levels</button>\n";
+    }
+    buemenue.innerHtml = level;
   }
 }
