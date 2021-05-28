@@ -1,7 +1,6 @@
 part of ImmunityTD;
 
 class View {
-  
   Level model;
 
   final text = querySelector('#text');
@@ -14,46 +13,57 @@ class View {
 
   final levelview = querySelector('#level');
 
-  final field = querySelector('#field');
-
   final map = querySelector('#map');
+
+  final infobar = querySelector('#infobar');
+
+  final ak = querySelector('#ak');
+
+  final tp = querySelector('#tp');
+
+  final wavecount = querySelector('#wavecount');
 
   HtmlElement get startButton => querySelector('#startButton');
 
   View();
 
-  void setModel (Level model) {
+  void setModel(Level model) {
     this.model = model;
   }
 
   void update() {
-    if(!model.feinde.isEmpty){
-      for(Feinde f in model.feinde) {
+    if (!model.feinde.isEmpty) {
+      for (Feinde f in model.feinde) {
         var feind = querySelector('#${f.name}_${f.id}');
         feind?.style.left = "${f.getPos().x}px";
         feind?.style.top = "${f.getPos().y}px";
-        if(f.fin) feind.style.display = "none";
+        if (f.fin) {
+          feind.style.display = "none";
+          model.feinde.remove(f);
+          feind.remove();
+        }
       }
     }
   }
 
   void showPoints(List<Position> way) {
     int i = 0;
-    for(Position p in way) {
-          var pos = querySelector('#wp_$i');
-          pos?.style.left = "${p.x}px";
-          pos?.style.top = "${p.y}px";
-          i++;
-      }
+    for (Position p in way) {
+      var pos = querySelector('#wp_$i');
+      pos?.style.left = "${p.x}px";
+      pos?.style.top = "${p.y}px";
+      i++;
+    }
   }
 
   void generatePoints(List<Position> way) {
     int i = 0;
-    for(Position p in way) {
-          map.innerHtml += '<div class=wp id=wp_$i></div>';
-          i++;
+    for (Position p in way) {
+      map.innerHtml += '<div class=wp id=wp_$i></div>';
+      i++;
     }
   }
+
   void generateLevel() {
     levelview.style.display = "none";
     String level = "";
@@ -64,29 +74,28 @@ class View {
   }
 
   void generateMap() {
-    String table = "";
-    for (int row = 1; row < 9; row++) {
-      table += "<tr>";
-      for (int col = 1; col < 17; col++) {
-        table += "<td></td>";
-      }
-      table += "</tr>\n";
-    }
-    field.innerHtml = table;
     generateBuyMenu();
     levelview.style.display = "grid";
   }
 
   void spawn(Feinde f) {
-    map.innerHtml += '<div class=${f.name} id=${f.name}_${f.id}></div>';
+    String ht = map.innerHtml;
+    ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
+    map.setInnerHtml(ht);
     f.setPos(f.goal);
   }
 
   void generateBuyMenu() {
     String level = "";
-    for (int levels = 1; levels <= 4; levels++) {
+    for (int levels = 1; levels <= 7; levels++) {
       level += "<button class='box_level'>Level $levels</button>\n";
     }
     buemenue.innerHtml = level;
+  }
+
+  void generateInfobar() {
+    ak.setInnerHtml('Antikoerper: ${model.ak}');
+    tp.setInnerHtml('Leben: ${model.leben}');
+    wavecount.setInnerHtml('Welle : ${model.wellen.length}/3');
   }
 }

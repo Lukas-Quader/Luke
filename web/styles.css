@@ -79,20 +79,29 @@ h1 {
   grid-area: 9 / 1 / 9 / 17;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  background-color: magenta;
+  background-color: darkred;
+  border-top: 3px black solid;
 }
 
 #ak {
   color: green;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 #tp {
   color: red;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 #wavecount {
   color: black;
+  text-align: center;
+  font-size: 1.5em;
 }
 
 #buymenu_wrapper {
@@ -100,7 +109,8 @@ h1 {
   grid-area: 1 / 17 / 8 / 22; 
   grid-template-columns: 1fr 1fr;
   overflow: scroll;
-  background-color: yellow;
+  background-color: darkred;
+  border-left: 3px black solid;
 }
 
 #buymenu {
@@ -115,12 +125,14 @@ h1 {
   grid-area: 8 / 17 / 10 / 22;
   display: grid; 
   grid-template-columns: 1fr 1fr;
-  background-color: turquoise;
+  background-color: darkred;
+  border-top: 3px black solid;
+  border-left: 3px black solid;
 }
 
 .corona {
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   
   /* Aussehen */
   background-image: url(img/corona.png);
