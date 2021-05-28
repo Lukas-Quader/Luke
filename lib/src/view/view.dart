@@ -44,6 +44,14 @@ class View {
         }
       }
     }
+    if (!model.turm.isEmpty) {
+      for (Turm t in model.turm) {
+        var turm = querySelector('#${t.getName()}_${t.getID()}');
+        turm?.style.left = "${t.getPosition().x}px";
+        turm?.style.top = "${t.getPosition().y}px";
+      }
+    }
+    generateInfobar();
   }
 
   void showPoints(List<Position> way) {
@@ -83,6 +91,12 @@ class View {
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
     map.setInnerHtml(ht);
     f.setPos(f.goal);
+  }
+
+  void setTower(Turm turm) {
+    String ht = map.innerHtml;
+    ht += '\n<div class=${turm.getName()} id=${turm.getName()}_${turm.getID()}></div>';
+    map.setInnerHtml(ht);
   }
 
   void generateBuyMenu() {

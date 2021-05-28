@@ -7,6 +7,9 @@ html, body {
   padding: 0;
   font-family: 'Roboto', sans-serif;
   background-color: cornflowerblue;
+  background-image: url(img/background_level.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 
@@ -23,7 +26,7 @@ h1 {
   display: grid; 
   grid-template-columns: 1fr 1fr;
   height: 100vh;
-  background-image: url("background.png"); 
+  background-image: url("img/background_monster.png"); 
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -72,6 +75,15 @@ h1 {
   position: absolute;
 }
 
+.blutzelle {
+  height: 50px;
+  width: 50px;
+  background-image: url(img/turm_5.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
 /*#field td {
   position: relative;
 }*/
@@ -82,7 +94,6 @@ h1 {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  background-color: darkred;
   border-top: 3px black solid;
 }
 
@@ -109,7 +120,6 @@ h1 {
   grid-area: 1 / 17 / 8 / 22; 
   grid-template-columns: 1fr 1fr;
   overflow: scroll;
-  background-color: darkred;
   border-left: 3px black solid;
 }
 
@@ -125,7 +135,6 @@ h1 {
   grid-area: 8 / 17 / 10 / 22;
   display: grid; 
   grid-template-columns: 1fr 1fr;
-  background-color: darkred;
   border-top: 3px black solid;
   border-left: 3px black solid;
 }

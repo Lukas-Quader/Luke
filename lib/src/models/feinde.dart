@@ -12,7 +12,7 @@ abstract class Feinde {
   Position goal;
   bool fin;
 
-  void treffer(int schaden, int effekt);
+  bool treffer(int schaden, int effekt);
   void bewegen();
   int getLaufgeschwindigkeit();
   void setLaufgeschwindigkeit(int geschw);
@@ -71,8 +71,11 @@ class Corona implements Feinde {
     }
   }
 
-  void treffer(int schaden, int effekt) {
-    if(leben <= schaden) leben = 0;
+  bool treffer(int schaden, int effekt) {
+    if(leben <= schaden) {
+      leben = 0;
+      fin = true;
+    }
     else leben -= schaden;
     switch (effekt) {
       case 1:
@@ -83,6 +86,7 @@ class Corona implements Feinde {
         break;
       default:
     }
+    return fin;
   }
 
   int getLaufgeschwindigkeit() {

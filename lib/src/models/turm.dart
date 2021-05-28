@@ -15,303 +15,110 @@ abstract class Turm {
   /*position*/
   int getEffekt();
   void setEffekt(int eff);
-}
-
-class Lunge implements Turm {
-  int angriffsgeschwindigkeit;
-  int schaden;
-  int reichweite;
-  int level;
-  int kosten;
-  int effekt;
-
-  Lunge(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {
-    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
-    this.schaden = schaden;
-    this.reichweite = reichweite;
-    this.level = level;
-    this.kosten = kosten;
-    this.effekt = effekt;
-  }
-
-  void upgrade() {
-    return null;
-  }
-
-  int getAngriffsgeschwindigkeit() {
-    return angriffsgeschwindigkeit;
-  }
-
-  void setAngriffsgeschwindigkeit(int ag) {}
-
-  int getSchaden() {
-    return schaden;
-  }
-
-  void setSchaden(int dmg) {}
-
-  int getReichweite() {
-    return reichweite;
-  }
-
-  void setReichweite(int r) {}
-
-  int getLevel() {
-    return level;
-  }
-
-  void setLevel(int lvl) {}
-
-  int getKosten() {
-    return kosten;
-  }
-
-  void setKosten(int k) {}
-
-  /*position*/
-
-  int getEffekt() {
-    return effekt;
-  }
-
-  void setEffekt(int eff) {}
-}
-
-class Auge implements Turm {
-  int angriffsgeschwindigkeit;
-  int schaden;
-  int reichweite;
-  int level;
-  int kosten;
-  int effekt;
-
-  Auge(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {
-    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
-    this.schaden = schaden;
-    this.reichweite = reichweite;
-    this.level = level;
-    this.kosten = kosten;
-    this.effekt = effekt;
-  }
-
-  void upgrade() {
-    return null;
-  }
-
-  int getAngriffsgeschwindigkeit() {
-    return angriffsgeschwindigkeit;
-  }
-
-  void setAngriffsgeschwindigkeit(int ag) {}
-
-  int getSchaden() {
-    return schaden;
-  }
-
-  void setSchaden(int dmg) {}
-
-  int getReichweite() {
-    return reichweite;
-  }
-
-  void setReichweite(int r) {}
-
-  int getLevel() {
-    return level;
-  }
-
-  void setLevel(int lvl) {}
-
-  int getKosten() {
-    return kosten;
-  }
-
-  void setKosten(int k) {}
-
-  /*position*/
-
-  int getEffekt() {
-    return effekt;
-  }
-
-  void setEffekt(int eff) {}
-}
-
-class Niere implements Turm {
-  int angriffsgeschwindigkeit;
-  int schaden;
-  int reichweite;
-  int level;
-  int kosten;
-  int effekt;
-
-  Niere(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {
-    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
-    this.schaden = schaden;
-    this.reichweite = reichweite;
-    this.level = level;
-    this.kosten = kosten;
-    this.effekt = effekt;
-  }
-
-  void upgrade() {
-    return null;
-  }
-
-  int getAngriffsgeschwindigkeit() {
-    return angriffsgeschwindigkeit;
-  }
-
-  void setAngriffsgeschwindigkeit(int ag) {}
-
-  int getSchaden() {
-    return schaden;
-  }
-
-  void setSchaden(int dmg) {}
-
-  int getReichweite() {
-    return reichweite;
-  }
-
-  void setReichweite(int r) {}
-
-  int getLevel() {
-    return level;
-  }
-
-  void setLevel(int lvl) {}
-
-  int getKosten() {
-    return kosten;
-  }
-
-  void setKosten(int k) {}
-
-  /*position*/
-
-  int getEffekt() {
-    return effekt;
-  }
-
-  void setEffekt(int eff) {}
-}
-
-class Herz implements Turm {
-  int angriffsgeschwindigkeit;
-  int schaden;
-  int reichweite;
-  int level;
-  int kosten;
-  int effekt;
-
-  Herz(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {
-    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
-    this.schaden = schaden;
-    this.reichweite = reichweite;
-    this.level = level;
-    this.kosten = kosten;
-    this.effekt = effekt;
-  }
-
-  int getAngriffsgeschwindigkeit() {
-    return angriffsgeschwindigkeit;
-  }
-
-  void upgrade() {
-    return null;
-  }
-
-  void setAngriffsgeschwindigkeit(int ag) {}
-
-  int getSchaden() {
-    return schaden;
-  }
-
-  void setSchaden(int dmg) {}
-
-  int getReichweite() {
-    return reichweite;
-  }
-
-  void setReichweite(int r) {}
-
-  int getLevel() {
-    return level;
-  }
-
-  void setLevel(int lvl) {}
-
-  int getKosten() {
-    return kosten;
-  }
-
-  void setKosten(int k) {}
-
-  /*position*/
-
-  int getEffekt() {
-    return effekt;
-  }
-
-  void setEffekt(int eff) {}
+  int getAGCount();
+  void setAGCount(int agc);
+  Position getPosition();
+  void setPosition(Position pos);
+  bool angriff(List<Feinde> feinde);
+  String getName();
+  int getID();
 }
 
 class Blutzelle implements Turm {
-  int angriffsgeschwindigkeit;
-  int schaden;
-  int reichweite;
-  int level;
-  int kosten;
-  int effekt;
-
-  Blutzelle(int angriffgeschwindigkeit, int schaden, int reichweite, int level,
-      int kosten, int effekt) {
-    this.angriffsgeschwindigkeit = angriffgeschwindigkeit;
-    this.schaden = schaden;
-    this.reichweite = reichweite;
-    this.level = level;
-    this.kosten = kosten;
-    this.effekt = effekt;
-  }
+  String name = 'blutzelle';
+  int id;
+  int angriffsgeschwindigkeit = 20;
+  int agcount = 15;
+  int schaden = 5;
+  int reichweite = 100;
+  int level = 1;
+  int kosten = 50;
+  int effekt = 0;
+  Position position;
 
   void upgrade() {
-    return null;
+    switch (level) {
+      case 2:
+        angriffsgeschwindigkeit = 5;
+        break;
+      case 3:
+        schaden = 10;
+        break;
+      default:
+    }
   }
+
+  bool angriff(List<Feinde> feinde) {
+    bool kill = false;
+    if(agcount <= 0) {
+      for(Feinde f in feinde) {
+        if(position.dist(f.pos) <= reichweite) {
+          kill = f.treffer(schaden, effekt);
+          print('attack');
+          agcount = angriffsgeschwindigkeit;
+        }
+      }
+    }
+    agcount--;
+    return kill;
+  }
+
+  Blutzelle(int lvl, Position pos, int i) {
+    while(lvl > 1) {
+      upgrade();
+      lvl--;
+    }
+    position = pos;
+    id = i;
+  }    
 
   int getAngriffsgeschwindigkeit() {
     return angriffsgeschwindigkeit;
   }
 
-  void setAngriffsgeschwindigkeit(int ag) {}
+  void setAngriffsgeschwindigkeit(int ag) {
+    angriffsgeschwindigkeit = ag;
+  }
+
+  int getAGCount() {
+    return agcount;
+  }
+
+  void setAGCount(int agc) {
+    agcount = agc;
+  }
 
   int getSchaden() {
     return schaden;
   }
 
-  void setSchaden(int dmg) {}
+  void setSchaden(int dmg) {
+    schaden = dmg;
+  }
 
   int getReichweite() {
     return reichweite;
   }
 
-  void setReichweite(int r) {}
+  void setReichweite(int r) {
+    reichweite = r;
+  }
 
   int getLevel() {
     return level;
   }
 
-  void setLevel(int lvl) {}
+  void setLevel(int lvl) {
+    level = lvl;
+  }
 
   int getKosten() {
     return kosten;
   }
 
-  void setKosten(int k) {}
+  void setKosten(int k) {
+    kosten = k;
+  }
 
   /*position*/
 
@@ -319,5 +126,24 @@ class Blutzelle implements Turm {
     return effekt;
   }
 
-  void setEffekt(int eff) {}
+  void setEffekt(int eff) {
+    effekt = eff;
+  }
+
+  Position getPosition() {
+    return position;
+  }
+
+  void setPosition(Position pos) {
+    position = pos;
+  }
+
+  String getName() {
+    return name;
+  }
+
+  int getID() {
+    return id;
+  }
 }
+

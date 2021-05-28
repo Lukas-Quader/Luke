@@ -12,7 +12,7 @@ class Controller {
 
   void main() async {
     model = new Level(50, [
-      new Lunge(5, 1, 1, 1, 1, 1)
+      'Blutzelle'
     ], [
       [
         new Corona(0, 0, 0, 10, 0, false, [new Position(100, 200)]),
@@ -28,14 +28,16 @@ class Controller {
       ]
     ], [
       new Antibiotika(50, 4, 10)
-    ]);
+    ], new Karte([new Position(885, 325)]));
 
     view.generateLevel();
     view.startButton.onClick.listen((_) {
       view.menu.style.display = "none";
       view.generateMap();
+      model.karte.felder = generateWay(model.karte.felder);
       view.setModel(model);
-      view.generateInfobar();
+      model.turmPlazieren('Blutzelle', new Position(200, 200), 1, 0);
+      view.setTower(model.turm.last);
       Timer.periodic(Duration(milliseconds: 100), (timer) {
         if (spawncount <= 0 && model.wellen.length > 0) {
           spawm();
@@ -52,6 +54,7 @@ class Controller {
           spawncount = 25;
         }
         model.feindeBewegen();
+        model.turmAngriff();
         view.update();
         spawncount--;
         print("${model.leben}");
