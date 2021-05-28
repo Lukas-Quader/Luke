@@ -52,19 +52,18 @@ class Corona implements Feinde {
   }
 
   void bewegen() {
-    if(!way.isEmpty) {
-      if(pos.dist(goal) <= laufgeschwindigkeit) {
+    if (!way.isEmpty) {
+      if (pos.dist(goal) <= laufgeschwindigkeit) {
         pos = goal;
         goal = way[0];
         way.removeAt(0);
         dir = (goal - pos).uni();
-      }
-      else {
-        pos += dir*laufgeschwindigkeit;
+      } else {
+        pos += dir * laufgeschwindigkeit;
         redirect();
       }
-    } 
-    else if(pos.dist(goal) > laufgeschwindigkeit) pos += dir*laufgeschwindigkeit;
+    } else if (pos.dist(goal) > laufgeschwindigkeit)
+      pos += dir * laufgeschwindigkeit;
     else {
       pos = goal;
       fin = true;
@@ -72,21 +71,23 @@ class Corona implements Feinde {
   }
 
   bool treffer(int schaden, int effekt) {
-    if(leben <= schaden) {
+    bool kill = false;
+    if (leben <= schaden) {
       leben = 0;
       fin = true;
-    }
-    else leben -= schaden;
+      kill = true;
+    } else
+      leben -= schaden;
     switch (effekt) {
       case 1:
-        if(laufgeschwindigkeit == 5) laufgeschwindigkeit = 3;
+        if (laufgeschwindigkeit == 5) laufgeschwindigkeit = 3;
         break;
       case 2:
-        if(laufgeschwindigkeit != 5) laufgeschwindigkeit = 5;
+        if (laufgeschwindigkeit != 5) laufgeschwindigkeit = 5;
         break;
       default:
     }
-    return fin;
+    return kill;
   }
 
   int getLaufgeschwindigkeit() {
@@ -116,7 +117,7 @@ class Corona implements Feinde {
   void redirect() {
     dir = (goal - pos).uni();
   }
-  
+
   void setWay(List<Position> w) {
     way = w;
     goal = way[0];

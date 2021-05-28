@@ -27,7 +27,7 @@ abstract class Turm {
 class Blutzelle implements Turm {
   String name = 'blutzelle';
   int id;
-  int angriffsgeschwindigkeit = 20;
+  int angriffsgeschwindigkeit = 15;
   int agcount = 15;
   int schaden = 5;
   int reichweite = 100;
@@ -50,27 +50,29 @@ class Blutzelle implements Turm {
 
   bool angriff(List<Feinde> feinde) {
     bool kill = false;
-    if(agcount <= 0) {
-      for(Feinde f in feinde) {
-        if(position.dist(f.pos) <= reichweite) {
+    if (agcount <= 0) {
+      for (Feinde f in feinde) {
+        if (position.dist(f.pos) <= reichweite) {
           kill = f.treffer(schaden, effekt);
           print('attack');
           agcount = angriffsgeschwindigkeit;
+          break;
         }
       }
     }
     agcount--;
+    print("$kill");
     return kill;
   }
 
   Blutzelle(int lvl, Position pos, int i) {
-    while(lvl > 1) {
+    while (lvl > 1) {
       upgrade();
       lvl--;
     }
     position = pos;
     id = i;
-  }    
+  }
 
   int getAngriffsgeschwindigkeit() {
     return angriffsgeschwindigkeit;
@@ -146,4 +148,3 @@ class Blutzelle implements Turm {
     return id;
   }
 }
-

@@ -11,11 +11,7 @@ class Level {
   Karte karte;
   List<Feinde> feinde;
 
-  Level(
-      int anti,
-      List<String> kauf,
-      List<List<Feinde>> welle,
-      List<PowerUp> pu,
+  Level(int anti, List<String> kauf, List<List<Feinde>> welle, List<PowerUp> pu,
       Karte k) {
     wellen = welle;
     gameOver = false;
@@ -28,11 +24,11 @@ class Level {
 
   void feindeBewegen() {
     if (!feinde.isEmpty) {
-      for(Feinde f in feinde) {
+      for (Feinde f in feinde) {
         f.bewegen();
-        if(f.fin) {
+        if (f.fin) {
           leben -= f.leben;
-          if(leben <= 0) {
+          if (leben <= 0) {
             leben = 0;
             gameOver = true;
             return;
@@ -43,17 +39,21 @@ class Level {
   }
 
   void turmAngriff() {
-    if(turm.length > 0 && feinde.length > 0) {
-      for(Turm t in turm) {
-        if(t.angriff(feinde)) ak += 5;
+    if (turm.length > 0 && feinde.length > 0) {
+      for (Turm t in turm) {
+        bool kill = t.angriff(feinde);
+        if (kill) {
+          ak += 5;
+        }
       }
     }
   }
 
   void turmPlazieren(String name, Position position, int lvl, int id) {
     Position pos = karte.felder[0];
-    for(int i = 1; i < karte.felder.length; i++) {
-      if (position.dist(karte.felder[i]) < pos.dist(karte.felder[i])) pos = karte.felder[i];
+    for (int i = 1; i < karte.felder.length; i++) {
+      if (position.dist(karte.felder[i]) < pos.dist(karte.felder[i]))
+        pos = karte.felder[i];
     }
     switch (name) {
       case 'Blutzelle':
@@ -64,12 +64,12 @@ class Level {
   }
 
   void spawn() {
-    if(wellen.length > 0) {
-      if(wellen[0].length > 0){
-        feinde.add(wellen[0][0]); 
+    if (wellen.length > 0) {
+      if (wellen[0].length > 0) {
+        feinde.add(wellen[0][0]);
         wellen[0].removeAt(0);
-        if(wellen[0].isEmpty) wellen.removeAt(0);
-      } 
+        if (wellen[0].isEmpty) wellen.removeAt(0);
+      }
     }
   }
 }

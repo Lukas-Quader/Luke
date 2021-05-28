@@ -11,24 +11,25 @@ class Controller {
   }
 
   void main() async {
-    model = new Level(50, [
-      'Blutzelle'
-    ], [
-      [
-        new Corona(0, 0, 0, 10, 0, false, [new Position(100, 200)]),
-        new Corona(1, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(2, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(3, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(4, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(5, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(6, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(7, 0, 0, 10, 0, false, [new Position(200, 100)]),
-        new Corona(8, 0, 0, 10, 0, false, [new Position(100, 200)]),
-        new Corona(9, 0, 0, 10, 0, false, [new Position(200, 100)])
-      ]
-    ], [
-      new Antibiotika(50, 4, 10)
-    ], new Karte([new Position(885, 325)]));
+    model = new Level(
+        50,
+        ['Blutzelle'],
+        [
+          [
+            new Corona(0, 0, 0, 10, 0, false, [new Position(100, 200)]),
+            new Corona(1, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(2, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(3, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(4, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(5, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(6, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(7, 0, 0, 10, 0, false, [new Position(200, 100)]),
+            new Corona(8, 0, 0, 10, 0, false, [new Position(100, 200)]),
+            new Corona(9, 0, 0, 10, 0, false, [new Position(200, 100)])
+          ]
+        ],
+        [new Antibiotika(50, 4, 10)],
+        new Karte([new Position(885, 325)]));
 
     view.generateLevel();
     view.startButton.onClick.listen((_) {
@@ -57,7 +58,6 @@ class Controller {
         model.turmAngriff();
         view.update();
         spawncount--;
-        print("${model.leben}");
         if (model.gameOver) timer.cancel();
       });
     });
