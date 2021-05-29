@@ -22,9 +22,9 @@ class Blutzelle implements Turm {
   @override
   int id;
   @override
-  int angriffsgeschwindigkeit = 15;
+  int angriffsgeschwindigkeit = 20;
   @override
-  int agcount = 15;
+  int agcount = 0;
   @override
   int schaden = 5;
   @override
@@ -51,7 +51,7 @@ class Blutzelle implements Turm {
   void upgrade() {
     switch (level) {
       case 2:
-        angriffsgeschwindigkeit = 5;
+        angriffsgeschwindigkeit = 15;
         break;
       case 3:
         schaden = 10;
@@ -67,14 +67,12 @@ class Blutzelle implements Turm {
       for (var f in feinde) {
         if (position.dist(f.pos) <= reichweite) {
           kill = f.treffer(schaden, effekt);
-          print('attack');
           agcount = angriffsgeschwindigkeit;
           break;
         }
       }
     }
     agcount--;
-    print('$kill');
     return kill;
   }
 

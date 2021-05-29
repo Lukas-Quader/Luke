@@ -4,7 +4,8 @@ class Level {
   int leben = 100;
   List<List<Feinde>> wellen;
   bool gameOver;
-  int ak;
+  bool win;
+  num ak;
   List<Turm> kaufen;
   List<PowerUp> powerUps;
   List<Turm> turm = [];
@@ -15,6 +16,7 @@ class Level {
       Karte k) {
     wellen = welle;
     gameOver = false;
+    win = false;
     ak = anti;
     kaufen = kauf;
     karte = k;
@@ -43,9 +45,12 @@ class Level {
       for (var t in turm) {
         var kill = t.angriff(feinde);
         if (kill) {
-          ak += 5;
+          ak += 10;
         }
       }
+    }
+    if(feinde.isEmpty && wellen.isEmpty && !gameOver) {
+      win = true;
     }
   }
 
@@ -84,5 +89,14 @@ class Level {
         if (wellen[0].isEmpty) wellen.removeAt(0);
       }
     }
+  }
+
+  void buy() {
+    ak -= turm.last.kosten;
+    karte.besetzt.last = true; 
+  }
+
+  void kill(Feinde f) {
+    feinde.remove(f);
   }
 }

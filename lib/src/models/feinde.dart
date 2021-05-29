@@ -1,6 +1,7 @@
 part of ImmunityTD;
 
 abstract class Feinde {
+  bool hit;
   String name;
   bool boss;
   int id;
@@ -19,6 +20,8 @@ abstract class Feinde {
 }
 
 class Corona implements Feinde {
+  @override
+  bool hit = false;
   @override
   String name = 'corona';
   @override
@@ -73,11 +76,13 @@ class Corona implements Feinde {
       pos = goal;
       fin = true;
     }
+    hit = false;
   }
 
   @override
   bool treffer(int schaden, int effekt) {
     var kill = false;
+    hit = true;
     if (leben <= schaden) {
       leben = 0;
       fin = true;

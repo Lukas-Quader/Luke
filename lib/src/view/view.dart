@@ -35,47 +35,47 @@ class View {
 
   void update(num l, List<Turm> buy) {
     map.style.backgroundImage = 'url(img/map_$l.png)';
-    if (!model.feinde.isEmpty) {
-      for (Feinde f in model.feinde) {
+    if (model.feinde.isNotEmpty) {
+      for (var f in model.feinde) {
         var feind = querySelector('#${f.name}_${f.id}');
-        feind?.style.left = "${f.pos.x}px";
-        feind?.style.top = "${f.pos.y}px";
+        feind?.style?.left = '${f.pos.x}px';
+        feind?.style?.top = '${f.pos.y}px';
         if (f.fin) {
-          feind.style.display = "none";
-          model.feinde.remove(f);
+          feind.style.display = 'none';
+          model.kill(f);
           feind.remove();
         }
       }
     }
-    if (!model.turm.isEmpty) {
-      for (Turm t in model.turm) {
+    if (model.turm.isNotEmpty) {
+      for (var t in model.turm) {
         var turm = querySelector('#${t.name}_${t.id}');
-        turm?.style.left = "${t.position.x}px";
-        turm?.style.top = "${t.position.y}px";
+        turm?.style?.left = '${t.position.x}px';
+        turm?.style?.top = '${t.position.y}px';
       }
     }
     generateInfobar();
   }
 
   void showPoints(List<Position> way) {
-    int i = 0;
-    for (Position p in way) {
+    var i = 0;
+    for (var p in way) {
       var pos = querySelector('#wp_$i');
-      pos?.style.left = "${p.x}px";
-      pos?.style.top = "${p.y}px";
+      pos?.style?.left = '${p.x}px';
+      pos?.style?.top = '${p.y}px';
       i++;
     }
   }
 
   void generatePoints(List<Position> way) {
-    int i = 0;
-    for (Position p in way) {
+    var i = 0;
+    for (var j = 0; j < way.length; j++) {
       map.innerHtml += '<div class=wp id=wp_$i></div>';
       i++;
     }
   }
 
-  void generateLevel(List<Level> levels) {
+  void generateMenu(List<Level> levels) {
     levelview.style.display = 'none';
     var level = '';
     for (var lev = 1; lev <= levels.length; lev++) {
@@ -89,26 +89,26 @@ class View {
 
   void generateMap(List<Turm> buy) {
       generateBuyMenu(buy);
-      levelview.style.display = "grid";
+      levelview.style.display = 'grid';
   }
 
   void spawn(Feinde f) {
-    String ht = map.innerHtml;
+    var ht = map.innerHtml;
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
     map.setInnerHtml(ht);
     f.pos = f.goal;
   }
 
   void setTower(Turm turm) {
-    String ht = map.innerHtml;
+    var ht = map.innerHtml;
     ht += '\n<div class=${turm.name} id=${turm.name}_${turm.id}></div>';
     map.setInnerHtml(ht);
   }
 
   void generateBuyMenu(List<Turm> tower) {
-    String html = "";
+    var html = '';
     for (var t in tower) {
-      html += "<button draggable='true' class='buy_tower' id='${t.name}'></button>\n";
+      html += "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
       buemenue.innerHtml += html;
     }
   }
@@ -117,5 +117,28 @@ class View {
     ak.setInnerHtml('Antikoerper: ${model.ak}');
     tp.setInnerHtml('Leben: ${model.leben}');
     wavecount.setInnerHtml('Welle : ${model.wellen.length}/3');
+  }
+
+  void cleanMap() {
+    for (Feinde f in model.feinde) {
+        var feind = querySelector('#${f.name}_${f.id}');
+        feind.style.display = 'none';
+        feind.remove();
+      }
+    for (Turm t in model.turm) {
+      var turm = querySelector('#${t.name}_${t.id}');
+      turm.style.display = 'none';
+      turm.remove();
+    }
+  }
+
+  void win() {
+    cleanMap();
+    map.innerHtml += 'WIN!';
+  }
+
+  void gameOver() {
+    cleanMap();
+    map.innerHtml += 'GAME OVER!';
   }
 }
