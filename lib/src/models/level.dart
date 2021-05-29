@@ -22,9 +22,9 @@ class Level {
     feinde = [];
   }
 
-  void feindeBewegen() {
-    if (!feinde.isEmpty) {
-      for (Feinde f in feinde) {
+  void feindeBewegen() async {
+    if (feinde.isNotEmpty) {
+      for (var f in feinde) {
         f.bewegen();
         if (f.fin) {
           leben -= f.leben;
@@ -39,9 +39,9 @@ class Level {
   }
 
   void turmAngriff() {
-    if (turm.length > 0 && feinde.length > 0) {
-      for (Turm t in turm) {
-        bool kill = t.angriff(feinde);
+    if (turm.isNotEmpty && feinde.isNotEmpty) {
+      for (var t in turm) {
+        var kill = t.angriff(feinde);
         if (kill) {
           ak += 5;
         }
@@ -50,22 +50,23 @@ class Level {
   }
 
   void turmPlazieren(String name, Position position, int lvl, int id) {
-    Position pos = karte.felder[0];
-    for (int i = 1; i < karte.felder.length; i++) {
-      if (position.dist(karte.felder[i]) < pos.dist(karte.felder[i]))
+    var pos = karte.felder[0];
+    for (num i = 1; i < karte.felder.length; i++) {
+      if (position.dist(karte.felder[i]) < pos.dist(karte.felder[i])) {
         pos = karte.felder[i];
+      }
     }
     switch (name) {
       case 'Blutzelle':
-        turm.add(new Blutzelle(lvl, pos, id));
+        turm.add(Blutzelle(lvl, pos, id));
         break;
       default:
     }
   }
 
   void spawn() {
-    if (wellen.length > 0) {
-      if (wellen[0].length > 0) {
+    if (wellen.isNotEmpty) {
+      if (wellen[0].isNotEmpty) {
         feinde.add(wellen[0][0]);
         wellen[0].removeAt(0);
         if (wellen[0].isEmpty) wellen.removeAt(0);

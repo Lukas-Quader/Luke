@@ -14,45 +14,50 @@ abstract class Feinde {
 
   bool treffer(int schaden, int effekt);
   void bewegen();
-  int getLaufgeschwindigkeit();
-  void setLaufgeschwindigkeit(int geschw);
-  Position getPos();
-  void setPos(Position p);
-  Position getDir();
-  void setDir(Position d);
   void redirect();
   void setWay(List<Position> w);
 }
 
 class Corona implements Feinde {
+  @override
   String name = 'corona';
+  @override
   bool boss;
+  @override
   int id;
+  @override
   int laufgeschwindigkeit;
+  @override
   int leben;
+  @override
   Position pos;
+  @override
   Position dir;
+  @override
   List<Position> way;
+  @override
   Position goal;
+  @override
   bool fin = false;
 
   Corona(
       int id, int posx, int posy, int dx, int dy, bool boss, List<Position> w) {
     this.id = id;
-    pos = new Position(posx, posy);
-    dir = new Position(dx, dy);
+    pos = Position(posx, posy);
+    dir = Position(dx, dy);
     this.boss = boss;
     leben = 10;
     laufgeschwindigkeit = 5;
     way = w;
-    if (!way.isEmpty) {
+    if (way.isNotEmpty) {
       goal = way[0];
       way.removeAt(0);
     }
   }
 
+  @override
   void bewegen() {
-    if (!way.isEmpty) {
+    if (way.isNotEmpty) {
       if (pos.dist(goal) <= laufgeschwindigkeit) {
         pos = goal;
         goal = way[0];
@@ -62,22 +67,24 @@ class Corona implements Feinde {
         pos += dir * laufgeschwindigkeit;
         redirect();
       }
-    } else if (pos.dist(goal) > laufgeschwindigkeit)
+    } else if (pos.dist(goal) > laufgeschwindigkeit) {
       pos += dir * laufgeschwindigkeit;
-    else {
+    } else {
       pos = goal;
       fin = true;
     }
   }
 
+  @override
   bool treffer(int schaden, int effekt) {
-    bool kill = false;
+    var kill = false;
     if (leben <= schaden) {
       leben = 0;
       fin = true;
       kill = true;
-    } else
+    } else {
       leben -= schaden;
+    }
     switch (effekt) {
       case 1:
         if (laufgeschwindigkeit == 5) laufgeschwindigkeit = 3;
@@ -90,34 +97,12 @@ class Corona implements Feinde {
     return kill;
   }
 
-  int getLaufgeschwindigkeit() {
-    return laufgeschwindigkeit;
-  }
-
-  void setLaufgeschwindigkeit(int geschw) {
-    laufgeschwindigkeit = geschw;
-  }
-
-  Position getPos() {
-    return pos;
-  }
-
-  void setPos(Position p) {
-    pos = p;
-  }
-
-  Position getDir() {
-    return dir;
-  }
-
-  void setDir(Position d) {
-    dir = d;
-  }
-
+  @override
   void redirect() {
     dir = (goal - pos).uni();
   }
 
+  @override
   void setWay(List<Position> w) {
     way = w;
     goal = way[0];

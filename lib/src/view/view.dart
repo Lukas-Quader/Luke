@@ -35,8 +35,8 @@ class View {
     if (!model.feinde.isEmpty) {
       for (Feinde f in model.feinde) {
         var feind = querySelector('#${f.name}_${f.id}');
-        feind?.style.left = "${f.getPos().x}px";
-        feind?.style.top = "${f.getPos().y}px";
+        feind?.style.left = "${f.pos.x}px";
+        feind?.style.top = "${f.pos.y}px";
         if (f.fin) {
           feind.style.display = "none";
           model.feinde.remove(f);
@@ -46,9 +46,9 @@ class View {
     }
     if (!model.turm.isEmpty) {
       for (Turm t in model.turm) {
-        var turm = querySelector('#${t.getName()}_${t.getID()}');
-        turm?.style.left = "${t.getPosition().x}px";
-        turm?.style.top = "${t.getPosition().y}px";
+        var turm = querySelector('#${t.name}_${t.id}');
+        turm?.style.left = "${t.position.x}px";
+        turm?.style.top = "${t.position.y}px";
       }
     }
     generateInfobar();
@@ -90,12 +90,12 @@ class View {
     String ht = map.innerHtml;
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
     map.setInnerHtml(ht);
-    f.setPos(f.goal);
+    f.pos = f.goal;
   }
 
   void setTower(Turm turm) {
     String ht = map.innerHtml;
-    ht += '\n<div class=${turm.getName()} id=${turm.getName()}_${turm.getID()}></div>';
+    ht += '\n<div class=${turm.name} id=${turm.name}_${turm.id}></div>';
     map.setInnerHtml(ht);
   }
 
