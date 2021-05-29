@@ -38,13 +38,13 @@ class Blutzelle implements Turm {
   @override
   Position position;
 
-  Blutzelle(int lvl, Position pos, int i) {
+  Blutzelle(int lvl, Position pos, int id) {
     while (lvl > 1) {
       upgrade();
       lvl--;
     }
     position = pos;
-    id = i;
+    this.id = id;
   }
 
   @override

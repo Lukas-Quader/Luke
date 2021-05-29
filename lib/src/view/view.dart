@@ -23,6 +23,8 @@ class View {
 
   final wavecount = querySelector('#wavecount');
 
+  ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
+
   HtmlElement get startButton => querySelector('#startButton');
 
   View();
@@ -31,7 +33,8 @@ class View {
     this.model = model;
   }
 
-  void update() {
+  void update(num l, List<Turm> buy) {
+    map.style.backgroundImage = 'url(img/map_$l.png)';
     if (!model.feinde.isEmpty) {
       for (Feinde f in model.feinde) {
         var feind = querySelector('#${f.name}_${f.id}');
@@ -72,18 +75,21 @@ class View {
     }
   }
 
-  void generateLevel() {
-    levelview.style.display = "none";
-    String level = "";
-    for (int levels = 1; levels <= 10; levels++) {
-      level += "<button class='box_level'>Level $levels</button>\n";
+  void generateLevel(List<Level> levels) {
+    levelview.style.display = 'none';
+    var level = '';
+    for (var lev = 1; lev <= levels.length; lev++) {
+      level += "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
+      buttons.innerHtml += level;
+      var lvl = querySelector('#box_level_$lev');
+      lvl.style.backgroundImage = 'url(img/map_$lev.png)';
+      lvl.style.backgroundSize = '100% 100%';
     }
-    buttons.innerHtml = level;
   }
 
-  void generateMap() {
-    generateBuyMenu();
-    levelview.style.display = "grid";
+  void generateMap(List<Turm> buy) {
+      generateBuyMenu(buy);
+      levelview.style.display = "grid";
   }
 
   void spawn(Feinde f) {
@@ -99,12 +105,12 @@ class View {
     map.setInnerHtml(ht);
   }
 
-  void generateBuyMenu() {
-    String level = "";
-    for (int levels = 1; levels <= 7; levels++) {
-      level += "<button class='box_level'>Level $levels</button>\n";
+  void generateBuyMenu(List<Turm> tower) {
+    String html = "";
+    for (var t in tower) {
+      html += "<button draggable='true' class='buy_tower' id='${t.name}'></button>\n";
+      buemenue.innerHtml += html;
     }
-    buemenue.innerHtml = level;
   }
 
   void generateInfobar() {

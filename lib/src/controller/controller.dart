@@ -2,6 +2,7 @@ part of ImmunityTD;
 
 class Controller {
   Level model;
+  List<Level> levels;
   int spawncount = 25;
 
   View view = View();
@@ -11,9 +12,10 @@ class Controller {
   }
 
   void main() async {
-    model = Level(
+    num towercount = 0;
+    levels = [Level(
         50,
-        ['Blutzelle'],
+        [Blutzelle(1, Position(0, 0), 0)],
         [
           [
             Corona(0, 0, 0, 10, 0, false, [Position(100, 200)]),
@@ -29,37 +31,68 @@ class Controller {
           ]
         ],
         [Antibiotika(50, 4, 10)],
-        Karte([Position(885, 325)]));
+        Karte([Position(940, 370), Position(650, 370), Position(1270, 320)]))];
 
-    view.generateLevel();
-    view.startButton.onClick.listen((_) {
-      view.menu.style.display = 'none';
-      view.generateMap();
-      model.karte.felder = generateWay(model.karte.felder);
-      view.setModel(model);
-      model.turmPlazieren('Blutzelle', Position(200, 200), 1, 0);
-      view.setTower(model.turm.last);
-      Timer.periodic(Duration(milliseconds: 100), (timer) {
-        if (spawncount <= 0 && model.wellen.length > 0) {
-          spawm();
-          model.feinde.last.setWay(generateWay([
-            Position(0, 370),
-            Position(500, 340),
-            Position(510, 490),
-            Position(790, 480),
-            Position(810, 230),
-            Position(1100, 230),
-            Position(1110, 480),
-            Position(1520, 448)
-          ]));
-          spawncount = 25;
+    view.generateLevel(levels);
+    num l = 0;
+    view.buttons.onClick.listen((event) {
+      if(event.target is Element) {
+        Element button = event.target;
+        for(num i = 1; i <= levels.length; i++) {
+          if(button.id == 'box_level_$i'){
+            l = i;
+          }
         }
-        model.feindeBewegen();
-        model.turmAngriff();
-        view.update();
-        spawncount--;
-        if (model.gameOver) timer.cancel();
+      }
       });
+    view.startButton.onClick.listen((_) {
+      if(l != 0) { 
+        model = levels[l-1];
+        view.menu.style.display = 'none';
+        view.generateMap(model.kaufen);
+        model.karte.felder = generateWay(model.karte.felder);
+        view.setModel(model);
+        Element button;
+        view.kaufButton.onClick.listen((event) {
+          if(event.target is Element) {
+            button = event.target;
+          }
+        print('$button');
+        });
+          view.map.onClick.listen((ev) {
+
+
+            print('${model.karte.besetzt}');
+              var click = Position(ev.offset.x, ev.offset.y);
+                if(model.karte.free() && button != null) {
+                  model.turmPlazieren(button.id, click, 1, towercount++);
+                  view.setTower(model.turm.last);
+                  print('${model.karte.besetzt}');
+                  model.karte.besetzt.last = true;
+                }
+            });
+        Timer.periodic(Duration(milliseconds: 100), (timer) {
+          if (spawncount <= 0 && model.wellen.isNotEmpty) {
+            spawm();
+            model.feinde.last.setWay(generateWay([
+              Position(0, 370),
+              Position(500, 340),
+              Position(510, 490),
+              Position(790, 480),
+              Position(810, 230),
+              Position(1100, 230),
+              Position(1110, 480),
+              Position(1520, 448)
+            ]));
+            spawncount = 25;
+          }
+          model.feindeBewegen();
+          model.turmAngriff();
+          view.update(l, model.kaufen);
+          spawncount--;
+          if (model.gameOver) timer.cancel();
+        });
+      }
     });
   }
 
