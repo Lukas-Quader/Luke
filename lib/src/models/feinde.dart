@@ -1,27 +1,25 @@
 part of ImmunityTD;
 
 abstract class Feinde {
-  bool hit;
-  String name;
-  bool boss;
-  int id;
-  int laufgeschwindigkeit;
-  int leben;
-  Position pos;
-  Position dir;
-  List<Position> way;
-  Position goal;
-  bool fin;
-
+  String name; // Name des Feindtyps
+  bool boss; // handelt es sich um einen Boss?
+  int id; // Identifikationsnummer des Feindes
+  int laufgeschwindigkeit; // Bewegungsgeschwindingkeit des Feindes
+  int leben; // lebenspunkte des Feindes
+  Position pos; // aktuelle Position
+  Position dir; // aktuelle Richtung
+  List<Position> way; // Liste der Wegpunkte
+  Position goal; // aktueller Zielpunkt
+  bool fin; // ziel erreicht
+  // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
-  void bewegen();
-  void redirect();
-  void setWay(List<Position> w);
+  void bewegen(); // Bewegung der Feinde
+  void redirect(); // Anpassung der Richtung während der Laufzeit
+  void setWay(List<Position> w); //Setzen des Weges
 }
 
 class Corona implements Feinde {
-  @override
-  bool hit = false;
+  // Feindklasse Corona
   @override
   String name = 'corona';
   @override
@@ -44,52 +42,64 @@ class Corona implements Feinde {
   bool fin = false;
 
   Corona(
-      int id, int posx, int posy, int dx, int dy, bool boss, List<Position> w) {
+      // Constructor
+      int id,
+      int posx,
+      int posy,
+      int dx,
+      int dy,
+      bool boss) {
     this.id = id;
-    pos = Position(posx, posy);
-    dir = Position(dx, dy);
+    pos = Position(posx, posy); // Position in x und y Koordinaten
+    dir = Position(dx, dy); // Richtung in x und y Koordinaten
     this.boss = boss;
-    leben = 10;
-    laufgeschwindigkeit = 5;
-    way = w;
-    if (way.isNotEmpty) {
-      goal = way[0];
-      way.removeAt(0);
-    }
+    leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
+    // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
+    laufgeschwindigkeit = boss ? 2 : 5;
   }
 
   @override
+  // Bewegen der Feinde
   void bewegen() {
+    // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
+      // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
       if (pos.dist(goal) <= laufgeschwindigkeit) {
-        pos = goal;
-        goal = way[0];
-        way.removeAt(0);
-        dir = (goal - pos).uni();
+        pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
+        goal = way[0]; // Nächster Zielpunkt wird als Ziel gesetzt
+        way.removeAt(0); // Zielpunkt wird aus der Liste gelöscht
+        dir = (goal - pos)
+            .uni(); // Richtung = Einheitsvektor von (Ziel - Position)
+        // Distanz ist nicht geringer als die Laufgeschwindigkeit
       } else {
         pos += dir * laufgeschwindigkeit;
-        redirect();
+        redirect(); // Anpassen der Laufrichtung an das Ziel
       }
+      // Keine Wegpunkte mehr in der Liste: Distanz > als Laufgeschwindigkeit
     } else if (pos.dist(goal) > laufgeschwindigkeit) {
       pos += dir * laufgeschwindigkeit;
+      // Keine Wegpunkte mehr in der Liste: Distanz < Laufgeschwindigkeit
     } else {
-      pos = goal;
-      fin = true;
+      pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
+      fin = true; // Gegner wird gelöscht
     }
-    hit = false;
   }
 
+  // Verarbeitung der Treffer an Feinde
   @override
   bool treffer(int schaden, int effekt) {
-    var kill = false;
-    hit = true;
+    var kill = false; //
+
+    // Bekommt der Feind mehr Schaden als er Leben hat wird er gelöscht
     if (leben <= schaden) {
       leben = 0;
-      fin = true;
-      kill = true;
+      fin = true; // Gegner wird gelöscht
+      kill = true; // Gegner getötet
+      // Feind hat mehr Leben als er Schaden bekommt
     } else {
-      leben -= schaden;
+      leben -= schaden; // Schaden vom Leben abziehen
     }
+    // Verlangsamungseffekt
     switch (effekt) {
       case 1:
         if (laufgeschwindigkeit == 5) laufgeschwindigkeit = 3;
@@ -99,9 +109,10 @@ class Corona implements Feinde {
         break;
       default:
     }
-    return kill;
+    return kill; // Rückgabe, ob der Feind getötet wurde
   }
 
+  // Anpassung der Richtung während der Laufzeit
   @override
   void redirect() {
     dir = (goal - pos).uni();
@@ -110,7 +121,8 @@ class Corona implements Feinde {
   @override
   void setWay(List<Position> w) {
     way = w;
-    goal = way[0];
-    pos = goal;
+    pos = way[0]; // Erster Wegpunkt wird als die aktuelle Position gesetzt
+    way.removeAt(0); // Wegpunkt wird gelöscht
+    goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
   }
 }
