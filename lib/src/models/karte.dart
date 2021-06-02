@@ -19,7 +19,7 @@ class Karte {
     }
   }
 
-  ///Freemethode entfernt den besetzt Status
+  ///Freemethode prüft ob Feld belegt ist
   bool free() {
     var free = false;
     for (var b in besetzt) {
