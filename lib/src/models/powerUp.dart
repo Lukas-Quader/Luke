@@ -1,5 +1,7 @@
 part of ImmunityTD;
 
+///PowerUp Klasse
+///TODO wird noch implementiert. Aktuelle nur Getter und Setter Methoden
 abstract class PowerUp {
   int getAbklingzeit();
   void setAbklingzeit(int cd);

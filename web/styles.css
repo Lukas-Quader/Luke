@@ -108,9 +108,6 @@ h1 {
   background-size: contain;
 }
 
-/*#field td {
-  position: relative;
-}*/
 #infobar {
   grid-area: 9 / 1 / 9 / 17;
   display: flex;
