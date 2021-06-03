@@ -54,6 +54,7 @@ class Controller {
           if (spawncount <= 0 && model.wellen.isNotEmpty) {
             //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
             generateEnemy();
+            view.update(l, model.kaufen);
             spawncount = 25;
           }
           //Turmanhroff und feinde bewegen aufrufen

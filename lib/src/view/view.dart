@@ -79,7 +79,8 @@ class View {
     levelview.style.display = 'none';
     var level = '';
     for (var lev = 1; lev <= levels.length; lev++) {
-      level += "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
+      level +=
+          "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
       buttons.innerHtml += level;
       var lvl = querySelector('#box_level_$lev');
       lvl.style.backgroundImage = 'url(img/map_$lev.png)';
@@ -88,8 +89,8 @@ class View {
   }
 
   void generateMap(List<Turm> buy) {
-      generateBuyMenu(buy);
-      levelview.style.display = 'grid';
+    generateBuyMenu(buy);
+    levelview.style.display = 'grid';
   }
 
   void spawn(Feinde f) {
@@ -108,7 +109,8 @@ class View {
   void generateBuyMenu(List<Turm> tower) {
     var html = '';
     for (var t in tower) {
-      html += "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
+      html +=
+          "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
       buemenue.innerHtml += html;
     }
   }
@@ -121,10 +123,10 @@ class View {
 
   void cleanMap() {
     for (Feinde f in model.feinde) {
-        var feind = querySelector('#${f.name}_${f.id}');
-        feind.style.display = 'none';
-        feind.remove();
-      }
+      var feind = querySelector('#${f.name}_${f.id}');
+      feind.style.display = 'none';
+      feind.remove();
+    }
     for (Turm t in model.turm) {
       var turm = querySelector('#${t.name}_${t.id}');
       turm.style.display = 'none';
