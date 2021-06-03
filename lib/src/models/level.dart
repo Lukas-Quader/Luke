@@ -14,6 +14,7 @@ class Level {
   List<Turm> turm = [];
   Karte karte;
   List<Feinde> feinde;
+  List<Projektiel> shots = [];
 
   ///Constructor:
   ///@param anti = Antikörper
@@ -64,10 +65,19 @@ class Level {
       //Alle existerenden Türme angreifen lassen
       for (var t in turm) {
         //merken ob der Angriff getötet hat
-        var kill = t.angriff(feinde);
+        var shot = t.angriff(feinde);
         //falls der Angriff getötet hat 10 Antikörper gutschreiben
+        if (shot != null) {
+          shots.add(shot);
+        }
+      }
+      for(var pro in shots) {
+        var kill = pro.fly();
         if (kill) {
           ak += 10;
+        }
+        if(pro.fin) {
+          shots.remove(pro);
         }
       }
     }
@@ -85,15 +95,7 @@ class Level {
   void turmPlazieren(String name, Position position, int lvl, int id) {
     var pos = Position(0, 0); //initialisieren der Variable pos als Position
     num count = 0; //initialisieren der Variable count
-    //For-Schleife um zu prüfen ob die Position besetzt ist
-    for (num i = 0; i < karte.felder.length; i++) {
-      if (!karte.besetzt[i]) {
-        pos = karte.felder[i];
-        count = i;
-        break;
-      }
-    }
-    //TODO
+    //For-Schleife um ermitteln der Position, welche am nähsten am Klick und frei ist
     for (num j = 0; j < karte.felder.length; j++) {
       if (position.dist(karte.felder[j]) < pos.dist(position) &&
           !karte.besetzt[j]) {
@@ -101,9 +103,9 @@ class Level {
         count = j;
       }
     }
-    // TODO
+    // Hinzufügen des übergebenen Turms un die liste aktiver Türme
     if (pos.dist(Position(0, 0)) != 0) {
-      karte.besetzt[count] = true;
+      karte.besetzt[count] = true;  //Ssetzen des kontrollfeldes in der besetzt liste von Karte
       switch (name) {
         case 'blutzelle':
           turm.add(Blutzelle(lvl, pos, id));

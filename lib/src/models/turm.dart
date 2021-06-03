@@ -19,7 +19,7 @@ abstract class Turm {
 
   ///Methode welche einen Turm angreifen lässt.
   ///Ihr wird eine Liste von Feinden
-  bool angriff(List<Feinde> feinde);
+  Projektiel angriff(List<Feinde> feinde);
 }
 
 ///Blutzellen Klasse
@@ -84,9 +84,9 @@ class Blutzelle implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  bool angriff(List<Feinde> feinde) {
+  Projektiel angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill = false;
+    var kill;
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -94,7 +94,7 @@ class Blutzelle implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill = f.treffer(schaden, effekt);
+          kill = Blutschuss(id, position+ Position(25, 25), f, effekt);
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Breack, damit nur der "nächste" Feind angegriffen wird.

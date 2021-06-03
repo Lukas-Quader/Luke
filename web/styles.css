@@ -172,3 +172,15 @@ h1 {
   position: absolute;
 }
 
+.blutschuss {
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background-image: url(img/blutzelle.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
