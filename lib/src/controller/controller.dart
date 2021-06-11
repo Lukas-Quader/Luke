@@ -49,17 +49,21 @@ class Controller {
         //setClickListenerForLevel aufrufen und towers übergeben
         towers = setClickListenerForLevel(towers);
         //Einen timer starten welcher alls 70 milisekunden aktualisiert
-        Timer.periodic(Duration(milliseconds: 70), (timer) {
+        Timer.periodic(Duration(milliseconds: 50), (timer) {
           //wenn noch wellen da in bestimmten abständen Gegner spawnen
           if (spawncount <= 0 && model.wellen.isNotEmpty) {
             //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
             generateEnemy();
-            view.update(l, model.kaufen);
             spawncount = 25;
           }
           //Turmanhroff und feinde bewegen aufrufen
           model.turmAngriff();
           model.feindeBewegen();
+          if(model.shots.isNotEmpty) {
+            for(var s in model.shots) {
+              view.shoot(s);
+            }
+          }
           //View updaten und den turm und das Kaufmenue übergeben
           view.update(l, model.kaufen);
           //counter für den spawn reduzieren

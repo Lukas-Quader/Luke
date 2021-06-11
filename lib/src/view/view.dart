@@ -37,6 +37,7 @@ class View {
 
   /// generelles updaten der Ansicht des Spiels
   void update(num l, List<Turm> buy) {
+    List<Feinde> killed = [];
     // Hintergrundbild der Karte
     map.style.backgroundImage = 'url(img/map_$l.png)';
     // Gibt es noch Feinde in der Liste?
@@ -49,9 +50,12 @@ class View {
         // Gegner im Ziel?
         if (f.fin) {
           feind.style.display = 'none'; // feind sichtbar machen
-          model.kill(f); // entfernt Feind aus der Liste
+          killed.add(f);
           feind.remove(); // entferent Feind aus der View
         }
+      }
+      for(Feinde feind in killed) {
+          model.kill(feind); // entfernt Feind aus der Liste
       }
     }
     // Gibt es Türme in der Liste?
@@ -61,6 +65,21 @@ class View {
         var turm = querySelector('#${t.name}_${t.id}');
         turm?.style?.left = '${t.position.x}px'; // definierte x-Position setzen
         turm?.style?.top = '${t.position.y}px'; // definierte y-Position setzen
+      }
+    }
+    if (model.shots.isNotEmpty) {
+      List<Projektiel> hits = [];
+      // Durchgehen der Turmliste
+      for (var s in model.shots) {
+        var schuss = querySelector('#${s.name}_${s.id}');
+        schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
+        schuss?.style?.top = '${s.pos.y}px'; // definierte y-Position setzen
+        if(s.fin) {
+          schuss.remove();
+        }
+      }
+      for(var h in hits) {
+        model.shots.remove(h);
       }
     }
     generateInfobar();
@@ -121,6 +140,13 @@ class View {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
+    map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
+  }
+
+  void shoot(Projektiel projektiel) {
+    var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
+    // Fügt den Feind mit Namen und id zum HTML File hinzu
+    ht += '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
     map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
   }
 
