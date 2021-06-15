@@ -12,6 +12,8 @@ abstract class Feinde {
   Position goal; // aktueller Zielpunkt
   bool fin; // ziel erreicht
   num wert;
+  int _hit = 0;
+  bool get hitted;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
   void bewegen(); // Bewegung der Feinde
@@ -43,6 +45,12 @@ class Corona implements Feinde {
   bool fin = false;
   @override
   num wert;
+  @override
+  int _hit = 0;
+
+
+  @override
+  bool get hitted => _hit >= 1 && _hit <= 10;
 
   Corona(
       // Constructor
@@ -60,6 +68,7 @@ class Corona implements Feinde {
   @override
   // Bewegen der Feinde
   void bewegen() {
+    if(_hit >= 1) _hit++;
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -97,6 +106,7 @@ class Corona implements Feinde {
       // Feind hat mehr Leben als er Schaden bekommt
     } else {
       leben -= schaden; // Schaden vom Leben abziehen
+      _hit = 1;
     }
     // Verlangsamungseffekt
     switch (effekt) {
@@ -150,6 +160,11 @@ class MRSA implements Feinde {
   bool fin = false;
   @override
   num wert;
+  @override
+  int _hit = 0;
+
+  @override
+  bool get hitted => _hit >= 1 && _hit <= 10;
 
   MRSA(
       // Constructor
@@ -167,6 +182,7 @@ class MRSA implements Feinde {
   @override
   // Bewegen der Feinde
   void bewegen() {
+    if(_hit >= 1) _hit++;
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -204,6 +220,7 @@ class MRSA implements Feinde {
       // Feind hat mehr Leben als er Schaden bekommt
     } else {
       leben -= schaden; // Schaden vom Leben abziehen
+      _hit = 1;
     }
     return kill; // Rückgabe, ob der Feind getötet wurde
   }

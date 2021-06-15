@@ -58,6 +58,8 @@ class View {
         var feind = querySelector('#${f.name}_${f.id}');
         feind?.style?.left = '${f.pos.x}px'; // nächste x position
         feind?.style?.top = '${f.pos.y}px'; // nächste y position
+        feind.classes.remove('dmg');
+        if(f.hitted) feind.classes.add('dmg');
         // Gegner im Ziel?
         if (f.fin) {
           feind.style.display = 'none'; // feind sichtbar machen
