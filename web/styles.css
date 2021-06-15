@@ -1,5 +1,37 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+@media screen and (orientation: portrait) {
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  #portrait {
+    display: grid;
+    grid-area: auto;
+    height: 100%;
+    width: 100%;
+    background-color: cornflowerblue;
+    font-size:15vw;
+    text-align: center;
+    padding-top: 50%;
+    text-shadow: rgba(0, 0, 255, 0.212);
+  }
+
+  #level {
+    display: none; 
+  }
+
+
+}
+
+@media screen and (orientation: landscape) {
 html, body {
   width: 100%;
   height: 100%;
@@ -12,6 +44,12 @@ html, body {
   background-size: 100% 100%;
 }
 
+#portrait {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: cornflowerblue;
+}
 
 h1 {
   text-align: center;
@@ -86,6 +124,15 @@ h1 {
   background-size: 100% 100%;
 }
 
+#gameover {
+  grid-area: 1 / 1 / 9 / 17;
+  background-image: url("img/gameover.png"); 
+  position: relative;
+  padding-bottom: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .wp {
   height: 30px;
   width: 30px;
@@ -126,6 +173,7 @@ h1 {
 #infobar {
   grid-area: 9 / 1 / 9 / 17;
   display: flex;
+  background-color: rgba(0, 0, 0, 0.473);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -146,7 +194,7 @@ h1 {
 }
 
 #wavecount {
-  color: black;
+  color: rgb(55, 125, 190);
   text-align: center;
   font-size: 1.5em;
 }
@@ -157,14 +205,6 @@ h1 {
   grid-template-columns: 1fr 1fr;
   overflow: scroll;
   border-left: 3px black solid;
-}
-
-#buymenu {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: scroll;
-  margin: 10px;  
 }
 
 #powerupMenu {
@@ -187,6 +227,18 @@ h1 {
   position: absolute;
 }
 
+.mrsa {
+  height: 35px;
+  width: 35px;
+  
+  /* Aussehen */
+  background-image: url(img/mrsa.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
 .blutschuss {
   height: 15px;
   width: 15px;
@@ -198,4 +250,5 @@ h1 {
   background-size: contain;
   /* Positionierung */ 
   position: absolute;
+}
 }

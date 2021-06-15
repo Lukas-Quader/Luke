@@ -3,7 +3,11 @@ part of ImmunityTD;
 class View {
   Level model;
 
+  final portrait = querySelector('#portrait');
+
   final text = querySelector('#text'); // HTML-Teil des Textes
+
+  final body = querySelector('body');
 
   final buttons = querySelector('#buttons'); // HTML-Teil des Buttons
 
@@ -15,6 +19,9 @@ class View {
 
   final map = querySelector('#map'); // HTML-Teil der Karte
 
+  final gameover =
+      querySelector('#gameover'); // QuerySelector für das Gameover Stylesheet
+
   final infobar = querySelector('#infobar'); // HTML-Teil der Infoleiste
 
   final ak = querySelector('#ak'); // HTML-Teil der Antikörper(Infoleiste)
@@ -22,6 +29,9 @@ class View {
   final tp = querySelector('#tp'); // HTML-Teil der Leben(Infoleiste)
   // HTML-Teil der Feindwellenanzeige(Infoleiste)
   final wavecount = querySelector('#wavecount');
+
+  int wavemax = 0;
+
   // KaufButton
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
   // StartButton
@@ -33,6 +43,7 @@ class View {
   /// Setzen des ViewModels
   void setModel(Level model) {
     this.model = model;
+    wavemax = model.wellen.length;
   }
 
   /// generelles updaten der Ansicht des Spiels
@@ -113,6 +124,7 @@ class View {
 
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
+    gameover.style.display = 'none';
     levelview.style.display = 'none'; // Levelview aktuell unsichtbar
     var level = ''; // zwischenvariable zum zwischenspeichern der Buttons
     // Erstellen der Level-Button des Menüs
@@ -168,8 +180,8 @@ class View {
     for (var t in tower) {
       // Fügt den Button mit Namen und Kosten zum HTML File hinzu
       html +=
-          "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
-      print(buemenue.innerHtml);
+          "<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n";
+      buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
     buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
   }
@@ -181,7 +193,7 @@ class View {
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
-    wavecount.setInnerHtml('Welle : ${model.wellen.length}/3');
+    wavecount.setInnerHtml('Wellen : ${model.wellen.length}/$wavemax');
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
@@ -196,6 +208,10 @@ class View {
       var turm = querySelector('#${t.name}_${t.id}'); //
       turm.remove(); // Turm entfernen
     }
+    for (Projektiel s in model.shots) {
+      var schuss = querySelector('#${s.name}_${s.id}'); //
+      schuss.remove(); // Turm entfernen
+    }
   }
 
   /// Win Screen nach gewinnen des Spiels
@@ -207,6 +223,14 @@ class View {
   /// GameOver Screen nach verlieren des Spiels
   void gameOver() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    map.innerHtml += 'GAME OVER!'; // Zeigt auf dem Spielfeld GameOver an
+    gameover.style.display = 'grid';
   }
+
+  num get mapWidth => map.getBoundingClientRect().width.toDouble();
+
+  num get mapHeight => map.getBoundingClientRect().height.toDouble();
+
+  num get width => body.getBoundingClientRect().width.toDouble();
+
+  num get height => body.getBoundingClientRect().height.toDouble();
 }

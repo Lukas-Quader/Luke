@@ -30,7 +30,9 @@ class Level {
         switch (feind.keys.first) {
           case 'Corona':
             welle.add(Corona(feind['Corona']));
-
+            break;
+          case 'MRSA':
+            welle.add(MRSA(feind['MRSA']));
             break;
           default:
         }
@@ -97,8 +99,8 @@ class Level {
       }
       for (var pro in shots) {
         var kill = pro.fly();
-        if (kill) {
-          ak += 10;
+        if (kill > 0) {
+          ak += kill;
         }
       }
     }
@@ -152,14 +154,19 @@ class Level {
   ///solange noch weitere Wellen und Feinde in den Wellen existieren, werden
   ///die Feine in feinde geaddet und der Aktuelle Feind wird entfernt.
   ///Wenn die Welle leer ist wird diese entfernt.
-  void spawn() {
+  bool spawn() {
+    var spawned = false;
     if (wellen.isNotEmpty) {
       if (wellen[0].isNotEmpty) {
         feinde.add(wellen[0][0]);
         wellen[0].removeAt(0);
-        if (wellen[0].isEmpty) wellen.removeAt(0);
+        spawned = true;
+      }
+      if (wellen[0].isEmpty && feinde.isEmpty) {
+        wellen.removeAt(0);
       }
     }
+    return spawned;
   }
 
   ///Kaufmethode:
