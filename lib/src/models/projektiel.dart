@@ -11,7 +11,7 @@ abstract class Projektiel {
   bool flying; // Projektiel fliegt
   num dmg;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
-  bool fly(); // Bewegung der Feinde
+  num fly(); // Bewegung der Feinde
   void redirect(); // Anpassung der Richtung während der Laufzeit
 }
 
@@ -53,13 +53,13 @@ class Blutschuss implements Projektiel {
 
   @override
   // Bewegen der Feinde
-  bool fly() {
-    var kill = false;
+  num fly() {
+    var kill = 0;
     var goal = enemy.pos + Position(17, 17);
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
       if (pos.dist(goal) <= fluggeschwindigkeit) {
         pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
-        kill = enemy.treffer(dmg, 0);
+        if(enemy.treffer(dmg, 0)) kill = enemy.wert;
         fin = true;
         // Distanz ist nicht geringer als die Laufgeschwindigkeit
       } else {

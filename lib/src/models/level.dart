@@ -29,8 +29,10 @@ class Level {
       for(Map feind in wave) {
         switch (feind.keys.first) {
           case 'Corona':
-          welle.add(Corona(feind['Corona']));
-            
+          welle.add(Corona(feind['Corona']));  
+            break;
+          case 'MRSA':
+          welle.add(MRSA(feind['MRSA']));  
             break;
           default:
         }
@@ -93,8 +95,8 @@ class Level {
       }
       for(var pro in shots) {
         var kill = pro.fly();
-        if (kill) {
-          ak += 10;
+        if (kill > 0) {
+          ak += kill;
         }
       }
     }
