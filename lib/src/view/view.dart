@@ -22,6 +22,9 @@ class View {
   final tp = querySelector('#tp'); // HTML-Teil der Leben(Infoleiste)
   // HTML-Teil der Feindwellenanzeige(Infoleiste)
   final wavecount = querySelector('#wavecount');
+
+  int wavemax = 0;
+
   // KaufButton
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
   // StartButton
@@ -33,6 +36,7 @@ class View {
   /// Setzen des ViewModels
   void setModel(Level model) {
     this.model = model;
+    wavemax = model.wellen.length;
   }
 
   /// generelles updaten der Ansicht des Spiels
@@ -179,7 +183,7 @@ class View {
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
-    wavecount.setInnerHtml('Welle : ${model.wellen.length}/3');
+    wavecount.setInnerHtml('Wellen : ${model.wellen.length}/$wavemax');
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
