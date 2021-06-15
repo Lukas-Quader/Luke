@@ -15,6 +15,8 @@ class View {
 
   final map = querySelector('#map'); // HTML-Teil der Karte
 
+  final gameover = querySelector('#gameover'); // HTML-Teil der Karte
+
   final infobar = querySelector('#infobar'); // HTML-Teil der Infoleiste
 
   final ak = querySelector('#ak'); // HTML-Teil der Antikörper(Infoleiste)
@@ -58,8 +60,8 @@ class View {
           feind.remove(); // entferent Feind aus der View
         }
       }
-      for(Feinde feind in killed) {
-          model.kill(feind); // entfernt Feind aus der Liste
+      for (Feinde feind in killed) {
+        model.kill(feind); // entfernt Feind aus der Liste
       }
     }
     // Gibt es Türme in der Liste?
@@ -78,12 +80,12 @@ class View {
         var schuss = querySelector('#${s.name}_${s.id}');
         schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
         schuss?.style?.top = '${s.pos.y}px'; // definierte y-Position setzen
-        if(s.fin) {
+        if (s.fin) {
           hits.add(s);
           schuss.remove();
         }
       }
-      for(var h in hits) {
+      for (var h in hits) {
         model.shots.remove(h);
       }
     }
@@ -117,6 +119,7 @@ class View {
 
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
+    gameover.style.display = 'none';
     levelview.style.display = 'none'; // Levelview aktuell unsichtbar
     var level = ''; // zwischenvariable zum zwischenspeichern der Buttons
     // Erstellen der Level-Button des Menüs
@@ -151,7 +154,8 @@ class View {
   void shoot(Projektiel projektiel) {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
-    ht += '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
+    ht +=
+        '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
     map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
     projektiel.flying = true;
   }
@@ -213,6 +217,6 @@ class View {
   /// GameOver Screen nach verlieren des Spiels
   void gameOver() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    map.innerHtml += 'GAME OVER!'; // Zeigt auf dem Spielfeld GameOver an
+    gameover.style.display = 'grid';
   }
 }
