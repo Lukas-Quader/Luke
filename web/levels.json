@@ -33,7 +33,7 @@
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
             "Karte" : {"Felder" : [{"Position" : {"x" : 920, "y" : 340}}, {"Position" : {"x" : 630, "y" : 340}}, {"Position" : {"x" : 1220, "y" : 320}}],
-        "Wege" : [[{"Position" : {"x" : 0, "y" : 307}},
+        "Wege" : [[{"Position" : {"x" : 0, "y" : 360}},
             {"Position" : {"x" : 500, "y" : 340}},
             {"Position" : {"x" : 510, "y" : 490}},
             {"Position" : {"x" : 790, "y" : 480}},
