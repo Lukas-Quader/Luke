@@ -227,6 +227,12 @@ h1 {
   position: absolute;
 }
 
+.corona.dmg {
+  border-radius: 50px;
+  animation-name: hit;
+  animation-duration: 0.25s;
+}
+
 .mrsa {
   height: 35px;
   width: 35px;
@@ -237,6 +243,12 @@ h1 {
   background-size: contain;
   /* Positionierung */ 
   position: absolute;
+}
+
+.mrsa.dmg {
+  border-radius: 50px;
+  animation-name: hit;
+  animation-duration: 0.25s;
 }
 
 .blutschuss {
@@ -250,5 +262,10 @@ h1 {
   background-size: contain;
   /* Positionierung */ 
   position: absolute;
+}
+@keyframes hit {
+  0% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
+  50% {background-color: rgba(255, 0, 0, 0.685); transform: scale(0.75);}
+  100% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
 }
 }
