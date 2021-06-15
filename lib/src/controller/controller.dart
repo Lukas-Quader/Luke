@@ -40,6 +40,7 @@ class Controller {
         }
       }
     });
+
     //Eventlistener zum prüfen ob start gedrückt wurde
     view.startButton.onClick.listen((_) {
       //Falls kein Level gewählt wurde passiert nichts
@@ -49,33 +50,40 @@ class Controller {
         //setClickListenerForLevel aufrufen und towers übergeben
         towers = setClickListenerForLevel(towers);
         //Einen timer starten welcher alls 70 milisekunden aktualisiert
+
         Timer.periodic(Duration(milliseconds: 50), (timer) {
-          //wenn noch wellen da in bestimmten abständen Gegner spawnen
-          if (spawncount <= 0 && model.wellen.isNotEmpty) {
-            //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
-            generateEnemy();
-            spawncount = 25;
-          }
-          //Turmanhroff und feinde bewegen aufrufen
-          model.turmAngriff();
-          model.feindeBewegen();
-          if(model.shots.isNotEmpty) {
-            for(var s in model.shots) {
-              if(!s.flying) view.shoot(s);
+          if (checkScreenOrientation()) {
+            //Portraitmodus anzeige auf unsichtbar
+            view.portrait.style.display = 'none';
+            //wenn noch wellen da in bestimmten abständen Gegner spawnen
+            if (spawncount <= 0 && model.wellen.isNotEmpty) {
+              //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
+              generateEnemy();
+              spawncount = 25;
             }
-          }
-          //View updaten und den turm und das Kaufmenue übergeben
-          view.update(l, model.kaufen);
-          //counter für den spawn reduzieren
-          spawncount--;
-          //Falls game over wird der Timer abgebrochen
-          //bei Sieg = Win und bei Gameover = gameover
-          if (model.gameOver) {
-            timer.cancel();
-            view.gameOver();
-          } else if (model.win) {
-            timer.cancel();
-            view.win();
+            //Turmanhroff und feinde bewegen aufrufen
+            model.turmAngriff();
+            model.feindeBewegen();
+            if (model.shots.isNotEmpty) {
+              for (var s in model.shots) {
+                if (!s.flying) view.shoot(s);
+              }
+            }
+            //View updaten und den turm und das Kaufmenue übergeben
+            view.update(l, model.kaufen);
+            //counter für den spawn reduzieren
+            spawncount--;
+            //Falls game over wird der Timer abgebrochen
+            //bei Sieg = Win und bei Gameover = gameover
+            if (model.gameOver) {
+              timer.cancel();
+              view.gameOver();
+            } else if (model.win) {
+              timer.cancel();
+              view.win();
+            }
+          } else {
+            view.portrait.style.display = 'grid';
           }
         });
       }
@@ -86,8 +94,8 @@ class Controller {
   ///@param relway eine Liste mit den Positionen
   List<dynamic> generateWay(List<dynamic> relway) {
     //es wird die höhe und breite der Map auf dem Bildschirm abgeragt
-    num width = view.map.getBoundingClientRect().width.toDouble();
-    num height = view.map.getBoundingClientRect().height.toDouble();
+    var width = view.mapWidth;
+    var height = view.mapHeight;
     //Variable way initialisieren
     var way = [];
     //alle positionen in relway in way adden und die skalierung anpassen
@@ -162,10 +170,14 @@ class Controller {
   Future<List<Level>> loadLevelFromData() async {
     var lev = <Level>[];
     Map data = json.jsonDecode(await HttpRequest.getString('levels.json'));
-    for(var lvl in data['Levels']) {
+    for (var lvl in data['Levels']) {
       lev.add(Level(lvl['Level']));
     }
-    
+
     return lev;
+  }
+
+  bool checkScreenOrientation() {
+    return view.height < view.width ? true : false; //Landscape = True
   }
 }

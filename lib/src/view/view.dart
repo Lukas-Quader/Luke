@@ -3,7 +3,11 @@ part of ImmunityTD;
 class View {
   Level model;
 
+  final portrait = querySelector('#portrait');
+
   final text = querySelector('#text'); // HTML-Teil des Textes
+
+  final body = querySelector('body');
 
   final buttons = querySelector('#buttons'); // HTML-Teil des Buttons
 
@@ -15,7 +19,8 @@ class View {
 
   final map = querySelector('#map'); // HTML-Teil der Karte
 
-  final gameover = querySelector('#gameover'); // HTML-Teil der Karte
+  final gameover =
+      querySelector('#gameover'); // QuerySelector für das Gameover Stylesheet
 
   final infobar = querySelector('#infobar'); // HTML-Teil der Infoleiste
 
@@ -215,4 +220,12 @@ class View {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
     gameover.style.display = 'grid';
   }
+
+  num get mapWidth => map.getBoundingClientRect().width.toDouble();
+
+  num get mapHeight => map.getBoundingClientRect().height.toDouble();
+
+  num get width => body.getBoundingClientRect().width.toDouble();
+
+  num get height => body.getBoundingClientRect().height.toDouble();
 }
