@@ -86,6 +86,15 @@ h1 {
   background-size: 100% 100%;
 }
 
+#gameover {
+  grid-area: 1 / 1 / 9 / 17;
+  background-image: url("img/gameover.png"); 
+  position: relative;
+  padding-bottom: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .wp {
   height: 30px;
   width: 30px;
@@ -111,6 +120,7 @@ h1 {
 #infobar {
   grid-area: 9 / 1 / 9 / 17;
   display: flex;
+  background-color: rgba(0, 0, 0, 0.473);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -131,7 +141,7 @@ h1 {
 }
 
 #wavecount {
-  color: black;
+  color: rgb(55, 125, 190);
   text-align: center;
   font-size: 1.5em;
 }
@@ -142,14 +152,6 @@ h1 {
   grid-template-columns: 1fr 1fr;
   overflow: scroll;
   border-left: 3px black solid;
-}
-
-#buymenu {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: scroll;
-  margin: 10px;  
 }
 
 #powerupMenu {
