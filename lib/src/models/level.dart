@@ -117,11 +117,11 @@ class Level {
   ///@param id übergibt die TurmID
   num turmPlazieren(String name, Position position, int lvl, int id) {
     var pos = Position(0, 0); //initialisieren der Variable pos als Position
-    num count = 0; //initialisieren der Variable count
+    num count = -1; //initialisieren der Variable count
     //For-Schleife um ermitteln der Position, welche am nähsten am Klick und frei ist
     for (num j = 0; j < karte.felder.length; j++) {
       if (position.dist(karte.felder[j]) < pos.dist(position) &&
-          !karte.besetzt[j]) {
+          !karte.besetzt[j] && (karte.felder[j] + Position(25,25)).dist(position) <= 75) {
         pos = karte.felder[j];
         count = j;
       }

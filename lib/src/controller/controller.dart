@@ -161,11 +161,14 @@ class Controller {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(button.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          view.removePoint(model.turmPlazieren(button.id, click, 1, towerID++));
+          var which = model.turmPlazieren(button.id, click, 1, towerID++);
+          if(which >= 0) {
+            view.removePoint(which);
           //Der Turm wird an die View übergeben
           view.setTower(model.turm.last);
           //Ruft die Buy Methode im Model auf
           model.buy();
+          }
         }
         _buy = false;
       }
