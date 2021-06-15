@@ -183,7 +183,8 @@ class View {
           "<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n";
       buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
-    buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
+    print(buemenue.innerHtml);
+    buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
   }
 
   /// Erstellen der Infobar im unteren Teil des Bildschirms
@@ -193,7 +194,7 @@ class View {
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
-    wavecount.setInnerHtml('Wellen : ${model.wellen.length}/$wavemax');
+    wavecount.setInnerHtml('Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
