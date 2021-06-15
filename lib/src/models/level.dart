@@ -22,15 +22,15 @@ class Level {
   ///@param welle = Welle
   ///@param pu = PowerUps
   ///@param k = Karte
-  Level(Map<String,dynamic> data) {
+  Level(Map<String, dynamic> data) {
     var waves = [];
-    for(var wave in data['Wellen']) {
+    for (var wave in data['Wellen']) {
       var welle = [];
-      for(Map feind in wave) {
+      for (Map feind in wave) {
         switch (feind.keys.first) {
           case 'Corona':
-          welle.add(Corona(feind['Corona']));
-            
+            welle.add(Corona(feind['Corona']));
+
             break;
           default:
         }
@@ -41,10 +41,14 @@ class Level {
     gameOver = false;
     win = false;
     ak = data['Antikörper'];
-    for(var tower in data['Turmkauf']){
+    for (var tower in data['Turmkauf']) {
+      print(tower);
       switch (tower.keys.first) {
         case 'Blutzelle':
           kaufen.add(Blutzelle(tower['Blutzelle']));
+          break;
+        case 'Auge':
+          kaufen.add(Auge(tower['Auge']));
           break;
         default:
       }
@@ -91,7 +95,7 @@ class Level {
           shots.add(shot);
         }
       }
-      for(var pro in shots) {
+      for (var pro in shots) {
         var kill = pro.fly();
         if (kill) {
           ak += 10;
@@ -122,10 +126,22 @@ class Level {
     }
     // Hinzufügen des übergebenen Turms un die liste aktiver Türme
     if (pos.dist(Position(0, 0)) != 0) {
-      karte.besetzt[count] = true;  //Ssetzen des kontrollfeldes in der besetzt liste von Karte
+      karte.besetzt[count] =
+          true; //Setzen des kontrollfeldes in der besetzt liste von Karte
       switch (name) {
         case 'blutzelle':
-          turm.add(Blutzelle({'Level' : lvl, 'Position' : {'x' : pos.x, 'y' : pos.y}, 'id' : id}));
+          turm.add(Blutzelle({
+            'Level': lvl,
+            'Position': {'x': pos.x, 'y': pos.y},
+            'id': id
+          }));
+          break;
+        case 'auge':
+          turm.add(Auge({
+            'Level': lvl,
+            'Position': {'x': pos.x, 'y': pos.y},
+            'id': id
+          }));
           break;
         default:
       }

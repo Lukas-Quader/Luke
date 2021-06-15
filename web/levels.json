@@ -1,10 +1,11 @@
 {
     "Levels":[{
         "Level" : { 
-            "Antikörper" : 50,
+            "Antikörper" : 500,
             "Turmkauf" : [{
-                "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}}
-            ],
+                "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+                {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}}
+    ],
             "Wellen" : [
               [
                 {"Corona" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},

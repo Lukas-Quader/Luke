@@ -54,8 +54,8 @@ class View {
           feind.remove(); // entferent Feind aus der View
         }
       }
-      for(Feinde feind in killed) {
-          model.kill(feind); // entfernt Feind aus der Liste
+      for (Feinde feind in killed) {
+        model.kill(feind); // entfernt Feind aus der Liste
       }
     }
     // Gibt es Türme in der Liste?
@@ -74,12 +74,12 @@ class View {
         var schuss = querySelector('#${s.name}_${s.id}');
         schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
         schuss?.style?.top = '${s.pos.y}px'; // definierte y-Position setzen
-        if(s.fin) {
+        if (s.fin) {
           hits.add(s);
           schuss.remove();
         }
       }
-      for(var h in hits) {
+      for (var h in hits) {
         model.shots.remove(h);
       }
     }
@@ -147,7 +147,8 @@ class View {
   void shoot(Projektiel projektiel) {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
-    ht += '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
+    ht +=
+        '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
     map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
     projektiel.flying = true;
   }
@@ -168,8 +169,9 @@ class View {
       // Fügt den Button mit Namen und Kosten zum HTML File hinzu
       html +=
           "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
-      buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
+      print(buemenue.innerHtml);
     }
+    buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
   }
 
   /// Erstellen der Infobar im unteren Teil des Bildschirms

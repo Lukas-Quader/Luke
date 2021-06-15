@@ -108,6 +108,21 @@ h1 {
   background-size: contain;
 }
 
+.auge {
+  height: 60px;
+  width: 60px;
+  background-image: url(img/auge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+#auge {
+  background-image: url(img/auge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 #infobar {
   grid-area: 9 / 1 / 9 / 17;
   display: flex;
