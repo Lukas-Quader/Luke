@@ -131,6 +131,15 @@ h1 {
   background-size: 100% 100%;
 }
 
+#win {
+  grid-area: 1 / 1 / 9 / 17;
+  background-image: url("img/win.png"); 
+  position: relative;
+  padding-bottom: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 .wp {
   height: 30px;
   width: 30px;
