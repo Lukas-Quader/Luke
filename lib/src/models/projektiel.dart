@@ -8,6 +8,7 @@ abstract class Projektiel {
   Position dir; // aktuelle Richtung
   Feinde enemy; // aktueller Zielpunkt
   bool fin; // ziel erreicht
+  bool flying; // Projektiel fliegt
   num dmg;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool fly(); // Bewegung der Feinde
@@ -30,6 +31,8 @@ class Blutschuss implements Projektiel {
   Feinde enemy;
   @override
   bool fin = false;
+  @override
+  bool flying = false;
   @override
   num dmg = 5;
   int effect = 0;

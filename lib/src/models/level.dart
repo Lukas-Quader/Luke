@@ -96,9 +96,6 @@ class Level {
         if (kill) {
           ak += 10;
         }
-        if(pro.fin) {
-          shots.remove(pro);
-        }
       }
     }
     // Prüfen ob der Angriff zum Sieg geführt hat

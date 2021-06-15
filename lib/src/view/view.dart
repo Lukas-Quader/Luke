@@ -69,12 +69,13 @@ class View {
     }
     if (model.shots.isNotEmpty) {
       List<Projektiel> hits = [];
-      // Durchgehen der Turmliste
+      // Durchgehen der Projektielliste
       for (var s in model.shots) {
         var schuss = querySelector('#${s.name}_${s.id}');
         schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
         schuss?.style?.top = '${s.pos.y}px'; // definierte y-Position setzen
         if(s.fin) {
+          hits.add(s);
           schuss.remove();
         }
       }
@@ -148,6 +149,7 @@ class View {
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht += '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
     map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
+    projektiel.flying = true;
   }
 
   /// Erstellen von Türmen

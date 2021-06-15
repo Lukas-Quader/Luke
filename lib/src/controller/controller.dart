@@ -61,7 +61,7 @@ class Controller {
           model.feindeBewegen();
           if(model.shots.isNotEmpty) {
             for(var s in model.shots) {
-              view.shoot(s);
+              if(!s.flying) view.shoot(s);
             }
           }
           //View updaten und den turm und das Kaufmenue übergeben
