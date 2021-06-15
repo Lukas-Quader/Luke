@@ -167,7 +167,7 @@ class View {
     for (var t in tower) {
       // Fügt den Button mit Namen und Kosten zum HTML File hinzu
       html +=
-          "<button draggable='true' class='buy_tower' id='${t.name}'>${t.kosten}</button>\n";
+          "<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n";
       buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
   }
@@ -193,6 +193,10 @@ class View {
     for (Turm t in model.turm) {
       var turm = querySelector('#${t.name}_${t.id}'); //
       turm.remove(); // Turm entfernen
+    }
+    for (Projektiel s in model.shots) {
+      var schuss = querySelector('#${s.name}_${s.id}'); //
+      schuss.remove(); // Turm entfernen
     }
   }
 

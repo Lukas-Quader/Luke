@@ -143,7 +143,7 @@ class Controller {
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
       if (model.karte.free() && button != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
-        if (model.ak - int.parse(button.innerHtml.toString()) >= 0) {
+        if (model.ak - int.parse(button.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
           model.turmPlazieren(button.id, click, 1, towerID++);
           //Der Turm wird an die View übergeben
