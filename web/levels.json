@@ -1,0 +1,47 @@
+{
+    "Levels":[{
+        "Level" : { 
+            "Antikörper" : 50,
+            "Turmkauf" : [{
+                "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}}
+            ],
+            "Wellen" : [
+              [
+                {"Corona" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 1, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 2, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 3, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 4, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 5, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 6, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 7, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 8, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 9, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}}
+              ],
+              [
+                {"Corona" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 1, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 2, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 3, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 4, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 5, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 6, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 7, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 8, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 9, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}}
+              ]
+            ],
+            "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
+            "Karte" : {"Felder" : [{"Position" : {"x" : 920, "y" : 340}}, {"Position" : {"x" : 630, "y" : 340}}, {"Position" : {"x" : 1220, "y" : 320}}],
+        "Wege" : [[{"Position" : {"x" : 0, "y" : 360}},
+            {"Position" : {"x" : 500, "y" : 340}},
+            {"Position" : {"x" : 510, "y" : 490}},
+            {"Position" : {"x" : 790, "y" : 480}},
+            {"Position" : {"x" : 810, "y" : 230}},
+            {"Position" : {"x" : 1100, "y" : 230}},
+            {"Position" : {"x" : 1110, "y" : 480}},
+            {"Position" : {"x" : 1520, "y" : 448}}
+            ]]}
+        }
+    }]
+}
