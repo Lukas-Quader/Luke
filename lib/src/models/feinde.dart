@@ -115,7 +115,6 @@ class Corona implements Feinde {
 
   @override
   void setWay(List<dynamic> w) {
-    print(w);
     way = w;
     //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt

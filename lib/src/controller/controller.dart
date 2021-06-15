@@ -100,11 +100,12 @@ class Controller {
   ///generateEnemy generiert die Feinde und übergibt ihnen die Wegpunkte
   void generateEnemy() {
     //spawn im Model wird aufgerufen
-    model.spawn();
-    //spawn in der view wird aufgerufen und der Feind übergeben
-    view.spawn(model.feinde.last);
-    //der Weg wird den Feinden übergeben
-    model.feinde.last.setWay(generateWay(model.karte.wege[0]));
+    if(model.spawn()) {
+      //spawn in der view wird aufgerufen und der Feind übergeben
+      view.spawn(model.feinde.last);
+      //der Weg wird den Feinden übergeben
+      model.feinde.last.setWay(generateWay(model.karte.wege[0]));
+    }
   }
 
   ///loadLevel bildet den Übergang vom Hauptmenue in das Spiel

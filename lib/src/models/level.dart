@@ -136,14 +136,19 @@ class Level {
   ///solange noch weitere Wellen und Feinde in den Wellen existieren, werden
   ///die Feine in feinde geaddet und der Aktuelle Feind wird entfernt.
   ///Wenn die Welle leer ist wird diese entfernt.
-  void spawn() {
+  bool spawn() {
+    var spawned = false;
     if (wellen.isNotEmpty) {
       if (wellen[0].isNotEmpty) {
         feinde.add(wellen[0][0]);
         wellen[0].removeAt(0);
-        if (wellen[0].isEmpty) wellen.removeAt(0);
+        spawned = true;
+      }
+      if (wellen[0].isEmpty && feinde.isEmpty) {
+        wellen.removeAt(0);
       }
     }
+    return spawned;
   }
 
   ///Kaufmethode:
