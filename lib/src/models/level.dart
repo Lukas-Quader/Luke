@@ -6,14 +6,14 @@ part of ImmunityTD;
 class Level {
   //Variablen bekanntmachen
   int leben = 100;
-  List<List<Feinde>> wellen;
+  List<dynamic> wellen;
   bool gameOver;
   bool win;
   num ak;
-  List<Turm> kaufen;
+  List<Turm> kaufen = [];
   List<Turm> turm = [];
   Karte karte;
-  List<Feinde> feinde;
+  List<Feinde> feinde = [];
   List<Projektiel> shots = [];
 
   ///Constructor:
@@ -22,14 +22,34 @@ class Level {
   ///@param welle = Welle
   ///@param pu = PowerUps
   ///@param k = Karte
-  Level(int anti, List<Turm> kauf, List<List<Feinde>> welle, List<PowerUp> pu,
-      Karte k) {
-    wellen = welle;
+  Level(Map<String,dynamic> data) {
+    var waves = [];
+    for(var wave in data['Wellen']) {
+      var welle = [];
+      for(Map feind in wave) {
+        switch (feind.keys.first) {
+          case 'Corona':
+          welle.add(Corona(feind['Corona']));
+            
+            break;
+          default:
+        }
+      }
+      waves.add(welle);
+    }
+    wellen = waves;
     gameOver = false;
     win = false;
-    ak = anti;
-    kaufen = kauf;
-    karte = k;
+    ak = data['Antikörper'];
+    for(var tower in data['Turmkauf']){
+      switch (tower.keys.first) {
+        case 'Blutzelle':
+          kaufen.add(Blutzelle(tower['Blutzelle']));
+          break;
+        default:
+      }
+    }
+    karte = Karte(data['Karte']);
     feinde = [];
   }
 
@@ -108,7 +128,7 @@ class Level {
       karte.besetzt[count] = true;  //Ssetzen des kontrollfeldes in der besetzt liste von Karte
       switch (name) {
         case 'blutzelle':
-          turm.add(Blutzelle(lvl, pos, id));
+          turm.add(Blutzelle({'Level' : lvl, 'Position' : {'x' : pos.x, 'y' : pos.y}, 'id' : id}));
           break;
         default:
       }

@@ -17,11 +17,11 @@ class Controller {
 
   ///Main Methode
   ///Sie ist der Eintrittspunkt in das Spiel
-  void main() {
+  void main() async {
     //Variable um den Türmen ihre ID zu geben
     num towers = 0;
     //Die Level werden geladen
-    levels = loadLevelFromData();
+    levels = await loadLevelFromData();
     //Die Level werden an das Menü in der View übergeben
     view.generateMenu(levels);
     //Variable um das gewählte Level zu speichern
@@ -84,12 +84,12 @@ class Controller {
 
   ///generateWay generiert den Weg
   ///@param relway eine Liste mit den Positionen
-  List<Position> generateWay(List<Position> relway) {
+  List<dynamic> generateWay(List<dynamic> relway) {
     //es wird die höhe und breite der Map auf dem Bildschirm abgeragt
     num width = view.map.getBoundingClientRect().width.toDouble();
     num height = view.map.getBoundingClientRect().height.toDouble();
     //Variable way initialisieren
-    var way = <Position>[];
+    var way = [];
     //alle positionen in relway in way adden und die skalierung anpassen
     for (var pos in relway) {
       way.add(Position((pos.x * width) / 1600, (pos.y * height) / 800));
@@ -104,22 +104,14 @@ class Controller {
     //spawn in der view wird aufgerufen und der Feind übergeben
     view.spawn(model.feinde.last);
     //der Weg wird den Feinden übergeben
-    model.feinde.last.setWay(generateWay([
-      Position(0, 370),
-      Position(500, 340),
-      Position(510, 490),
-      Position(790, 480),
-      Position(810, 230),
-      Position(1100, 230),
-      Position(1110, 480),
-      Position(1520, 448)
-    ]));
+    model.feinde.last.setWay(generateWay(model.karte.wege[0]));
   }
 
   ///loadLevel bildet den Übergang vom Hauptmenue in das Spiel
   void loadLevel(num level) {
     //das ausgewählte Level wird das neue Model
     model = levels[level - 1];
+
     //Das Menue wird ausgeblendet
     view.menu.style.display = 'none';
     //die generate Map der View wird aufgerufen
@@ -167,39 +159,13 @@ class Controller {
 
   ///Methode um das das Level zu Laden.
   ///Hier wird im verlauf die JSON Datei geladen
-  List<Level> loadLevelFromData() {
-    return [
-      Level(
-          50,
-          [Blutzelle(1, Position(0, 0), 0)],
-          [
-            [
-              Corona(0, 0, 0, 10, 0, false),
-              Corona(1, 0, 0, 10, 0, false),
-              Corona(2, 0, 0, 10, 0, false),
-              Corona(3, 0, 0, 10, 0, false),
-              Corona(4, 0, 0, 10, 0, false),
-              Corona(5, 0, 0, 10, 0, false),
-              Corona(6, 0, 0, 10, 0, false),
-              Corona(7, 0, 0, 10, 0, false),
-              Corona(8, 0, 0, 10, 0, false),
-              Corona(9, 0, 0, 10, 0, false)
-            ],
-            [
-              Corona(0, 0, 0, 10, 0, false),
-              Corona(1, 0, 0, 10, 0, false),
-              Corona(2, 0, 0, 10, 0, false),
-              Corona(3, 0, 0, 10, 0, false),
-              Corona(4, 0, 0, 10, 0, false),
-              Corona(5, 0, 0, 10, 0, false),
-              Corona(6, 0, 0, 10, 0, false),
-              Corona(7, 0, 0, 10, 0, false),
-              Corona(8, 0, 0, 10, 0, false),
-              Corona(9, 0, 0, 10, 0, false)
-            ]
-          ],
-          [Antibiotika(50, 4, 10)],
-          Karte([Position(920, 340), Position(630, 340), Position(1220, 320)]))
-    ];
+  Future<List<Level>> loadLevelFromData() async {
+    var lev = <Level>[];
+    Map data = json.jsonDecode(await HttpRequest.getString('levels.json'));
+    for(var lvl in data['Levels']) {
+      lev.add(Level(lvl['Level']));
+    }
+    
+    return lev;
   }
 }

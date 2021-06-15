@@ -8,14 +8,14 @@ abstract class Feinde {
   int leben; // lebenspunkte des Feindes
   Position pos; // aktuelle Position
   Position dir; // aktuelle Richtung
-  List<Position> way; // Liste der Wegpunkte
+  List<dynamic> way; // Liste der Wegpunkte
   Position goal; // aktueller Zielpunkt
   bool fin; // ziel erreicht
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
   void bewegen(); // Bewegung der Feinde
   void redirect(); // Anpassung der Richtung während der Laufzeit
-  void setWay(List<Position> w); //Setzen des Weges
+  void setWay(List<dynamic> w); //Setzen des Weges
 }
 
 class Corona implements Feinde {
@@ -35,7 +35,7 @@ class Corona implements Feinde {
   @override
   Position dir;
   @override
-  List<Position> way;
+  List<dynamic> way;
   @override
   Position goal;
   @override
@@ -43,16 +43,11 @@ class Corona implements Feinde {
 
   Corona(
       // Constructor
-      int id,
-      int posx,
-      int posy,
-      int dx,
-      int dy,
-      bool boss) {
-    this.id = id;
-    pos = Position(posx, posy); // Position in x und y Koordinaten
-    dir = Position(dx, dy); // Richtung in x und y Koordinaten
-    this.boss = boss;
+   Map<String,dynamic> data) {
+    this.id = data['id'];
+    pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
+    dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
+    this.boss = data['boss'];
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
@@ -119,7 +114,8 @@ class Corona implements Feinde {
   }
 
   @override
-  void setWay(List<Position> w) {
+  void setWay(List<dynamic> w) {
+    print(w);
     way = w;
     //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt

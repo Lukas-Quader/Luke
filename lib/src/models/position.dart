@@ -9,6 +9,11 @@ class Position {
   ///Construktor
   Position(this.x, this.y);
 
+  void positionFromData(Map<String,dynamic> data) {
+    x = data['x'];
+    y = data['y'];
+  }
+
   //Neuzuweisung der Operatoren +, -, * und <=
   //+ es werden jeweils x und y Werte addiert
   operator +(Position next) => new Position(x + next.x, y + next.y);

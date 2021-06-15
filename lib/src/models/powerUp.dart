@@ -20,14 +20,12 @@ class Antibiotika implements PowerUp {
   /* position*/
 
   Antibiotika(
-    int abklingzeit,
-    double multiplikatorAG,
-    int laufzeit,
+    Map<String,dynamic> data
     /*position*/
   ) {
-    this.abklingzeit = abklingzeit;
-    this.multiplikatorAG = multiplikatorAG;
-    this.laufzeit = laufzeit;
+    abklingzeit = data['Abklinkzeit'];
+    this.multiplikatorAG = data['MultiplikatorAG'];
+    this.laufzeit = data['laufzeit'];
   }
 
   int getAbklingzeit() {

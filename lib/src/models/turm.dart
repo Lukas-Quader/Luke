@@ -51,17 +51,17 @@ class Blutzelle implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Blutzelle(int lvl, Position pos, int id) {
+  Blutzelle(Map<String,dynamic> data) {
     //das level des Turms wird erhöht um das level
-    while (lvl > 1) {
+    var updates = data['Level'];
+    while (updates > 1) {
       upgrade();
-      lvl--;
+      updates--;
     }
-    position = pos;
-    this.id = id;
+    position = Position(data['Position']['x'], data['Position']['y']);
+    id = data['id'];
   }
 
-  ///Upgrade Methode
   ///Das Turmlevel wird hiermit erhöht
   @override
   void upgrade() {
