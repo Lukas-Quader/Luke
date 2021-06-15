@@ -22,6 +22,9 @@ class View {
   final gameover =
       querySelector('#gameover'); // QuerySelector für das Gameover Stylesheet
 
+  final winLogo =
+      querySelector('#win'); // QuerySelector für das Gameover Stylesheet
+
   final infobar = querySelector('#infobar'); // HTML-Teil der Infoleiste
 
   final ak = querySelector('#ak'); // HTML-Teil der Antikörper(Infoleiste)
@@ -59,7 +62,7 @@ class View {
         feind?.style?.left = '${f.pos.x}px'; // nächste x position
         feind?.style?.top = '${f.pos.y}px'; // nächste y position
         feind.classes.remove('dmg');
-        if(f.hitted) feind.classes.add('dmg');
+        if (f.hitted) feind.classes.add('dmg');
         // Gegner im Ziel?
         if (f.fin) {
           feind.style.display = 'none'; // feind sichtbar machen
@@ -133,6 +136,7 @@ class View {
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
     gameover.style.display = 'none';
+    winLogo.style.display = 'none';
     levelview.style.display = 'none'; // Levelview aktuell unsichtbar
     var level = ''; // zwischenvariable zum zwischenspeichern der Buttons
     // Erstellen der Level-Button des Menüs
@@ -202,7 +206,8 @@ class View {
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
-    wavecount.setInnerHtml('Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
+    wavecount.setInnerHtml(
+        'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
@@ -226,13 +231,13 @@ class View {
   /// Win Screen nach gewinnen des Spiels
   void win() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    map.innerHtml += 'WIN!'; // Zeigt auf dem Spielfeld Win an
+    winLogo.style.display = 'grid'; // Zeigt auf dem Spielfeld Win an
   }
 
   /// GameOver Screen nach verlieren des Spiels
   void gameOver() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    gameover.style.display = 'grid';
+    gameover.style.display = 'grid'; // Zeigt auf dem Spielfeld Gameover an
   }
 
   num get mapWidth => map.getBoundingClientRect().width.toDouble();
