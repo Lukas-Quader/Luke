@@ -48,16 +48,15 @@ class Corona implements Feinde {
   @override
   int _hit = 0;
 
-
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
   Corona(
       // Constructor
-   Map<String,dynamic> data) {
+      Map<String, dynamic> data) {
     id = data['id'];
-    pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
-    dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
+    pos = Position(0, 0); // Position in x und y Koordinaten
+    dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
@@ -68,7 +67,7 @@ class Corona implements Feinde {
   @override
   // Bewegen der Feinde
   void bewegen() {
-    if(_hit >= 1) _hit++;
+    if (_hit >= 1) _hit++;
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -168,10 +167,10 @@ class MRSA implements Feinde {
 
   MRSA(
       // Constructor
-   Map<String,dynamic> data) {
+      Map<String, dynamic> data) {
     id = data['id'];
-    pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
-    dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
+    pos = Position(0, 0); // Position in x und y Koordinaten
+    dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
@@ -182,7 +181,7 @@ class MRSA implements Feinde {
   @override
   // Bewegen der Feinde
   void bewegen() {
-    if(_hit >= 1) _hit++;
+    if (_hit >= 1) _hit++;
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
