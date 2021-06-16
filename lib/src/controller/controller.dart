@@ -146,7 +146,6 @@ class Controller {
   void loadLevel(num level) {
     //das ausgewählte Level wird das neue Model
     model = levels[level - 1];
-    print(levels);
     //Das Menue wird ausgeblendet
     view.menu.style.display = 'none';
     //die generate Map der View wird aufgerufen
@@ -168,7 +167,6 @@ class Controller {
       if (event.target is Element) {
         //Speichern welcher button geklickt wurde
         tower = event.target;
-        print(tower);
         _buy = true;
       }
     });
@@ -179,7 +177,6 @@ class Controller {
       //es wird gespeichert auf welcher position geklickt wurde
       var click = Position((ev.target as ButtonElement).offsetLeft, (ev.target as ButtonElement).offsetTop);
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
-        print(tower);
       if (model.karte.free() && tower != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(tower.attributes['value']) >= 0) {
