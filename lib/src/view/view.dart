@@ -198,7 +198,6 @@ class View {
           "<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n";
       buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
-    print(buemenue.innerHtml);
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
   }
 
@@ -260,6 +259,16 @@ class View {
     gameover.style.display = 'none';
     menueButton.style.display = 'none';
     restartButton.style.display = 'none';
+  }
+
+  void selectLevel(num l) {
+    var levelButton = querySelector('#box_level_$l');
+    levelButton.style.borderColor = 'yellow';
+  }
+
+  void unselectLevel(num l) {
+    var levelButton = querySelector('#box_level_$l');
+    levelButton.style.borderColor = 'transparent';
   }
 
   num get mapWidth => map.getBoundingClientRect().width.toDouble();
