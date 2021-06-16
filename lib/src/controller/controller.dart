@@ -45,47 +45,62 @@ class Controller {
     view.startButton.onClick.listen((_) {
       //Falls kein Level gewählt wurde passiert nichts
       if (l != 0) {
-        //loadlevel starten und die nummer des levels übergeben
-        loadLevel(l);
-        //setClickListenerForLevel aufrufen und towers übergeben
-        towers = setClickListenerForLevel(towers);
-        //Einen timer starten welcher alls 70 milisekunden aktualisiert
+        mainLoop(l, towers);
+      }
+    });
 
-        Timer.periodic(Duration(milliseconds: 50), (timer) {
-          if (checkScreenOrientation()) {
-            //Portraitmodus anzeige auf unsichtbar
-            view.portrait.style.display = 'none';
-            //wenn noch wellen da in bestimmten abständen Gegner spawnen
-            if (spawncount <= 0 && model.wellen.isNotEmpty) {
-              //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
-              generateEnemy();
-              spawncount = 25;
-            }
-            //Turmanhroff und feinde bewegen aufrufen
-            model.turmAngriff();
-            model.feindeBewegen();
-            if (model.shots.isNotEmpty) {
-              for (var s in model.shots) {
-                if (!s.flying) view.shoot(s);
-              }
-            }
-            //View updaten und den turm und das Kaufmenue übergeben
-            view.update(l, model.kaufen);
-            //counter für den spawn reduzieren
-            spawncount--;
-            //Falls game over wird der Timer abgebrochen
-            //bei Sieg = Win und bei Gameover = gameover
-            if (model.gameOver) {
-              timer.cancel();
-              view.gameOver();
-            } else if (model.win) {
-              timer.cancel();
-              view.win();
-            }
-          } else {
-            view.portrait.style.display = 'grid';
+    view.menueButton.onClick.listen((event) async {
+      view.switchToMenu();
+      l = 0;
+      levels = await loadLevelFromData();
+    });
+
+    view.restartButton.onClick.listen((event) async {
+      levels = await loadLevelFromData();
+      view.resetWinGameover();
+      mainLoop(l, towers);
+    });
+  }
+
+  void mainLoop(num l, towers) {
+    //loadlevel starten und die nummer des levels übergeben
+    loadLevel(l);
+    //setClickListenerForLevel aufrufen und towers übergeben
+    towers = setClickListenerForLevel(towers);
+    //Einen timer starten welcher alls 70 milisekunden aktualisiert
+    Timer.periodic(Duration(milliseconds: 50), (timer) {
+      if (checkScreenOrientation()) {
+        //Portraitmodus anzeige auf unsichtbar
+        view.portrait.style.display = 'none';
+        //wenn noch wellen da in bestimmten abständen Gegner spawnen
+        if (spawncount <= 0 && model.wellen.isNotEmpty) {
+          //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
+          generateEnemy();
+          spawncount = 25;
+        }
+        //Turmanhroff und feinde bewegen aufrufen
+        model.turmAngriff();
+        model.feindeBewegen();
+        if (model.shots.isNotEmpty) {
+          for (var s in model.shots) {
+            if (!s.flying) view.shoot(s);
           }
-        });
+        }
+        //View updaten und den turm und das Kaufmenue übergeben
+        view.update(l, model.kaufen);
+        //counter für den spawn reduzieren
+        spawncount--;
+        //Falls game over wird der Timer abgebrochen
+        //bei Sieg = Win und bei Gameover = gameover
+        if (model.gameOver) {
+          timer.cancel();
+          view.gameOver();
+        } else if (model.win) {
+          timer.cancel();
+          view.win();
+        }
+      } else {
+        view.portrait.style.display = 'grid';
       }
     });
   }
@@ -108,7 +123,7 @@ class Controller {
   ///generateEnemy generiert die Feinde und übergibt ihnen die Wegpunkte
   void generateEnemy() {
     //spawn im Model wird aufgerufen
-    if(model.spawn()) {
+    if (model.spawn()) {
       //spawn in der view wird aufgerufen und der Feind übergeben
       view.spawn(model.feinde.last);
       //der Weg wird den Feinden übergeben
@@ -120,7 +135,7 @@ class Controller {
   void loadLevel(num level) {
     //das ausgewählte Level wird das neue Model
     model = levels[level - 1];
-
+    print(levels);
     //Das Menue wird ausgeblendet
     view.menu.style.display = 'none';
     //die generate Map der View wird aufgerufen

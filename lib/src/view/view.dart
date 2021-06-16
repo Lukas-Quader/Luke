@@ -40,6 +40,10 @@ class View {
   // StartButton
   HtmlElement get startButton => querySelector('#startButton');
 
+  HtmlElement get menueButton => querySelector('#menueButton');
+
+  HtmlElement get restartButton => querySelector('#restartButton');
+
   /// Constructor der View
   View();
 
@@ -129,6 +133,8 @@ class View {
 
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
+    menueButton.style.display = 'none';
+    restartButton.style.display = 'none';
     gameover.style.display = 'none';
     winLogo.style.display = 'none';
     levelview.style.display = 'none'; // Levelview aktuell unsichtbar
@@ -226,12 +232,31 @@ class View {
   void win() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
     winLogo.style.display = 'grid'; // Zeigt auf dem Spielfeld Win an
+    menueButton.style.display = 'grid'; //Zeigt den Menue Button an
+    restartButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Restart an
   }
 
   /// GameOver Screen nach verlieren des Spiels
   void gameOver() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
     gameover.style.display = 'grid'; // Zeigt auf dem Spielfeld Gameover an
+    menueButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Menue an
+    restartButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Restart an
+  }
+
+  /// Methode um zum Menü zurück zu kehren
+  void switchToMenu() {
+    levelview.style.display = 'none';
+    menu.style.display = 'grid';
+    resetWinGameover();
+  }
+
+  /// Löscht Button und Logo nach dem Spielende wieder
+  void resetWinGameover() {
+    winLogo.style.display = 'none';
+    gameover.style.display = 'none';
+    menueButton.style.display = 'none';
+    restartButton.style.display = 'none';
   }
 
   num get mapWidth => map.getBoundingClientRect().width.toDouble();
