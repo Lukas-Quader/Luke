@@ -59,17 +59,6 @@ class Level {
     feinde = [];
   }
 
-  Level from(Level l) {
-    wellen = l.wellen;
-    gameOver = false;
-    win = false;
-    ak = l.ak;
-    kaufen = l.kaufen;
-    karte = l.karte;
-    feinde = l.feinde;
-    return this;
-  }
-
   ///Mehtode um die Feinde zu bewegen
   void feindeBewegen() async {
     //Prüfen ob Feinde existieren

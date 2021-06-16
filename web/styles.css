@@ -100,26 +100,8 @@ h1 {
 }
 
 #startButton {
-  margin: 50% 5% 5% 5% ;
+  margin: 50% 5% 0% 5% ;
   padding: 5% 40% 5% 40%; 
-}
-
-#menueButton {
-  display: grid;
-  grid-area: 7 / 10 / 8 / 12;
-  position: relative;
-  background-color: #43e40e;
-  font-size: larger;
-  padding: 10%;
-}
-
-#restartButton {
-  display: grid;
-  grid-area: 7 / 13 / 8 / 16;
-  position: relative;
-  background-color: #43e40e;
-  font-size: larger;
-  padding: 10%;
 }
 
 #level {
