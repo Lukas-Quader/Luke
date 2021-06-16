@@ -150,15 +150,10 @@ class View {
     // Erstellen der Level-Button des Menüs
     for (var lev = 1; lev <= levels.length; lev++) {
       // Fügt den Button der Variable hinzu
-      level +=
+      level =
           "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
       // Button wird der innerHTML von Button beigefügt
       buttons.innerHtml += level;
-      // Button wird dem Level hinzugefügt
-      var lvl = querySelector('#box_level_$lev');
-      // Hintergrundbild setzen
-      lvl.style.backgroundImage = 'url(img/map_$lev.png)';
-      lvl.style.backgroundSize = '100% 100%'; // Bildgröße setzen
     }
   }
 

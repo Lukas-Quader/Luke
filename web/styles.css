@@ -110,7 +110,8 @@ h1 {
   position: relative;
   background-color: #43e40e;
   font-size: larger;
-  padding: 10%;
+  padding: 15%;
+  border-radius: 10px;
 }
 
 #restartButton {
@@ -120,6 +121,7 @@ h1 {
   background-color: #43e40e;
   font-size: larger;
   padding: 10%;
+  border-radius: 10px;
 }
 
 #level {
@@ -395,6 +397,20 @@ h1 {
   background-size: contain;
   /* Positionierung */ 
   position: absolute;
+}
+
+.box_level {
+  border-radius: 20px;
+}
+
+#box_level_1 {
+  background-image: url(img/map_1.png);
+  background-size: 100% 100%;
+}
+
+#box_level_2 {
+  background-image: url(img/map_2.png);
+  background-size: 100% 100%;
 }
 
 @keyframes hit {

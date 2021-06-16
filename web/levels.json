@@ -59,5 +59,64 @@
             {"Position" : {"x" : 1520, "y" : 448}}
             ]]}
         }
-    }]
+    },
+    {
+      "Level" : { 
+          "Antikörper" : 500,
+          "Turmkauf" : [{
+              "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+              {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+              {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+              {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+              {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
+  ],
+          "Wellen" : [
+            [
+              {"Corona" : {"id" : 0, "boss" : false}},
+              {"Corona" : {"id" : 1, "boss" : false}},
+              {"Corona" : {"id" : 2, "boss" : false}},
+              {"MRSA" : {"id" : 3, "boss" : false}},
+              {"Corona" : {"id" : 4, "boss" : false}},
+              {"Corona" : {"id" : 5, "boss" : false}},
+              {"MRSA" : {"id" : 6, "boss" : false}},
+              {"Corona" : {"id" : 7, "boss" : false}},
+              {"Corona" : {"id" : 8, "boss" : false}},
+              {"Corona" : {"id" : 9, "boss" : false}}
+            ],
+            [
+              {"Corona" : {"id" : 0, "boss" : false}},
+              {"Corona" : {"id" : 1, "boss" : false}},
+              {"MRSA" : {"id" : 2, "boss" : false}},
+              {"Corona" : {"id" : 3, "boss" : false}},
+              {"Corona" : {"id" : 4, "boss" : false}},
+              {"MRSA" : {"id" : 5, "boss" : false}},
+              {"Corona" : {"id" : 6, "boss" : false}},
+              {"MRSA" : {"id" : 7, "boss" : false}},
+              {"Corona" : {"id" : 8, "boss" : false}},
+              {"Corona" : {"id" : 9, "boss" : false}}
+
+            ],
+            [
+              {"MRSA" : {"id" : 7, "boss" : true}},
+              {"Corona" : {"id" : 8, "boss" : true}}  
+            ]
+          ],
+          "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
+          "Karte" : {"Felder" : [
+            {"Position" : {"x" : 380, "y" : 310}}, 
+            {"Position" : {"x" : 600, "y" : 450}}, 
+            {"Position" : {"x" : 830, "y" : 340}},
+            {"Position" : {"x" : 780, "y" : 130}},
+            {"Position" : {"x" : 1020, "y" : 520}},
+            {"Position" : {"x" : 480, "y" : 120}},
+            {"Position" : {"x" : 1200, "y" : 250}}],
+      "Wege" : [[{"Position" : {"x" : 0, "y" : 460}},
+          {"Position" : {"x" : 490, "y" : 445}},
+          {"Position" : {"x" : 650, "y" : 200}},
+          {"Position" : {"x" : 830, "y" : 600}},
+          {"Position" : {"x" : 1000, "y" : 400}},
+          {"Position" : {"x" : 1520, "y" : 400}}
+          ]]}
+      }
+  }]
 }
