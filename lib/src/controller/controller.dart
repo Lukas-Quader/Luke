@@ -8,6 +8,7 @@ class Controller {
   List<Level> levels;
   int spawncount = 25;
   View view = View();
+  bool _buy = false;
 
   ///Constructor
   ///Ruft die Main Methode auf
@@ -158,6 +159,7 @@ class Controller {
       if (event.target is Element) {
         //Speichern welcher button geklickt wurde
         button = event.target;
+        _buy = true;
       }
     });
     //onClick listener für die Karte
@@ -169,12 +171,16 @@ class Controller {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(button.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          model.turmPlazieren(button.id, click, 1, towerID++);
+          var which = model.turmPlazieren(button.id, click, 1, towerID++);
+          if(which >= 0) {
+            view.removePoint(which);
           //Der Turm wird an die View übergeben
           view.setTower(model.turm.last);
           //Ruft die Buy Methode im Model auf
           model.buy();
+          }
         }
+        _buy = false;
       }
     });
     //gibt die Anzahl der Türme zurück
