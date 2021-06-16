@@ -227,4 +227,8 @@ class Level {
   void kill(Feinde f) {
     feinde.remove(f);
   }
+
+  void safeLevel(num l) {
+    window.localStorage['completeLevel'] = '$l';
+  }
 }

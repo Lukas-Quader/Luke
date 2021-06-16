@@ -36,6 +36,8 @@ class Controller {
         //Schleife um zu prüfen welches Level gewählt wurde
         for (num i = 1; i <= levels.length; i++) {
           if (button.id == 'box_level_$i') {
+            if (l != 0) view.unselectLevel(l);
+            view.selectLevel(i);
             //merken des Levels
             l = i;
           }
@@ -106,6 +108,7 @@ class Controller {
         } else if (model.win) {
           timer.cancel();
           view.win();
+          model.safeLevel(l);
         }
       } else {
         view.portrait.style.display = 'grid';

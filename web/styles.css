@@ -61,7 +61,7 @@ h1 {
   position: relative;
   display: grid; 
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 100%;
   background-image: url("img/background_monster.png"); 
   background-repeat: no-repeat;
   background-size: contain;
@@ -72,6 +72,7 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   overflow: scroll;
   margin: 10px;  
+  border-color: white;
 }
 
 .buy_tower {
@@ -100,8 +101,11 @@ h1 {
 }
 
 #startButton {
-  margin: 50% 5% 5% 5% ;
-  padding: 5% 40% 5% 40%; 
+  margin: 30% 5% 5% 5% ;
+  padding: 5% 40% 5% 40%;
+  background-color: yellow;
+  font-size: larger;
+  border-radius: 10px; 
 }
 
 #menueButton {
