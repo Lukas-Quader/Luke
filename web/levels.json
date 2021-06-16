@@ -8,28 +8,28 @@
     ],
             "Wellen" : [
               [
-                {"Corona" : {"id" : 0, "boss" : false}},
-                {"Corona" : {"id" : 1, "boss" : false}},
-                {"Corona" : {"id" : 2, "boss" : false}},
-                {"MRSA" : {"id" : 3, "boss" : false}},
-                {"Corona" : {"id" : 4, "boss" : false}},
-                {"Corona" : {"id" : 5, "boss" : false}},
-                {"MRSA" : {"id" : 6, "boss" : false}},
-                {"Corona" : {"id" : 7, "boss" : false}},
-                {"Corona" : {"id" : 8, "boss" : false}},
-                {"Corona" : {"id" : 9, "boss" : false}}
+                {"Corona" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 1, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 2, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 3, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 4, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 5, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 6, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 7, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 8, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 9, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}}
               ],
               [
-                {"Corona" : {"id" : 0, "boss" : false}},
-                {"Corona" : {"id" : 1, "boss" : false}},
-                {"MRSA" : {"id" : 2, "boss" : false}},
-                {"Corona" : {"id" : 3, "boss" : false}},
-                {"Corona" : {"id" : 4, "boss" : false}},
-                {"MRSA" : {"id" : 5, "boss" : false}},
-                {"Corona" : {"id" : 6, "boss" : false}},
-                {"MRSA" : {"id" : 7, "boss" : false}},
-                {"Corona" : {"id" : 8, "boss" : false}},
-                {"Corona" : {"id" : 9, "boss" : false}}
+                {"Corona" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 1, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 2, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 3, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 4, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 5, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 6, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 7, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 8, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
+                {"Corona" : {"id" : 9, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}}
               ]
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
