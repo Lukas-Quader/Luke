@@ -33,6 +33,10 @@ class View {
   // HTML-Teil der Feindwellenanzeige(Infoleiste)
   final wavecount = querySelector('#wavecount');
 
+  
+  // KaufButton
+  ElementList<HtmlElement> get towerPoints => querySelectorAll('.wp');
+
   int wavemax = 0;
 
   // KaufButton
@@ -96,7 +100,7 @@ class View {
         var schuss = querySelector('#${s.name}_${s.id}');
         schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
         schuss?.style?.top = '${s.pos.y}px'; // definierte y-Position setzen
-        if (s.fin) {
+        if (s.fin || s.enemy.fin) {
           hits.add(s);
           schuss.remove();
         }
@@ -129,7 +133,7 @@ class View {
     // Erstellen der Punkte
     for (var j = 0; j < way; j++) {
       // hinzufügen des Punktes zur innerHTML von map
-      map.innerHtml += '<div class=wp id=wp_$i></div>';
+      map.innerHtml += '<button class=wp id=wp_$i></button>';
       i++; // nächster Punkt
     }
   }

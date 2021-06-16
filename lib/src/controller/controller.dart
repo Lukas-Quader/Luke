@@ -9,7 +9,8 @@ class Controller {
   int spawncount = 25;
   View view = View();
   bool _buy = false;
-
+  Element tower;
+  num towers;
   ///Constructor
   ///Ruft die Main Methode auf
   Controller() {
@@ -20,7 +21,7 @@ class Controller {
   ///Sie ist der Eintrittspunkt in das Spiel
   void main() async {
     //Variable um den Türmen ihre ID zu geben
-    num towers = 0;
+    towers = 0;
     //Die Level werden geladen
     levels = await loadLevelFromData();
     //Die Level werden an das Menü in der View übergeben
@@ -46,7 +47,7 @@ class Controller {
     view.startButton.onClick.listen((_) {
       //Falls kein Level gewählt wurde passiert nichts
       if (l != 0) {
-        mainLoop(l, towers);
+        mainLoop(l);
       }
     });
 
@@ -59,21 +60,21 @@ class Controller {
     view.restartButton.onClick.listen((event) async {
       levels = await loadLevelFromData();
       view.resetWinGameover();
-      mainLoop(l, towers);
+      mainLoop(l);
     });
   }
 
-  void mainLoop(num l, towers) {
+  void mainLoop(num l) {
     //loadlevel starten und die nummer des levels übergeben
     loadLevel(l);
-    //setClickListenerForLevel aufrufen und towers übergeben
-    towers = setClickListenerForLevel(towers);
     view.generatePoints(model.karte.felder.length);
-
+    //setClickListenerForLevel aufrufen und towers übergeben
+    setClickListenerForLevel();
     //Einen timer starten welcher alls 70 milisekunden aktualisiert
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       if (_buy) {
         view.showPoints(model.karte.felder);
+        setClickForPoints();
       }
 
       if (checkScreenOrientation()) {
@@ -157,27 +158,30 @@ class Controller {
   ///Es wird registriert, ob ein Turm gekauft wird und
   ///ob/wo er auf der Karte plaziert wird.
   ///@param towerID gibt den Türmen ihre ID
-  num setClickListenerForLevel(num towerID) {
+  void setClickListenerForLevel() {
     //Variable um den Button zu speichern
-    Element button;
     //onClick listener für den Kauf button
     view.kaufButton.onClick.listen((event) {
       if (event.target is Element) {
         //Speichern welcher button geklickt wurde
-        button = event.target;
+        tower = event.target;
+        print(tower);
         _buy = true;
       }
     });
-    //onClick listener für die Karte
-    view.map.onClick.listen((ev) {
+  }
+
+  void setClickForPoints() {
+    view.towerPoints.onClick.listen((ev) {
       //es wird gespeichert auf welcher position geklickt wurde
-      var click = Position(ev.offset.x, ev.offset.y);
+      var click = Position((ev.target as ButtonElement).offsetLeft, (ev.target as ButtonElement).offsetTop);
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
-      if (model.karte.free() && button != null) {
+        print(tower);
+      if (model.karte.free() && tower != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
-        if (model.ak - int.parse(button.attributes['value']) >= 0) {
+        if (model.ak - int.parse(tower.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          var which = model.turmPlazieren(button.id, click, 1, towerID++);
+          var which = model.turmPlazieren(tower.id, click, 1, towers++);
           if (which >= 0) {
             view.removePoint(which);
 
@@ -190,10 +194,7 @@ class Controller {
         _buy = false;
       }
     });
-    //gibt die Anzahl der Türme zurück
-    return towerID;
   }
-
   ///Methode um das das Level zu Laden.
   ///Hier wird im verlauf die JSON Datei geladen
   Future<List<Level>> loadLevelFromData() async {
