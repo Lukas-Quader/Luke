@@ -34,10 +34,21 @@
                 {"Corona" : {"id" : 8, "boss" : false}},
                 {"Corona" : {"id" : 9, "boss" : false}}
 
+              ],
+              [
+                {"MRSA" : {"id" : 7, "boss" : true}},
+                {"Corona" : {"id" : 8, "boss" : true}}  
               ]
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
-            "Karte" : {"Felder" : [{"Position" : {"x" : 920, "y" : 340}}, {"Position" : {"x" : 630, "y" : 340}}, {"Position" : {"x" : 1220, "y" : 320}}],
+            "Karte" : {"Felder" : [
+              {"Position" : {"x" : 920, "y" : 340}}, 
+              {"Position" : {"x" : 630, "y" : 340}}, 
+              {"Position" : {"x" : 1220, "y" : 320}},
+              {"Position" : {"x" : 800, "y" : 90}},
+              {"Position" : {"x" : 1050, "y" : 90}},
+              {"Position" : {"x" : 520, "y" : 620}},
+              {"Position" : {"x" : 725, "y" : 600}}],
         "Wege" : [[{"Position" : {"x" : 0, "y" : 360}},
             {"Position" : {"x" : 500, "y" : 340}},
             {"Position" : {"x" : 510, "y" : 490}},
