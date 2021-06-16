@@ -61,7 +61,7 @@ h1 {
   position: relative;
   display: grid; 
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 100%;
   background-image: url("img/background_monster.png"); 
   background-repeat: no-repeat;
   background-size: contain;

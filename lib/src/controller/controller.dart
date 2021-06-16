@@ -105,6 +105,7 @@ class Controller {
         } else if (model.win) {
           timer.cancel();
           view.win();
+          model.safeLevel(l);
         }
       } else {
         view.portrait.style.display = 'grid';
