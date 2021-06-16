@@ -22,6 +22,9 @@ class View {
   final gameover =
       querySelector('#gameover'); // QuerySelector für das Gameover Stylesheet
 
+  final winLogo =
+      querySelector('#win'); // QuerySelector für das Gameover Stylesheet
+
   final infobar = querySelector('#infobar'); // HTML-Teil der Infoleiste
 
   final ak = querySelector('#ak'); // HTML-Teil der Antikörper(Infoleiste)
@@ -36,6 +39,10 @@ class View {
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
   // StartButton
   HtmlElement get startButton => querySelector('#startButton');
+
+  HtmlElement get menueButton => querySelector('#menueButton');
+
+  HtmlElement get restartButton => querySelector('#restartButton');
 
   /// Constructor der View
   View();
@@ -103,32 +110,41 @@ class View {
 
   /// Debugging Tool
   /// Darstellen von Punkten auf der Karte
-  void showPoints(List<Position> way) {
+  void showPoints(List<dynamic> way) {
     var i = 0;
     // Auswählen und darstellen der erstellten Punkte
     for (var p in way) {
       var pos = querySelector('#wp_$i');
       pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
       pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
+      pos?.style?.display = 'block';
       i++;
     }
   }
 
   /// Debugging Tool
   /// Erstellen von Punkten auf der Karte
-  void generatePoints(List<Position> way) {
+  void generatePoints(num way) {
     var i = 0;
     // Erstellen der Punkte
-    for (var j = 0; j < way.length; j++) {
+    for (var j = 0; j < way; j++) {
       // hinzufügen des Punktes zur innerHTML von map
       map.innerHtml += '<div class=wp id=wp_$i></div>';
       i++; // nächster Punkt
     }
   }
 
+  void removePoint(num point) {
+    var pos = querySelector('#wp_$point');
+    pos.remove();
+  }
+
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
+    menueButton.style.display = 'none';
+    restartButton.style.display = 'none';
     gameover.style.display = 'none';
+    winLogo.style.display = 'none';
     levelview.style.display = 'none'; // Levelview aktuell unsichtbar
     var level = ''; // zwischenvariable zum zwischenspeichern der Buttons
     // Erstellen der Level-Button des Menüs
@@ -223,13 +239,32 @@ class View {
   /// Win Screen nach gewinnen des Spiels
   void win() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    map.innerHtml += 'WIN!'; // Zeigt auf dem Spielfeld Win an
+    winLogo.style.display = 'grid'; // Zeigt auf dem Spielfeld Win an
+    menueButton.style.display = 'grid'; //Zeigt den Menue Button an
+    restartButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Restart an
   }
 
   /// GameOver Screen nach verlieren des Spiels
   void gameOver() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
-    gameover.style.display = 'grid';
+    gameover.style.display = 'grid'; // Zeigt auf dem Spielfeld Gameover an
+    menueButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Menue an
+    restartButton.style.display = 'grid'; //Zeigt auf dem Spielfeld Restart an
+  }
+
+  /// Methode um zum Menü zurück zu kehren
+  void switchToMenu() {
+    levelview.style.display = 'none';
+    menu.style.display = 'grid';
+    resetWinGameover();
+  }
+
+  /// Löscht Button und Logo nach dem Spielende wieder
+  void resetWinGameover() {
+    winLogo.style.display = 'none';
+    gameover.style.display = 'none';
+    menueButton.style.display = 'none';
+    restartButton.style.display = 'none';
   }
 
   num get mapWidth => map.getBoundingClientRect().width.toDouble();

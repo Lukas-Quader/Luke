@@ -100,8 +100,26 @@ h1 {
 }
 
 #startButton {
-  margin: 50% 5% 0% 5% ;
+  margin: 50% 5% 5% 5% ;
   padding: 5% 40% 5% 40%; 
+}
+
+#menueButton {
+  display: grid;
+  grid-area: 7 / 10 / 8 / 12;
+  position: relative;
+  background-color: #43e40e;
+  font-size: larger;
+  padding: 10%;
+}
+
+#restartButton {
+  display: grid;
+  grid-area: 7 / 13 / 8 / 16;
+  position: relative;
+  background-color: #43e40e;
+  font-size: larger;
+  padding: 10%;
 }
 
 #level {
@@ -131,12 +149,26 @@ h1 {
   background-size: 100% 100%;
 }
 
-.wp {
-  height: 30px;
-  width: 30px;
-  background-color: white;
-  position: absolute;
+#win {
+  grid-area: 1 / 1 / 9 / 17;
+  background-image: url("img/win.png"); 
+  position: relative;
+  padding-bottom: 1px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
+
+.wp {
+  display: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  background-color: cornflowerblue;
+  position: absolute;
+  animation-name: pulse;
+  animation-duration: 1s;
+}
+
 
 .blutzelle {
   height: 50px;
@@ -370,4 +402,11 @@ h1 {
   50% {background-color: rgba(255, 0, 0, 0.685); transform: scale(0.75);}
   100% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
 }
+
+@keyframes pulse {
+  0% {transform: scale(1.0);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1.0);}
+}
+
 }

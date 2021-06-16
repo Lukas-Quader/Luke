@@ -68,6 +68,17 @@ class Level {
     feinde = [];
   }
 
+  Level from(Level l) {
+    wellen = l.wellen;
+    gameOver = false;
+    win = false;
+    ak = l.ak;
+    kaufen = l.kaufen;
+    karte = l.karte;
+    feinde = l.feinde;
+    return this;
+  }
+
   ///Mehtode um die Feinde zu bewegen
   void feindeBewegen() async {
     //Prüfen ob Feinde existieren
@@ -127,9 +138,9 @@ class Level {
   ///@param position übergibt die Position auf der der Turm stehen soll
   ///@param lvl übergibt das Turmlevel
   ///@param id übergibt die TurmID
-  void turmPlazieren(String name, Position position, int lvl, int id) {
+  num turmPlazieren(String name, Position position, int lvl, int id) {
     var pos = Position(0, 0); //initialisieren der Variable pos als Position
-    num count = 0; //initialisieren der Variable count
+    num count = -1; //initialisieren der Variable count
     //For-Schleife um ermitteln der Position, welche am nähsten am Klick und frei ist
     for (num j = 0; j < karte.felder.length; j++) {
       if (position.dist(karte.felder[j]) < pos.dist(position) &&
@@ -181,6 +192,7 @@ class Level {
         default:
       }
     }
+    return count;
   }
 
   ///Spawnmethode:
