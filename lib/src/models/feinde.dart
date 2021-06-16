@@ -125,8 +125,8 @@ class Corona implements Feinde {
     // Verlangsamungseffekt
     switch (effekt) {
       case 1:
-        laufgeschwindigkeit = 2;
-        slowtime = 35;
+        laufgeschwindigkeit = boss ? 1 : 2;
+        slowtime = boss ? 20 : 35;
         break;
       case 2:
         laufgeschwindigkeit = boss ? 2 : 5;
@@ -200,11 +200,7 @@ class MRSA implements Feinde {
   // Bewegen der Feinde
   void bewegen() {
     if (_hit >= 1) _hit++;
-    if (slowtime <= 0) {
-      treffer(0, 2);
-    } else {
-      slowtime--;
-    }
+
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -246,17 +242,7 @@ class MRSA implements Feinde {
         _hit = 1;
       }
     }
-    // Verlangsamungseffekt
-    switch (effekt) {
-      case 1:
-        laufgeschwindigkeit = 2;
-        slowtime = 35;
-        break;
-      case 2:
-        laufgeschwindigkeit = boss ? 2 : 5;
-        break;
-      default:
-    }
+
     return kill; // Rückgabe, ob der Feind getötet wurde
   }
 
