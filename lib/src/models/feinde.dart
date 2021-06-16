@@ -56,8 +56,8 @@ class Corona implements Feinde {
       // Constructor
    Map<String,dynamic> data) {
     id = data['id'];
-    pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
-    dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
+    pos = Position(0, 0); // Position in x und y Koordinaten
+    dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
