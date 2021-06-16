@@ -13,6 +13,7 @@ abstract class Feinde {
   bool fin; // ziel erreicht
   num wert;
   int _hit = 0;
+  int slowtime = 0;
   bool get hitted;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
@@ -47,14 +48,15 @@ class Corona implements Feinde {
   num wert;
   @override
   int _hit = 0;
-
+  @override
+  int slowtime = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
   Corona(
       // Constructor
-   Map<String,dynamic> data) {
+      Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
     dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
@@ -68,7 +70,16 @@ class Corona implements Feinde {
   @override
   // Bewegen der Feinde
   void bewegen() {
-    if(_hit >= 1) _hit++;
+    if (_hit >= 1) {
+      _hit++;
+    }
+    // Falls von Verlangsamungseffekt betroffen -> Cooldown
+    if (slowtime <= 0) {
+      treffer(0, 2);
+    } else {
+      slowtime--;
+    }
+
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -106,12 +117,16 @@ class Corona implements Feinde {
       // Feind hat mehr Leben als er Schaden bekommt
     } else {
       leben -= schaden; // Schaden vom Leben abziehen
-      _hit = 1;
+      if (schaden > 0) {
+        _hit = 1;
+      }
     }
+
     // Verlangsamungseffekt
     switch (effekt) {
       case 1:
-        if (laufgeschwindigkeit == 5) laufgeschwindigkeit = 3;
+        laufgeschwindigkeit = 2;
+        slowtime = 35;
         break;
       case 2:
         if (laufgeschwindigkeit != 5) laufgeschwindigkeit = 5;
@@ -162,27 +177,29 @@ class MRSA implements Feinde {
   num wert;
   @override
   int _hit = 0;
+  @override
+  int slowtime = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
   MRSA(
       // Constructor
-   Map<String,dynamic> data) {
+      Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(data['x'], data['y']); // Position in x und y Koordinaten
     dir = Position(data['dx'], data['dy']); // Richtung in x und y Koordinaten
     boss = data['boss'];
-    leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
+    leben = boss ? 200 : 5; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
-    wert = boss ? 70 : 20;
+    wert = boss ? 60 : 20;
   }
 
   @override
   // Bewegen der Feinde
   void bewegen() {
-    if(_hit >= 1) _hit++;
+    if (_hit >= 1) _hit++;
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -220,7 +237,9 @@ class MRSA implements Feinde {
       // Feind hat mehr Leben als er Schaden bekommt
     } else {
       leben -= schaden; // Schaden vom Leben abziehen
-      _hit = 1;
+      if (schaden > 0) {
+        _hit = 1;
+      }
     }
     return kill; // Rückgabe, ob der Feind getötet wurde
   }

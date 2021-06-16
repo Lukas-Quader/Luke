@@ -4,7 +4,10 @@
             "Antikörper" : 500,
             "Turmkauf" : [{
                 "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
-                {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}}
+                {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+                {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+                {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+                {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
     ],
             "Wellen" : [
               [
@@ -30,6 +33,10 @@
                 {"MRSA" : {"id" : 7, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
                 {"Corona" : {"id" : 8, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}},
                 {"Corona" : {"id" : 9, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : false}}
+              ],
+              [
+                {"MRSA" : {"id" : 0, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : true}},
+                {"Corona" : {"id" : 1, "x" :0, "y" : 0, "dx" : 10, "dy" : 0, "boss" : true}}
               ]
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],

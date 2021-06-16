@@ -52,6 +52,15 @@ class Level {
         case 'Auge':
           kaufen.add(Auge(tower['Auge']));
           break;
+        case 'Niere':
+          kaufen.add(Niere(tower['Niere']));
+          break;
+        case 'Lunge':
+          kaufen.add(Lunge(tower['Lunge']));
+          break;
+        case 'Herz':
+          kaufen.add(Herz(tower['Herz']));
+          break;
         default:
       }
     }
@@ -63,6 +72,9 @@ class Level {
   void feindeBewegen() async {
     //Prüfen ob Feinde existieren
     if (feinde.isNotEmpty) {
+      feinde.sort((a, b) => a.way.length == b.way.length
+          ? a.pos.dist(a.goal).compareTo(b.pos.dist(b.goal))
+          : a.way.length.compareTo(b.way.length));
       //Alle Feinde durchgehen
       for (var f in feinde) {
         //Bewegenmethode aufrufen
@@ -140,6 +152,27 @@ class Level {
           break;
         case 'auge':
           turm.add(Auge({
+            'Level': lvl,
+            'Position': {'x': pos.x, 'y': pos.y},
+            'id': id
+          }));
+          break;
+        case 'niere':
+          turm.add(Niere({
+            'Level': lvl,
+            'Position': {'x': pos.x, 'y': pos.y},
+            'id': id
+          }));
+          break;
+        case 'lunge':
+          turm.add(Lunge({
+            'Level': lvl,
+            'Position': {'x': pos.x, 'y': pos.y},
+            'id': id
+          }));
+          break;
+        case 'herz':
+          turm.add(Herz({
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id

@@ -41,11 +41,14 @@ class Blutschuss implements Projektiel {
       // Constructor
       int id,
       Position posi,
-      Feinde goal, int eff) {
+      Feinde goal,
+      int eff,
+      int schaden) {
     this.id = id;
     pos = posi; // Position in x und y Koordinaten
     enemy = goal;
     dir = (enemy.pos - pos).uni(); // Richtung in x und y Koordinaten
+    dmg = schaden;
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     fluggeschwindigkeit = 10;
     effect = eff;
@@ -56,17 +59,145 @@ class Blutschuss implements Projektiel {
   num fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
-      // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
-      if (pos.dist(goal) <= fluggeschwindigkeit) {
-        pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
-        if(enemy.treffer(dmg, 0)) kill = enemy.wert;
-        fin = true;
-        // Distanz ist nicht geringer als die Laufgeschwindigkeit
-      } else {
-        pos += dir * fluggeschwindigkeit;
-        redirect(); // Anpassen der Laufrichtung an das Ziel
-      }
-      return kill;
+    // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
+    if (pos.dist(goal) <= fluggeschwindigkeit) {
+      pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
+      if (enemy.treffer(dmg, effect)) kill = enemy.wert;
+      fin = true;
+      // Distanz ist nicht geringer als die Laufgeschwindigkeit
+    } else {
+      pos += dir * fluggeschwindigkeit;
+      redirect(); // Anpassen der Laufrichtung an das Ziel
+    }
+    return kill;
+  }
+
+  // Anpassung der Richtung während der Laufzeit
+  @override
+  void redirect() {
+    dir = (enemy.pos + Position(17, 17) - pos).uni();
+  }
+}
+
+class Luftschuss implements Projektiel {
+  // Feindklasse Corona
+  @override
+  String name = 'luftschuss';
+  @override
+  int id;
+  @override
+  int fluggeschwindigkeit;
+  @override
+  Position pos;
+  @override
+  Position dir;
+  @override
+  Feinde enemy;
+  @override
+  bool fin = false;
+  @override
+  bool flying = false;
+  @override
+  num dmg = 0;
+  int effect = 0;
+
+  Luftschuss(
+      // Constructor
+      int id,
+      Position posi,
+      Feinde goal,
+      int eff,
+      int schaden) {
+    this.id = id;
+    pos = posi; // Position in x und y Koordinaten
+    enemy = goal;
+    dir = (enemy.pos - pos).uni(); // Richtung in x und y Koordinaten
+    dmg = schaden;
+    // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
+    fluggeschwindigkeit = 8;
+    effect = eff;
+  }
+
+  @override
+  // Bewegen der Feinde
+  num fly() {
+    var kill = 0;
+    var goal = enemy.pos + Position(17, 17);
+    // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
+    if (pos.dist(goal) <= fluggeschwindigkeit) {
+      pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
+      if (enemy.treffer(dmg, effect)) kill = enemy.wert;
+      fin = true;
+      // Distanz ist nicht geringer als die Laufgeschwindigkeit
+    } else {
+      pos += dir * fluggeschwindigkeit;
+      redirect(); // Anpassen der Laufrichtung an das Ziel
+    }
+    return kill;
+  }
+
+  // Anpassung der Richtung während der Laufzeit
+  @override
+  void redirect() {
+    dir = (enemy.pos + Position(17, 17) - pos).uni();
+  }
+}
+
+class Augenschuss implements Projektiel {
+  // Feindklasse Corona
+  @override
+  String name = 'augenschuss';
+  @override
+  int id;
+  @override
+  int fluggeschwindigkeit;
+  @override
+  Position pos;
+  @override
+  Position dir;
+  @override
+  Feinde enemy;
+  @override
+  bool fin = false;
+  @override
+  bool flying = false;
+  @override
+  num dmg = 0;
+  int effect = 0;
+
+  Augenschuss(
+      // Constructor
+      int id,
+      Position posi,
+      Feinde goal,
+      int eff,
+      int schaden) {
+    this.id = id;
+    pos = posi; // Position in x und y Koordinaten
+    enemy = goal;
+    dir = (enemy.pos - pos).uni(); // Richtung in x und y Koordinaten
+    dmg = schaden;
+    // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
+    fluggeschwindigkeit = 20;
+    effect = eff;
+  }
+
+  @override
+  // Bewegen der Feinde
+  num fly() {
+    var kill = 0;
+    var goal = enemy.pos + Position(17, 17);
+    // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
+    if (pos.dist(goal) <= fluggeschwindigkeit) {
+      pos = goal; // angepeilter Wegpunkt wird zur aktuellen Position
+      if (enemy.treffer(dmg, effect)) kill = enemy.wert;
+      fin = true;
+      // Distanz ist nicht geringer als die Laufgeschwindigkeit
+    } else {
+      pos += dir * fluggeschwindigkeit;
+      redirect(); // Anpassen der Laufrichtung an das Ziel
+    }
+    return kill;
   }
 
   // Anpassung der Richtung während der Laufzeit

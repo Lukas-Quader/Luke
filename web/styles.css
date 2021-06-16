@@ -151,6 +151,7 @@ h1 {
   background-image: url(img/blutzelle.png);
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 10px;
 }
 
 .auge {
@@ -166,6 +167,56 @@ h1 {
   background-image: url(img/auge.png);
   background-repeat: no-repeat;
   background-size: contain;
+  border-radius: 10px;
+}
+
+.niere {
+  height: 60px;
+  width: 60px;
+  background-image: url(img/niere.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+#niere {
+  background-image: url(img/niere.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+.lunge {
+  height: 60px;
+  width: 60px;
+  background-image: url(img/lunge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+#lunge {
+  background-image: url(img/lunge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+.herz {
+  height: 60px;
+  width: 60px;
+  background-image: url(img/herz.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+#herz {
+  background-image: url(img/herz.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+  
 }
 
 #infobar {
@@ -225,6 +276,18 @@ h1 {
   position: absolute;
 }
 
+.corona.boss {
+  height: 60px;
+  width: 60px;
+  
+  /* Aussehen */
+  background-image: url(img/corona.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
 .corona.dmg {
   border-radius: 50px;
   animation-name: hit;
@@ -234,6 +297,20 @@ h1 {
 .mrsa {
   height: 35px;
   width: 35px;
+  
+  
+  /* Aussehen */
+  background-image: url(img/mrsa.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.mrsa.boss {
+  height: 60px;
+  width: 60px;
+  
   
   /* Aussehen */
   background-image: url(img/mrsa.png);
@@ -261,6 +338,33 @@ h1 {
   /* Positionierung */ 
   position: absolute;
 }
+
+.luftschuss {
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background-image: url(img/lunge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.augenschuss {
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background-image: url(img/auge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
 @keyframes hit {
   0% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
   50% {background-color: rgba(255, 0, 0, 0.685); transform: scale(0.75);}

@@ -59,7 +59,9 @@ class View {
         feind?.style?.left = '${f.pos.x}px'; // nächste x position
         feind?.style?.top = '${f.pos.y}px'; // nächste y position
         feind.classes.remove('dmg');
-        if(f.hitted) feind.classes.add('dmg');
+        if (f.hitted) feind.classes.add('dmg');
+        feind.classes.remove('boss');
+        if (f.boss) feind.classes.add('boss');
         // Gegner im Ziel?
         if (f.fin) {
           feind.style.display = 'none'; // feind sichtbar machen
@@ -196,7 +198,8 @@ class View {
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
-    wavecount.setInnerHtml('Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
+    wavecount.setInnerHtml(
+        'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
