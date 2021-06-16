@@ -104,33 +104,27 @@ class View {
 
   /// Debugging Tool
   /// Darstellen von Punkten auf der Karte
-  void showPoints(List<dynamic> way) {
+  void showPoints(List<Position> way) {
     var i = 0;
     // Auswählen und darstellen der erstellten Punkte
     for (var p in way) {
       var pos = querySelector('#wp_$i');
       pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
       pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
-      pos?.style?.display = 'block';
       i++;
     }
   }
 
   /// Debugging Tool
   /// Erstellen von Punkten auf der Karte
-  void generatePoints(num way) {
+  void generatePoints(List<Position> way) {
     var i = 0;
     // Erstellen der Punkte
-    for (var j = 0; j < way; j++) {
+    for (var j = 0; j < way.length; j++) {
       // hinzufügen des Punktes zur innerHTML von map
       map.innerHtml += '<div class=wp id=wp_$i></div>';
       i++; // nächster Punkt
     }
-  }
-
-  void removePoint(num point) {
-    var pos = querySelector('#wp_$point');
-    pos.remove();
   }
 
   /// Erstellen des Startmenüs

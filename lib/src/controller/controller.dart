@@ -8,7 +8,6 @@ class Controller {
   List<Level> levels;
   int spawncount = 25;
   View view = View();
-  bool _buy = false;
 
   ///Constructor
   ///Ruft die Main Methode auf
@@ -50,14 +49,9 @@ class Controller {
         loadLevel(l);
         //setClickListenerForLevel aufrufen und towers übergeben
         towers = setClickListenerForLevel(towers);
-
-        view.generatePoints(model.karte.felder.length);
-        print('walla');
         //Einen timer starten welcher alls 70 milisekunden aktualisiert
+
         Timer.periodic(Duration(milliseconds: 50), (timer) {
-          if(_buy) {
-            view.showPoints(model.karte.felder);
-          }
           if (checkScreenOrientation()) {
             //Portraitmodus anzeige auf unsichtbar
             view.portrait.style.display = 'none';
@@ -149,7 +143,6 @@ class Controller {
       if (event.target is Element) {
         //Speichern welcher button geklickt wurde
         button = event.target;
-        _buy = true;
       }
     });
     //onClick listener für die Karte
@@ -161,16 +154,12 @@ class Controller {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(button.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          var which = model.turmPlazieren(button.id, click, 1, towerID++);
-          if(which >= 0) {
-            view.removePoint(which);
+          model.turmPlazieren(button.id, click, 1, towerID++);
           //Der Turm wird an die View übergeben
           view.setTower(model.turm.last);
           //Ruft die Buy Methode im Model auf
           model.buy();
-          }
         }
-        _buy = false;
       }
     });
     //gibt die Anzahl der Türme zurück
