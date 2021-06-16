@@ -1,7 +1,7 @@
 {
     "Levels":[{
         "Level" : { 
-            "Antikörper" : 500,
+            "Antikörper" : 150,
             "Turmkauf" : [{
                 "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
                 {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
@@ -23,21 +23,25 @@
                 {"Corona" : {"id" : 9, "boss" : false}}
               ],
               [
-                {"Corona" : {"id" : 0, "boss" : false}},
-                {"Corona" : {"id" : 1, "boss" : false}},
+                {"MRSA" : {"id" : 0, "boss" : false}},
+                {"MRSA" : {"id" : 1, "boss" : false}},
                 {"MRSA" : {"id" : 2, "boss" : false}},
                 {"Corona" : {"id" : 3, "boss" : false}},
                 {"Corona" : {"id" : 4, "boss" : false}},
-                {"MRSA" : {"id" : 5, "boss" : false}},
-                {"Corona" : {"id" : 6, "boss" : false}},
+                {"Corona" : {"id" : 5, "boss" : false}},
+                {"MRSA" : {"id" : 6, "boss" : false}},
                 {"MRSA" : {"id" : 7, "boss" : false}},
-                {"Corona" : {"id" : 8, "boss" : false}},
-                {"Corona" : {"id" : 9, "boss" : false}}
+                {"MRSA" : {"id" : 8, "boss" : false}},
+                {"Corona" : {"id" : 9, "boss" : false}},
+                {"MRSA" : {"id" : 10, "boss" : false}},
+                {"Corona" : {"id" : 11, "boss" : false}},
+                {"MRSA" : {"id" : 12, "boss" : false}},
+                {"Corona" : {"id" : 13, "boss" : false}}
 
               ],
               [
-                {"MRSA" : {"id" : 7, "boss" : true}},
-                {"Corona" : {"id" : 8, "boss" : true}}  
+                {"MRSA" : {"id" : 1, "boss" : true}},
+                {"Corona" : {"id" : 2, "boss" : true}}  
               ]
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
@@ -62,7 +66,7 @@
     },
     {
       "Level" : { 
-          "Antikörper" : 500,
+          "Antikörper" : 150,
           "Turmkauf" : [{
               "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
               {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
