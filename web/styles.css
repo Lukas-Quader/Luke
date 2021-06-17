@@ -81,7 +81,13 @@ h1 {
   padding-bottom: 30px; 
   background-color: pink;
   height: 70px;
+  width: 70px;
   cursor: move;
+}
+
+.buy_text {
+  text-align: center;
+  color: greenyellow;
 }
 
 .box_level {

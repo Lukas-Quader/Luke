@@ -199,7 +199,7 @@ class View {
     for (var t in tower) {
       // Fügt den Button mit Namen und Kosten zum HTML File hinzu
       html +=
-          "<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n";
+          "<div>\n<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n<div class='buy_text'>${t.kosten}</div>\n</div>";
       buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
