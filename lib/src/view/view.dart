@@ -172,7 +172,9 @@ class View {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
-    map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
+    map.setInnerHtml(ht, validator: new NodeValidatorBuilder()
+    ..allowHtml5()
+    ..allowElement('DIV', attributes: ['style'])); // Fügt den Feind der Map hinzu
   }
 
   void shoot(Projektiel projektiel) {

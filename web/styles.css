@@ -172,9 +172,9 @@ h1 {
 
 .wp {
   display: none;
-  height: 50px;
-  width: 50px;
-  border-radius: 50px;
+  height: 15%;
+  width: 8%;
+  border-radius: 50%;
   background-color: cornflowerblue;
   position: absolute;
   animation-name: pulse;
@@ -183,8 +183,8 @@ h1 {
 
 
 .blutzelle {
-  height: 50px;
-  width: 50px;
+  height: 14%;
+  width: 14%;
   background-image: url(img/blutzelle.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -199,8 +199,8 @@ h1 {
 }
 
 .auge {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 15%;
   background-image: url(img/auge.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -215,8 +215,8 @@ h1 {
 }
 
 .niere {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 15%;
   background-image: url(img/niere.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -231,8 +231,8 @@ h1 {
 }
 
 .lunge {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 15%;
   background-image: url(img/lunge.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -247,8 +247,8 @@ h1 {
 }
 
 .herz {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 15%;
   background-image: url(img/herz.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -309,8 +309,8 @@ h1 {
 }
 
 .corona {
-  height: 35px;
-  width: 35px;
+  height: 10%;
+  width: 6%;
   
   /* Aussehen */
   background-image: url(img/corona.png);
@@ -321,8 +321,8 @@ h1 {
 }
 
 .corona.boss {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 8%;
   
   /* Aussehen */
   background-image: url(img/corona.png);
@@ -339,8 +339,8 @@ h1 {
 }
 
 .mrsa {
-  height: 35px;
-  width: 35px;
+  height: 10%;
+  width: 6%;
   
   
   /* Aussehen */
@@ -352,8 +352,8 @@ h1 {
 }
 
 .mrsa.boss {
-  height: 60px;
-  width: 60px;
+  height: 15%;
+  width: 6%;
   
   
   /* Aussehen */
@@ -371,8 +371,8 @@ h1 {
 }
 
 .blutschuss {
-  height: 15px;
-  width: 15px;
+  height: 3%;
+  width: 3%;
   border-radius: 50px;
   
   /* Aussehen */
@@ -384,8 +384,8 @@ h1 {
 }
 
 .luftschuss {
-  height: 15px;
-  width: 15px;
+  height: 3%;
+  width: 3%;
   border-radius: 50px;
   
   /* Aussehen */
@@ -397,8 +397,8 @@ h1 {
 }
 
 .augenschuss {
-  height: 15px;
-  width: 15px;
+  height: 3%;
+  width: 3%;
   border-radius: 50px;
   
   /* Aussehen */
