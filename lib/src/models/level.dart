@@ -34,6 +34,15 @@ class Level {
           case 'MRSA':
             welle.add(MRSA(feind['MRSA']));
             break;
+          case 'Grippe':
+            welle.add(Grippe(feind['Grippe']));
+            break;
+          case 'HSV':
+            welle.add(HSV(feind['HSV']));
+            break;
+          case 'Clostridien':
+            welle.add(Clostridien(feind['Clostridien']));
+            break;
           default:
         }
       }

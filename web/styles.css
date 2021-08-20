@@ -370,6 +370,95 @@ h1 {
   animation-duration: 0.25s;
 }
 
+.grippe {
+  height: 10%;
+  width: 6%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png); /* TODO: Grippe.png hinzufügen */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.grippe.boss {
+  height: 15%;
+  width: 8%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png); /* TODO: Grippe.png hinzufügen */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.grippe.dmg {
+  border-radius: 50px;
+  animation-name: hit;
+  animation-duration: 0.25s;
+}
+
+.hsv {
+  height: 10%;
+  width: 6%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.hsv.boss {
+  height: 15%;
+  width: 8%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.hsv.dmg {
+  border-radius: 50px;
+  animation-name: hit;
+  animation-duration: 0.25s;
+}
+
+.clostridien {
+  height: 10%;
+  width: 6%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png); /* TODO: Clostridien.png hinzufügen */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.clostridien.boss {
+  height: 15%;
+  width: 8%;
+  
+  /* Aussehen */
+  background-image: url(img/hsv.png); /* TODO: Clostridien.png hinzufügen */
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.clostridien.dmg {
+  border-radius: 50px;
+  animation-name: hit;
+  animation-duration: 0.25s;
+}
 .blutschuss {
   height: 3%;
   width: 3%;
