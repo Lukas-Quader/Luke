@@ -375,7 +375,7 @@ h1 {
   width: 6%;
   
   /* Aussehen */
-  background-image: url(img/hsv.png); /* TODO: Grippe.png hinzufügen */
+  background-image: url(img/grippe.png); 
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 
@@ -387,7 +387,7 @@ h1 {
   width: 8%;
   
   /* Aussehen */
-  background-image: url(img/hsv.png); /* TODO: Grippe.png hinzufügen */
+  background-image: url(img/grippe.png); 
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 
@@ -435,7 +435,7 @@ h1 {
   width: 6%;
   
   /* Aussehen */
-  background-image: url(img/hsv.png); /* TODO: Clostridien.png hinzufügen */
+  background-image: url(img/clostridien.png);
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 
@@ -447,7 +447,7 @@ h1 {
   width: 8%;
   
   /* Aussehen */
-  background-image: url(img/hsv.png); /* TODO: Clostridien.png hinzufügen */
+  background-image: url(img/clostridien.png); 
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 
