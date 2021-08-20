@@ -116,8 +116,8 @@ class Level {
         //merken ob der Angriff getötet hat
         var shot = t.angriff(feinde);
         //falls der Angriff getötet hat 10 Antikörper gutschreiben
-        if (shot != null) {
-          shots.add(shot);
+        if (shot.isNotEmpty) {
+          shots.addAll(shot);
         }
       }
       for (var pro in shots) {

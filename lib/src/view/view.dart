@@ -3,6 +3,11 @@ part of ImmunityTD;
 class View {
   Level model;
 
+  NodeValidatorBuilder _validatorBuilder = new NodeValidatorBuilder()
+    ..allowHtml5()
+    ..allowElement('DIV', attributes: ['style'])
+    ..allowElement("BUTTON", attributes: ['style']);
+
   final portrait = querySelector('#portrait');
 
   final text = querySelector('#text'); // HTML-Teil des Textes
@@ -33,7 +38,6 @@ class View {
   // HTML-Teil der Feindwellenanzeige(Infoleiste)
   final wavecount = querySelector('#wavecount');
 
-  
   // KaufButton
   ElementList<HtmlElement> get towerPoints => querySelectorAll('.wp');
 
@@ -172,9 +176,8 @@ class View {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
-    map.setInnerHtml(ht, validator: new NodeValidatorBuilder()
-    ..allowHtml5()
-    ..allowElement('DIV', attributes: ['style'])); // Fügt den Feind der Map hinzu
+    map.setInnerHtml(ht,
+        validator: _validatorBuilder); // Fügt den Feind der Map hinzu
   }
 
   void shoot(Projektiel projektiel) {
@@ -182,7 +185,8 @@ class View {
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht +=
         '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
-    map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
+    map.setInnerHtml(ht,
+        validator: _validatorBuilder); // Fügt den Feind der Map hinzu
     projektiel.flying = true;
   }
 
@@ -191,7 +195,10 @@ class View {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Turm mit Namen und id zum HTML File hinzu
     ht += '\n<div class=${turm.name} id=${turm.name}_${turm.id}></div>';
-    map.setInnerHtml(ht); // Fügt den Turm der Map hinzu
+    map.setInnerHtml(ht,
+        validator: _validatorBuilder); // Fügt den Turm der Map hinzu
+    var points = querySelectorAll('.wp');
+    points.style.display = 'none';
   }
 
   /// Erstellen des Kaufmenüs auf er rechten seite des Bildschirms
@@ -215,7 +222,8 @@ class View {
     tp.setInnerHtml('Leben: ${model.leben}');
     // anzeigen der aktuellen Welle
     wavecount.setInnerHtml(
-        'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
+        'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax',
+        validator: _validatorBuilder);
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
