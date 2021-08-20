@@ -216,10 +216,15 @@ class View {
 
   /// Erstellen der Infobar im unteren Teil des Bildschirms
   void generateInfobar() {
+    //variable für die Textgröße
+    var fontsize = height / 13;
     // anzeigen der Menge an Antikörpern
     ak.setInnerHtml('Antikoerper: ${model.ak}');
+    //Textgröße proportional zur höhe
+    ak.style.fontSize = '${fontsize}px';
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
+    tp.style.fontSize = '${fontsize}px';
     // anzeigen der aktuellen Welle
     wavecount.setInnerHtml(
         'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax',
