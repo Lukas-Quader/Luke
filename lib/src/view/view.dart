@@ -171,10 +171,9 @@ class View {
   void spawn(Feinde f) {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
-    ht += '\n<div class=${f.name} id=${f.name}_${f.id}></div>';
-    map.setInnerHtml(ht, validator: new NodeValidatorBuilder()
-    ..allowHtml5()
-    ..allowElement('DIV', attributes: ['style'])); // Fügt den Feind der Map hinzu
+    ht +=
+        "\n<div class=${f.name} id=${f.name}_${f.id}></div>";
+    map.setInnerHtml(ht); // Fügt den Feind der Map hinzu
   }
 
   void shoot(Projektiel projektiel) {
@@ -209,13 +208,19 @@ class View {
 
   /// Erstellen der Infobar im unteren Teil des Bildschirms
   void generateInfobar() {
+    //variable für die Textgröße
+    var fontsize = height / 13;
     // anzeigen der Menge an Antikörpern
     ak.setInnerHtml('Antikoerper: ${model.ak}');
+    //Textgröße proportional zur höhe
+    ak.style.fontSize = '${fontsize}px';
     // anzeigen der Menge an Leben
     tp.setInnerHtml('Leben: ${model.leben}');
+    tp.style.fontSize = '${fontsize}px';
     // anzeigen der aktuellen Welle
     wavecount.setInnerHtml(
         'Wellen : ${model.wellen.isEmpty ? wavemax : wavemax - model.wellen.length + 1}/$wavemax');
+    wavecount.style.fontSize = '${fontsize}px';
   }
 
   /// Lässt nurnoch die leere Karte anzeigen
