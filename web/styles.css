@@ -512,6 +512,30 @@ h1 {
   background-size: 100% 100%;
 }
 
+#box_level_3 {
+  background-image: url(img/map_3.png);
+  background-size: 100% 100%;
+}
+
+#box_level_4 {
+  background-image: url(img/map_4.png);
+  background-size: 100% 100%;
+}
+
+#box_level_5 {
+  background-image: url(img/map_5.png);
+  background-size: 100% 100%;
+}
+
+#box_level_6 {
+  background-image: url(img/map_6.png);
+  background-size: 100% 100%;
+}
+
+#box_level_7 {
+  background-image: url(img/map_7.png);
+  background-size: 100% 100%;
+}
 @keyframes hit {
   0% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
   50% {background-color: rgba(255, 0, 0, 0.685); transform: scale(0.75);}
