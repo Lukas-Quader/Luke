@@ -34,6 +34,15 @@ class Level {
           case 'MRSA':
             welle.add(MRSA(feind['MRSA']));
             break;
+          case 'Grippe':
+            welle.add(Grippe(feind['Grippe']));
+            break;
+          case 'HSV':
+            welle.add(HSV(feind['HSV'], feinde.length));
+            break;
+          case 'Clostridien':
+            welle.add(Clostridien(feind['Clostridien']));
+            break;
           default:
         }
       }
@@ -116,8 +125,8 @@ class Level {
         //merken ob der Angriff getötet hat
         var shot = t.angriff(feinde);
         //falls der Angriff getötet hat 10 Antikörper gutschreiben
-        if (shot != null) {
-          shots.add(shot);
+        if (shot.isNotEmpty) {
+          shots.addAll(shot);
         }
       }
       for (var pro in shots) {
@@ -204,6 +213,8 @@ class Level {
     if (wellen.isNotEmpty) {
       if (wellen[0].isNotEmpty) {
         feinde.add(wellen[0][0]);
+        if ('hsv' == feinde.last.name)
+          feinde.last.leben += feinde.length * 5; // Dynamisches Leben von HSV
         wellen[0].removeAt(0);
         spawned = true;
       }

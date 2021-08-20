@@ -19,7 +19,7 @@ abstract class Turm {
 
   ///Methode welche einen Turm angreifen lässt.
   ///Ihr wird eine Liste von Feinden
-  Projektiel angriff(List<Feinde> feinde);
+  List<Projektiel> angriff(List<Feinde> feinde);
 }
 
 ///Blutzellen Klasse
@@ -84,9 +84,9 @@ class Blutzelle implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  Projektiel angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill;
+    List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -94,8 +94,8 @@ class Blutzelle implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill =
-              Blutschuss(id, position + Position(25, 25), f, effekt, schaden);
+          kill.add(
+              Blutschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Breack, damit nur der "nächste" Feind angegriffen wird.
@@ -172,9 +172,9 @@ class Auge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  Projektiel angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill;
+    List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -182,8 +182,8 @@ class Auge implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill =
-              Augenschuss(id, position + Position(25, 25), f, effekt, schaden);
+          kill.add(
+              Augenschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Break, damit nur der "nächste" Feind angegriffen wird.
@@ -260,9 +260,9 @@ class Niere implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  Projektiel angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill;
+    List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -270,8 +270,8 @@ class Niere implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill =
-              Blutschuss(id, position + Position(25, 25), f, effekt, schaden);
+          kill.add(
+              Blutschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Break, damit nur der "nächste" Feind angegriffen wird.
@@ -348,9 +348,9 @@ class Lunge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  Projektiel angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill;
+    List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -358,8 +358,8 @@ class Lunge implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill =
-              Luftschuss(id, position + Position(25, 25), f, effekt, schaden);
+          kill.add(
+              Luftschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Break, damit nur der "nächste" Feind angegriffen wird.
@@ -389,7 +389,7 @@ class Herz implements Turm {
   @override
   int schaden = 5; // Initialer Schaden
   @override
-  int reichweite = 50; // Initiale Reichweite
+  int reichweite = 70; // Initiale Reichweite
   @override
   int level = 1; // Initiales Level
   @override
@@ -436,9 +436,11 @@ class Herz implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  Projektiel angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(List<Feinde> feinde) {
     //var kill auf auf false setzen
-    var kill;
+    List<Projektiel> kill = [];
+    //counter für id bei angriff von mehreren gegnern gleichzeitig
+    var idcount = 0;
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -446,14 +448,12 @@ class Herz implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill =
-              Blutschuss(id, position + Position(25, 25), f, effekt, schaden);
-          //agcount "resetten"
-          agcount = angriffsgeschwindigkeit;
-          //Break, damit nur der "nächste" Feind angegriffen wird.
-          break;
+          kill.add(Blutschuss(
+              idcount++, position + Position(25, 25), f, effekt, schaden));
         }
       }
+      //agcount "resetten"
+      agcount = angriffsgeschwindigkeit;
     }
     //Angriffscounter einen runterzählen
     agcount--;

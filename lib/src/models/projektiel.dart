@@ -119,7 +119,7 @@ class Luftschuss implements Projektiel {
   }
 
   @override
-  // Bewegen der Feinde
+  // Bewegen der Projektiele
   num fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
