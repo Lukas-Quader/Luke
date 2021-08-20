@@ -12,8 +12,10 @@
             "Wellen" : [
               [
                 {"HSV" : {"id" : 0, "boss" : false}},
-                {"Clostridien" : {"id" : 1, "boss" : false}},
-                {"Corona" : {"id" : 2, "boss" : false}},
+                {"Clostridien" : {"id" : 10, "boss" : false}},
+                {"Clostridien" : {"id" : 11, "boss" : false}},
+                {"Clostridien" : {"id" : 12, "boss" : false}},
+                {"HSV" : {"id" : 2, "boss" : false}},
                 {"MRSA" : {"id" : 3, "boss" : false}},
                 {"Corona" : {"id" : 4, "boss" : false}},
                 {"Corona" : {"id" : 5, "boss" : false}},
@@ -23,6 +25,7 @@
                 {"Grippe" : {"id" : 9, "boss" : false}}
               ],
               [
+                {"Clostridien" : {"id" : 14, "boss" : true}},
                 {"MRSA" : {"id" : 0, "boss" : false}},
                 {"MRSA" : {"id" : 1, "boss" : false}},
                 {"MRSA" : {"id" : 2, "boss" : false}},

@@ -38,7 +38,7 @@ class Level {
             welle.add(Grippe(feind['Grippe']));
             break;
           case 'HSV':
-            welle.add(HSV(feind['HSV']));
+            welle.add(HSV(feind['HSV'], feinde.length));
             break;
           case 'Clostridien':
             welle.add(Clostridien(feind['Clostridien']));
@@ -213,6 +213,8 @@ class Level {
     if (wellen.isNotEmpty) {
       if (wellen[0].isNotEmpty) {
         feinde.add(wellen[0][0]);
+        if ('hsv' == feinde.last.name)
+          feinde.last.leben += feinde.length * 5; // Dynamisches Leben von HSV
         wellen[0].removeAt(0);
         spawned = true;
       }
