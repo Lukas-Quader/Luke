@@ -11,6 +11,7 @@ class Controller {
   bool _buy = false;
   Element tower;
   num towers;
+  num wayNow = 0;
   ///Constructor
   ///Ruft die Main Methode auf
   Controller() {
@@ -137,8 +138,10 @@ class Controller {
     if (model.spawn()) {
       //spawn in der view wird aufgerufen und der Feind übergeben
       view.spawn(model.feinde.last);
+      //falls mehrere wege existieren
+      if(model.karte.wege.length > 1) wayNow = (wayNow >= model.karte.wege.length - 1) ? 0 : wayNow + 1;
       //der Weg wird den Feinden übergeben
-      model.feinde.last.setWay(generateWay(model.karte.wege[0]));
+      model.feinde.last.setWay(generateWay(model.karte.wege[wayNow]));
     }
   }
 
