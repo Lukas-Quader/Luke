@@ -149,6 +149,7 @@ class View {
 
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
+    cleanMenuButtons();
     menueButton.style.display = 'none';
     restartButton.style.display = 'none';
     gameover.style.display = 'none';
@@ -158,8 +159,13 @@ class View {
     // Erstellen der Level-Button des Menüs
     for (var lev = 1; lev <= levels.length; lev++) {
       // Fügt den Button der Variable hinzu
-      level =
-          "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
+      if (lev <= int.parse(window.localStorage['completeLevel']) + 1) {
+        level =
+            "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
+      } else {
+        level =
+            "<button class='box_level' id='box_schloss'>Level $lev</button>\n";
+      }
       // Button wird der innerHTML von Button beigefügt
       buttons.innerHtml += level;
     }
@@ -247,6 +253,10 @@ class View {
       var schuss = querySelector('#${s.name}_${s.id}'); //
       schuss.remove(); // Turm entfernen
     }
+  }
+
+  void cleanMenuButtons() {
+    buttons.innerHtml = "";
   }
 
   /// Win Screen nach gewinnen des Spiels

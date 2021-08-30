@@ -53,7 +53,6 @@ class Level {
     win = false;
     ak = data['Antikörper'];
     for (var tower in data['Turmkauf']) {
-      print(tower);
       switch (tower.keys.first) {
         case 'Blutzelle':
           kaufen.add(Blutzelle(tower['Blutzelle']));

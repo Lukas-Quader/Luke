@@ -12,6 +12,7 @@ class Controller {
   Element tower;
   num towers;
   num wayNow = 0;
+
   ///Constructor
   ///Ruft die Main Methode auf
   Controller() {
@@ -21,6 +22,9 @@ class Controller {
   ///Main Methode
   ///Sie ist der Eintrittspunkt in das Spiel
   void main() async {
+    if (!window.localStorage.containsKey('completeLevel')) {
+      window.localStorage['completeLevel'] = '0';
+    }
     //Variable um den Türmen ihre ID zu geben
     towers = 0;
     //Die Level werden geladen
@@ -56,6 +60,7 @@ class Controller {
 
     view.menueButton.onClick.listen((event) async {
       view.switchToMenu();
+      view.generateMenu(levels);
       l = 0;
       levels = await loadLevelFromData();
     });
@@ -139,7 +144,8 @@ class Controller {
       //spawn in der view wird aufgerufen und der Feind übergeben
       view.spawn(model.feinde.last);
       //falls mehrere wege existieren
-      if(model.karte.wege.length > 1) wayNow = (wayNow >= model.karte.wege.length - 1) ? 0 : wayNow + 1;
+      if (model.karte.wege.length > 1)
+        wayNow = (wayNow >= model.karte.wege.length - 1) ? 0 : wayNow + 1;
       //der Weg wird den Feinden übergeben
       model.feinde.last.setWay(generateWay(model.karte.wege[wayNow]));
     }
@@ -178,7 +184,8 @@ class Controller {
   void setClickForPoints() {
     view.towerPoints.onClick.listen((ev) {
       //es wird gespeichert auf welcher position geklickt wurde
-      var click = Position((ev.target as ButtonElement).offsetLeft, (ev.target as ButtonElement).offsetTop);
+      var click = Position((ev.target as ButtonElement).offsetLeft,
+          (ev.target as ButtonElement).offsetTop);
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
       if (model.karte.free() && tower != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
@@ -198,6 +205,7 @@ class Controller {
       }
     });
   }
+
   ///Methode um das das Level zu Laden.
   ///Hier wird im verlauf die JSON Datei geladen
   Future<List<Level>> loadLevelFromData() async {

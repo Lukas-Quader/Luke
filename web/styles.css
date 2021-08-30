@@ -536,6 +536,13 @@ h1 {
   background-image: url(img/map_7.png);
   background-size: 100% 100%;
 }
+
+#box_schloss {
+  background-color: brown;
+  background-image: url(img/schloss.png);
+  background-size: 100% 100%;
+}
+
 @keyframes hit {
   0% {background-color: rgba(255, 0, 0, 0); transform: scale(1.0);}
   50% {background-color: rgba(255, 0, 0, 0.685); transform: scale(0.75);}
