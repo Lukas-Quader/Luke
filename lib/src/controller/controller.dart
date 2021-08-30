@@ -114,9 +114,11 @@ class Controller {
         } else if (model.win) {
           timer.cancel();
           view.win();
+          // Das Aktuelle Level wird der safeLevel Methode übergeben.
           model.safeLevel(l);
         }
       } else {
+        // Portraitmodus wird Sichtbar. Das Fenster ist nun geblockt.
         view.portrait.style.display = 'grid';
       }
     });

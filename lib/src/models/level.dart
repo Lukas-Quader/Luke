@@ -238,6 +238,8 @@ class Level {
     feinde.remove(f);
   }
 
+  // Das übergeben Level wird im LocalStorage des Browsers gespeichert.
+  // Es ist eine Map mit einem Key/Value Paar
   void safeLevel(num l) {
     window.localStorage['completeLevel'] = '$l';
   }

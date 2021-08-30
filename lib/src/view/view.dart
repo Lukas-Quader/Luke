@@ -2,7 +2,8 @@ part of ImmunityTD;
 
 class View {
   Level model;
-
+  // Der NodeValidator wird benötigt um zu Definieren, dass bestimmte attribute
+  // im HTML code erlaubt sind.
   NodeValidatorBuilder _validatorBuilder = new NodeValidatorBuilder()
     ..allowHtml5()
     ..allowElement('DIV', attributes: ['style'])
@@ -97,6 +98,7 @@ class View {
         turm?.style?.top = '${t.position.y}px'; // definierte y-Position setzen
       }
     }
+
     if (model.shots.isNotEmpty) {
       List<Projektiel> hits = [];
       // Durchgehen der Projektielliste
@@ -109,10 +111,12 @@ class View {
           schuss.remove();
         }
       }
+      // In der Schleife werden die Schüsse wieder entfernt
       for (var h in hits) {
         model.shots.remove(h);
       }
     }
+    // Methodenaufruf
     generateInfobar();
   }
 
@@ -125,7 +129,8 @@ class View {
       var pos = querySelector('#wp_$i');
       pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
       pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
-      pos?.style?.display = 'block';
+      pos?.style?.display =
+          'block'; // Style wird auf Block gesetzt. Dadurch wird es Sichtbar
       i++;
     }
   }
@@ -149,17 +154,21 @@ class View {
 
   /// Erstellen des Startmenüs
   void generateMenu(List<Level> levels) {
-    cleanMenuButtons();
+    //entfernt alle bisherigen Buttons
+    buttons.innerHtml = '';
+    //alles was nicht notwendig ist wird unsichtbar
     menueButton.style.display = 'none';
     restartButton.style.display = 'none';
     gameover.style.display = 'none';
     winLogo.style.display = 'none';
-    levelview.style.display = 'none'; // Levelview aktuell unsichtbar
+    levelview.style.display = 'none';
     var level = ''; // zwischenvariable zum zwischenspeichern der Buttons
     // Erstellen der Level-Button des Menüs
     for (var lev = 1; lev <= levels.length; lev++) {
-      // Fügt den Button der Variable hinzu
+      // es wird im LocalStorade geprüft, welche Level geschafft wurden.
       if (lev <= int.parse(window.localStorage['completeLevel']) + 1) {
+        //solange die Anzahl der geschafften Level größer ist aks die Anzahl aller
+        //wird das Level hinzugefügt. Ansonsten nur das Schlosssymbol
         level =
             "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
       } else {
@@ -255,10 +264,6 @@ class View {
     }
   }
 
-  void cleanMenuButtons() {
-    buttons.innerHtml = "";
-  }
-
   /// Win Screen nach gewinnen des Spiels
   void win() {
     cleanMap(); // Lässt nurnoch die leere Karte anzeigen
@@ -282,7 +287,7 @@ class View {
     resetWinGameover();
   }
 
-  /// Löscht Button und Logo nach dem Spielende wieder
+  /// Macht die Button und Logos nach dem Spielende wieder unsichtbar
   void resetWinGameover() {
     winLogo.style.display = 'none';
     gameover.style.display = 'none';
@@ -290,16 +295,20 @@ class View {
     restartButton.style.display = 'none';
   }
 
+  // Es wird ausgelesen, welches Level angewählt wird und setzt die Umrandung
+  // auf Gelb
   void selectLevel(num l) {
     var levelButton = querySelector('#box_level_$l');
     levelButton.style.borderColor = 'yellow';
   }
 
+  // Es wenn ein Level abgewählt wird, wird die Umrandungsfarbe unsichtbar
   void unselectLevel(num l) {
     var levelButton = querySelector('#box_level_$l');
     levelButton.style.borderColor = 'transparent';
   }
 
+  // Es folgen diverse Getter Methoden.
   num get mapWidth => map.getBoundingClientRect().width.toDouble();
 
   num get mapHeight => map.getBoundingClientRect().height.toDouble();
