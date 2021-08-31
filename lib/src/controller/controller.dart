@@ -10,7 +10,10 @@ class Controller {
   View view = View();
   bool _buy = false;
   bool _upgrade = false;
+  bool _powerup = false;
+  int powerUpTime;
   Element tower;
+  PowerUp pushedPowerUp;
   Turm selectedTower;
   num towers;
   num wayNow = 0;
@@ -85,6 +88,13 @@ class Controller {
       if (_buy) {
         view.showPoints(model.karte.felder);
         setClickForPoints();
+      }
+      if (_powerup) {
+        view.switchPowerUpStyle(true);
+        powerUpTime--;
+        if (powerUpTime == 0) _powerup = false;
+      } else {
+        view.switchPowerUpStyle(false);
       }
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
@@ -162,7 +172,7 @@ class Controller {
     //Das Menue wird ausgeblendet
     view.menu.style.display = 'none';
     //die generate Map der View wird aufgerufen
-    view.generateMap(model.kaufen);
+    view.generateMap(model.kaufen, model.powerup);
     //Der generierte weg wird an die Felder übergeben
     model.karte.felder = generateWay(model.karte.felder);
     //das neue Model wird an die View übergeben
@@ -183,12 +193,22 @@ class Controller {
         _buy = true;
       }
     });
+    view.powerUpButton.onClick.listen((event) {
+      if (event.target is Element) {
+        for (PowerUp p in model.powerup) {
+          if (p.name == (event.target as Element).id) pushedPowerUp = p;
+        }
+        powerUpTime = pushedPowerUp.abklingzeit;
+        _powerup = true;
+      }
+    });
   }
 
   void setClickForPoints() {
     view.towerPoints.onClick.listen((ev) {
       //es wird gespeichert auf welcher position geklickt wurde
-      var click = Position((ev.target as ButtonElement).offsetLeft, (ev.target as ButtonElement).offsetTop);
+      var click = Position((ev.target as ButtonElement).offsetLeft,
+          (ev.target as ButtonElement).offsetTop);
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
       if (model.karte.free() && tower != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
@@ -222,7 +242,7 @@ class Controller {
   void setClickListenerForUpgrade() {
     view.backButton.onClick.listen((event) {
       _upgrade = false;
-      view.generateBuyMenu(model.kaufen);
+      view.generateBuyMenu(model.kaufen, model.powerup);
       setClickListenerForLevel();
     });
     //Variable um den Button zu speichern
@@ -249,15 +269,18 @@ class Controller {
           }
         }
       }
-      view.generateBuyMenu(model.kaufen);
+      view.generateBuyMenu(model.kaufen, model.powerup);
       setClickListenerForLevel();
       _upgrade = false;
     });
     view.sellButton.onClick.listen((event) {
       if (event.target is Element) {
         Element temp = event.target;
-        view.sellTower(selectedTower, model.sellTower(selectedTower, int.parse(temp.getAttribute('value'))));
-        view.generateBuyMenu(model.kaufen);
+        view.sellTower(
+            selectedTower,
+            model.sellTower(
+                selectedTower, int.parse(temp.getAttribute('value'))));
+        view.generateBuyMenu(model.kaufen, model.powerup);
         setClickListenerForLevel();
         _upgrade = false;
       }

@@ -12,6 +12,7 @@ class Level {
   num ak;
   List<Turm> kaufen = [];
   List<Turm> turm = [];
+  List<PowerUp> powerup = [];
   Karte karte;
   List<Feinde> feinde = [];
   List<Projektiel> shots = [];
@@ -72,6 +73,18 @@ class Level {
         default:
       }
     }
+    for (var up in data['PowerUps']) {
+      switch (up.keys.first) {
+        case 'Antibiotika':
+          powerup.add(Antibiotika(up['Antibiotika']));
+          break;
+        case 'Adrenalin':
+          powerup.add(Adrenalin(up['Adrenalin']));
+          break;
+        default:
+      }
+    }
+
     karte = Karte(data['Karte']);
     feinde = [];
   }
@@ -84,6 +97,7 @@ class Level {
     kaufen = l.kaufen;
     karte = l.karte;
     feinde = l.feinde;
+    powerup = l.powerup;
     return this;
   }
 
@@ -284,8 +298,8 @@ class Level {
 
   num sellTower(Turm tower, num value) {
     var count = 0;
-    for(int i = 0; i < karte.felder.length; i++) {
-      if(karte.besetzt[i] && karte.felder[i].dist(tower.position) == 0) {
+    for (int i = 0; i < karte.felder.length; i++) {
+      if (karte.besetzt[i] && karte.felder[i].dist(tower.position) == 0) {
         karte.besetzt[i] = false;
         count = i;
       }
