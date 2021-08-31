@@ -245,7 +245,7 @@ h1 {
 .blutzelleU1 {
   height: 14%;
   width: 14%;
-  background-image: url(img/herz.png);
+  background-image: url(img/blutzelleU1.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -255,7 +255,7 @@ h1 {
 .blutzelleU2 {
   height: 14%;
   width: 14%;
-  background-image: url(img/blutzelle.png);
+  background-image: url(img/blutzelleU2.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -269,7 +269,7 @@ h1 {
 }
 
 #blutzelleU1 {
-  background-image: url(img/herz.png);
+  background-image: url(img/blutzelleU1.png);
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
@@ -277,16 +277,35 @@ h1 {
 
 
 #blutzelleU2 {
-  background-image: url(img/blutzelle.png);
+  background-image: url(img/blutzelleU2.png);
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
 }
 
 .auge {
-  height: 15%;
-  width: 15%;
+  height: 14%;
+  width: 14%;
   background-image: url(img/auge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+.augeU1 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/augeU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+
+.augeU2 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/augeU2.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -299,10 +318,44 @@ h1 {
   border-radius: 10px;
 }
 
+#augeU1 {
+  background-image: url(img/augeU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+
+#augeU2 {
+  background-image: url(img/augeU2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
 .niere {
-  height: 15%;
-  width: 15%;
+  height: 14%;
+  width: 14%;
   background-image: url(img/niere.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+.niereU1 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/niereU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+
+.niereU2 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/niereU2.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -315,10 +368,44 @@ h1 {
   border-radius: 10px;
 }
 
+#niereU1 {
+  background-image: url(img/niereU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+
+#niereU2 {
+  background-image: url(img/niereU2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
 .lunge {
-  height: 15%;
-  width: 15%;
+  height: 14%;
+  width: 14%;
   background-image: url(img/lunge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+.lungeU1 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/lungeU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+
+.lungeU2 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/lungeU2.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -331,15 +418,47 @@ h1 {
   border-radius: 10px;
 }
 
+#lungeU1 {
+  background-image: url(img/lungeU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+
+#lungeU2 {
+  background-image: url(img/lungeU2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
 .herz {
-  height: 15%;
-  width: 15%;
+  height: 14%;
+  width: 14%;
   background-image: url(img/herz.png);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  animation-name: pulse;
-  animation-duration: 1s;
+}
+
+.herzU1 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/herzU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+
+
+.herzU2 {
+  height: 14%;
+  width: 14%;
+  background-image: url(img/herzU2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
 }
 
 #herz {
@@ -347,7 +466,21 @@ h1 {
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
-  
+}
+
+#herzU1 {
+  background-image: url(img/herzU1.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
+}
+
+
+#herzU2 {
+  background-image: url(img/herzU2.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 10px;
 }
 
 #infobar {
@@ -565,7 +698,7 @@ h1 {
   border-radius: 50px;
   
   /* Aussehen */
-  background-image: url(img/lunge.png);
+  background-image: url(img/projektil_lunge.png);
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 
@@ -579,6 +712,32 @@ h1 {
   
   /* Aussehen */
   background-image: url(img/auge.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.herzschuss {
+  height: 3%;
+  width: 3%;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background-image: url(img/herz.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
+.nierenschuss {
+  height: 3%;
+  width: 3%;
+  border-radius: 50px;
+  
+  /* Aussehen */
+  background-image: url(img/niere.png);
   background-repeat: no-repeat;
   background-size: contain;
   /* Positionierung */ 

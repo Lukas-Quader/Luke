@@ -82,7 +82,7 @@ class Blutzelle implements Turm {
       //Der Schaden wird erhöht
       case 3:
         angriffsgeschwindigkeit = 20;
-        schaden = 20;
+        schaden = 15;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -136,13 +136,13 @@ class Auge implements Turm {
   @override
   int schaden = 10; // Initialer Schaden
   @override
-  int reichweite = 300; // Initiale Reichweite
+  int reichweite = 200; // Initiale Reichweite
   @override
   int level = 1; // Initiales Level
   @override
   int kosten = 75; // Kosten des Turms
   @override
-  int kostenU1 = 30; // Kosten des ersten Upgrades
+  int kostenU1 = 50; // Kosten des ersten Upgrades
   @override
   int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
@@ -166,20 +166,20 @@ class Auge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 35;
+        reichweite = 200;
         schaden = 10;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 35;
+        reichweite = 400;
         schaden = 10;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        reichweite = 400;
+        schaden = 15;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -227,11 +227,11 @@ class Niere implements Turm {
   @override
   int id; //id um die Türme zu unterscheiden
   @override
-  int angriffsgeschwindigkeit = 15; // Angriffsgeschwindigkeit
+  int angriffsgeschwindigkeit = 20; // Angriffsgeschwindigkeit
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
-  int schaden = 10; // Initialer Schaden
+  int schaden = 2; // Initialer Schaden
   @override
   int reichweite = 150; // Initiale Reichweite
   @override
@@ -239,11 +239,11 @@ class Niere implements Turm {
   @override
   int kosten = 75; // Kosten des Turms
   @override
-  int kostenU1 = 20; // Kosten des ersten Upgrades
+  int kostenU1 = 30; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
-  int effekt = 0; // Welche Effekte der Turm besitzt hier keine
+  int effekt = 3; // Welche Effekte der Turm besitzt hier keine
   @override
   Position position; // Position des Turms
 
@@ -263,20 +263,20 @@ class Niere implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        reichweite = 150;
+        effekt = 3;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        reichweite = 200;
+        effekt = 3;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        reichweite = 200;
+        effekt = 4;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -297,10 +297,10 @@ class Niere implements Turm {
       //Alle Feinde durchgehen
       for (var f in feinde) {
         //Prüfen ob ein Feind in Reichweite ist
-        if (position.dist(f.pos) <= reichweite) {
+        if (position.dist(f.pos) <= reichweite && (f.countDOT <= 0 || agcount <= -10)) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
           kill.add(
-              Blutschuss(id, position + Position(25, 25), f, effekt, schaden));
+              Nierenschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Break, damit nur der "nächste" Feind angegriffen wird.
@@ -361,19 +361,19 @@ class Lunge implements Turm {
     switch (goal) {
       case 1:
         angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        int reichweite = 80;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
         angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        int reichweite = 160;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        angriffsgeschwindigkeit = 20;
+        int reichweite = 160;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -421,7 +421,7 @@ class Herz implements Turm {
   @override
   int id; //id um die Türme zu unterscheiden
   @override
-  int angriffsgeschwindigkeit = 15; // Angriffsgeschwindigkeit
+  int angriffsgeschwindigkeit = 20; // Angriffsgeschwindigkeit
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
@@ -433,9 +433,9 @@ class Herz implements Turm {
   @override
   int kosten = 150; // Kosten des Turms
   @override
-  int kostenU1 = 20; // Kosten des ersten Upgrades
+  int kostenU1 = 50; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
   int effekt = 2; // Welche Effekte der Turm besitzt hier keine
   @override
@@ -457,20 +457,20 @@ class Herz implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        angriffsgeschwindigkeit = 20;
+        reichweite = 70;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        angriffsgeschwindigkeit = 10;
+        reichweite = 70;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 35;
-        schaden = 10;
+        angriffsgeschwindigkeit = 10;
+        reichweite = 150;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -495,7 +495,7 @@ class Herz implements Turm {
         //Prüfen ob ein Feind in Reichweite ist
         if (position.dist(f.pos) <= reichweite) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill.add(Blutschuss(
+          kill.add(Herzschuss(
               idcount++, position + Position(25, 25), f, effekt, schaden));
         }
       }

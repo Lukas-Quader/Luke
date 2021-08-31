@@ -14,6 +14,7 @@ abstract class Feinde {
   num wert;
   int _hit = 0;
   int slowtime = 0;
+  int countDOT = 0;
   bool get hitted;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
@@ -50,6 +51,8 @@ class Corona implements Feinde {
   int _hit = 0;
   @override
   int slowtime = 0;
+  @override
+  int countDOT = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -72,6 +75,11 @@ class Corona implements Feinde {
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
+    }
+    //Schaden über Zeit
+    if (countDOT > 0) {
+      countDOT--;
+      if (countDOT % 10 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -131,6 +139,12 @@ class Corona implements Feinde {
       case 2:
         laufgeschwindigkeit = boss ? 2 : 5;
         break;
+      case 3:
+        countDOT = 30;
+        break;
+      case 4:
+        countDOT = 50;
+        break;
       default:
     }
     return kill; // Rückgabe, ob der Feind getötet wurde
@@ -179,6 +193,8 @@ class MRSA implements Feinde {
   int _hit = 0;
   @override
   int slowtime = 0;
+  @override
+  int countDOT = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -200,7 +216,11 @@ class MRSA implements Feinde {
   // Bewegen der Feinde
   void bewegen() {
     if (_hit >= 1) _hit++;
-
+    //Schaden über Zeit
+    if (countDOT > 0) {
+      countDOT--;
+      if (countDOT % 10 == 0) treffer(1, 0);
+    }
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
       // Abfrage ob die Distanz geringer als die Laufgeschwindigkeit ist
@@ -289,6 +309,8 @@ class Grippe implements Feinde {
   int _hit = 0;
   @override
   int slowtime = 0;
+  @override
+  int countDOT = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -311,6 +333,11 @@ class Grippe implements Feinde {
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
+    }
+    //Schaden über Zeit
+    if (countDOT > 0) {
+      countDOT--;
+      if (countDOT % 10 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -361,7 +388,7 @@ class Grippe implements Feinde {
       }
     }
 
-    // Verlangsamungseffekt
+// Verlangsamungseffekt
     switch (effekt) {
       case 1:
         laufgeschwindigkeit = boss ? 1 : 2;
@@ -369,6 +396,12 @@ class Grippe implements Feinde {
         break;
       case 2:
         laufgeschwindigkeit = boss ? 2 : 5;
+        break;
+      case 3:
+        countDOT = 30;
+        break;
+      case 4:
+        countDOT = 50;
         break;
       default:
     }
@@ -418,6 +451,8 @@ class HSV implements Feinde {
   int _hit = 0;
   @override
   int slowtime = 0;
+  @override
+  int countDOT = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -444,6 +479,11 @@ class HSV implements Feinde {
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
+    }
+    //Schaden über Zeit
+    if (countDOT > 0) {
+      countDOT--;
+      if (countDOT % 10 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -503,6 +543,12 @@ class HSV implements Feinde {
       case 2:
         laufgeschwindigkeit = boss ? 2 : 5;
         break;
+      case 3:
+        countDOT = 30;
+        break;
+      case 4:
+        countDOT = 50;
+        break;
       default:
     }
     return kill; // Rückgabe, ob der Feind getötet wurde
@@ -551,6 +597,8 @@ class Clostridien implements Feinde {
   int _hit = 0;
   @override
   int slowtime = 0;
+  @override
+  int countDOT = 0;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -573,6 +621,11 @@ class Clostridien implements Feinde {
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
+    }
+    //Schaden über Zeit
+    if (countDOT > 0) {
+      countDOT--;
+      if (countDOT % 10 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -626,11 +679,17 @@ class Clostridien implements Feinde {
     // Verlangsamungseffekt
     switch (effekt) {
       case 1:
-        laufgeschwindigkeit = boss ? 2 : 4;
+        laufgeschwindigkeit = boss ? 1 : 2;
         slowtime = boss ? 20 : 35;
         break;
       case 2:
-        laufgeschwindigkeit = boss ? 4 : 7;
+        laufgeschwindigkeit = boss ? 2 : 5;
+        break;
+      case 3:
+        countDOT = 30;
+        break;
+      case 4:
+        countDOT = 50;
         break;
       default:
     }
