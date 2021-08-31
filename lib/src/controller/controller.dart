@@ -10,7 +10,10 @@ class Controller {
   View view = View();
   bool _buy = false;
   bool _upgrade = false;
+  bool _powerup = false;
+  int powerUpTime;
   Element tower;
+  PowerUp pushedPowerUp;
   Turm selectedTower;
   num towers;
   num wayNow = 0;
@@ -85,6 +88,13 @@ class Controller {
       if (_buy) {
         view.showPoints(model.karte.felder);
         setClickForPoints();
+      }
+      if (_powerup) {
+        view.switchPowerUpStyle(true);
+        powerUpTime--;
+        if (powerUpTime == 0) _powerup = false;
+      } else {
+        view.switchPowerUpStyle(false);
       }
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
@@ -181,6 +191,15 @@ class Controller {
         //Speichern welcher button geklickt wurde
         tower = event.target;
         _buy = true;
+      }
+    });
+    view.powerUpButton.onClick.listen((event) {
+      if (event.target is Element) {
+        for (PowerUp p in model.powerup) {
+          if (p.name == (event.target as Element).id) pushedPowerUp = p;
+        }
+        powerUpTime = pushedPowerUp.abklingzeit;
+        _powerup = true;
       }
     });
   }

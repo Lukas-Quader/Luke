@@ -47,7 +47,8 @@
                 {"Corona" : {"id" : 2, "boss" : true}}  
               ]
             ],
-            "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
+            "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}},
+              {"Adrenalin" : {"Abklinkzeit" : 10, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
             "Karte" : {"Felder" : [
               {"Position" : {"x" : 920, "y" : 340}}, 
               {"Position" : {"x" : 630, "y" : 340}}, 
@@ -108,7 +109,8 @@
               {"Corona" : {"id" : 8, "boss" : true}}  
             ]
           ],
-          "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
+          "PowerUps" : [{"Antibiotika" : {"Abklinkzeit" : 50, "MultiplikatorAG" : 4, "laufzeit" : 10}},
+                {"Adrenalin" : {"Abklinkzeit" : 10, "MultiplikatorAG" : 4, "laufzeit" : 10}}],
           "Karte" : {"Felder" : [
             {"Position" : {"x" : 380, "y" : 310}}, 
             {"Position" : {"x" : 600, "y" : 450}}, 

@@ -4,6 +4,7 @@ part of ImmunityTD;
 abstract class PowerUp {
   int kosten;
   String name;
+  int abklingzeit;
   /*int getPosition();
   void setPosition(int hierFehltWas);  */
 }

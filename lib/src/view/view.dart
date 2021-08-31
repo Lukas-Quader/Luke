@@ -67,6 +67,8 @@ class View {
 
   HtmlElement get sellButton => querySelector('.sell_tower');
 
+  ElementList<HtmlElement> get powerUpButton => querySelectorAll('.powerup');
+
   /// Constructor der View
   View();
 
@@ -383,6 +385,16 @@ class View {
   void unselectLevel(num l) {
     var levelButton = querySelector('#box_level_$l');
     levelButton.style.borderColor = 'transparent';
+  }
+
+  void switchPowerUpStyle(bool bool) {
+    for (var b in powerUpButton) {
+      if (bool) {
+        b.style.display = 'none';
+      } else {
+        b.style.display = 'grid';
+      }
+    }
   }
 
   // Es folgen diverse Getter Methoden.
