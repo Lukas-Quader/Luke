@@ -9,7 +9,9 @@ class Controller {
   int spawncount = 25;
   View view = View();
   bool _buy = false;
+  bool _upgrade = false;
   Element tower;
+  Turm selectedTower;
   num towers;
   num wayNow = 0;
 
@@ -84,10 +86,14 @@ class Controller {
         view.showPoints(model.karte.felder);
         setClickForPoints();
       }
+      if (_upgrade) {
+        setClickListenerForUpgrade();
+      }
 
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
         view.portrait.style.display = 'none';
+        setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
           //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
@@ -196,7 +202,6 @@ class Controller {
           var which = model.turmPlazieren(tower.id, click, 1, towers++);
           if (which >= 0) {
             view.removePoint(which);
-
             //Der Turm wird an die View übergeben
             view.setTower(model.turm.last);
             //Ruft die Buy Methode im Model auf
@@ -205,6 +210,48 @@ class Controller {
         }
         _buy = false;
       }
+    });
+  }
+
+  void setClickForTowers(List<Turm> towers) {
+    for(var tower in towers) {
+    view.getTower(tower).onClick.listen((event) {
+      view.generateUpgradeMenu(tower);
+      _upgrade = true;
+      selectedTower = tower;
+    });
+    }
+  }
+
+  void setClickListenerForUpgrade() {
+    view.backButton.onClick.listen((event) {
+      view.generateBuyMenu(model.kaufen);
+      setClickListenerForLevel();
+      _upgrade = false;
+    });
+    //Variable um den Button zu speichern
+    //onClick listener für den Kauf button
+    view.upgradeButton.onClick.listen((event) {
+      if(event.target is Element) {
+      Element temp = event.target;
+      if(model.upgrade(selectedTower, int.parse(temp.getAttribute('value')))) {
+        switch (int.parse(temp.getAttribute('value'))) {
+          case 1:
+            view.getTower(selectedTower).className = selectedTower.name.toString();
+            break;
+          case 2:
+            view.getTower(selectedTower).className = selectedTower.name.toString() + 'U1';
+            break;
+          case 3:
+            view.getTower(selectedTower).className = selectedTower.name.toString() + 'U2';
+            break;
+          default:
+        }
+      }
+      }
+      view.generateBuyMenu(model.kaufen);
+      setClickListenerForLevel();
+      _upgrade = false;
     });
   }
 

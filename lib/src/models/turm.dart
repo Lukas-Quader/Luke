@@ -11,11 +11,13 @@ abstract class Turm {
   int reichweite;
   int level;
   int kosten;
+  int kostenU1;
+  int kostenU2;
   int effekt;
   Position position;
 
   ///Methode um einen Turm zu upgraden
-  void upgrade();
+  void upgrade(num goal);
 
   ///Methode welche einen Turm angreifen lässt.
   ///Ihr wird eine Liste von Feinden
@@ -43,6 +45,10 @@ class Blutzelle implements Turm {
   @override
   int kosten = 50; // Kosten des Turms
   @override
+  int kostenU1 = 20; // Kosten des ersten Upgrades
+  @override
+  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  @override
   int effekt = 0; // Welche Effekte der Turm besitzt hier keine
   @override
   Position position; // Position des Turms
@@ -53,26 +59,31 @@ class Blutzelle implements Turm {
   ///@param id = ID des Turms
   Blutzelle(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-    var updates = data['Level'];
-    while (updates > 1) {
-      upgrade();
-      updates--;
-    }
+      upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
 
   ///Das Turmlevel wird hiermit erhöht
   @override
-  void upgrade() {
-    switch (level) {
+  void upgrade(num goal) {
+    switch (goal) {
+      case 1:
+        angriffsgeschwindigkeit = 20;
+        schaden = 10;
+        level = 1;
+        break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
         angriffsgeschwindigkeit = 15;
+        schaden = 10;
+        level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        schaden = 10;
+        angriffsgeschwindigkeit = 20;
+        schaden = 20;
+        level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
       default:
@@ -131,6 +142,10 @@ class Auge implements Turm {
   @override
   int kosten = 75; // Kosten des Turms
   @override
+  int kostenU1 = 30; // Kosten des ersten Upgrades
+  @override
+  int kostenU2 = 50; // Kosten des zweiten Upgrades
+  @override
   int effekt = 0; // Welche Effekte der Turm besitzt hier keine
   @override
   Position position; // Position des Turms
@@ -141,26 +156,31 @@ class Auge implements Turm {
   ///@param id = ID des Turms
   Auge(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-    var updates = data['Level'];
-    while (updates > 1) {
-      upgrade();
-      updates--;
-    }
+    upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
 
   ///Das Turmlevel wird hiermit erhöht
   @override
-  void upgrade() {
-    switch (level) {
+  void upgrade(num goal) {
+    switch (goal) {
+      case 1:
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 1;
+        break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 25;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        schaden = 20;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
       default:
@@ -219,6 +239,10 @@ class Niere implements Turm {
   @override
   int kosten = 75; // Kosten des Turms
   @override
+  int kostenU1 = 20; // Kosten des ersten Upgrades
+  @override
+  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  @override
   int effekt = 0; // Welche Effekte der Turm besitzt hier keine
   @override
   Position position; // Position des Turms
@@ -229,26 +253,31 @@ class Niere implements Turm {
   ///@param id = ID des Turms
   Niere(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-    var updates = data['Level'];
-    while (updates > 1) {
-      upgrade();
-      updates--;
-    }
+      upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
 
   ///Das Turmlevel wird hiermit erhöht
   @override
-  void upgrade() {
-    switch (level) {
+  void upgrade(num goal) {
+    switch (goal) {
+      case 1:
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 1;
+        break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 15;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        schaden = 20;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
       default:
@@ -307,6 +336,10 @@ class Lunge implements Turm {
   @override
   int kosten = 100; // Kosten des Turms
   @override
+  int kostenU1 = 50; // Kosten des ersten Upgrades
+  @override
+  int kostenU2 = 70; // Kosten des zweiten Upgrades
+  @override
   int effekt = 1; // Welche Effekte der Turm besitzt Slow
   @override
   Position position; // Position des Turms
@@ -317,26 +350,31 @@ class Lunge implements Turm {
   ///@param id = ID des Turms
   Lunge(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-    var updates = data['Level'];
-    while (updates > 1) {
-      upgrade();
-      updates--;
-    }
+    upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
 
   ///Das Turmlevel wird hiermit erhöht
   @override
-  void upgrade() {
-    switch (level) {
+  void upgrade(num goal) {
+    switch (goal) {
+      case 1:
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 1;
+        break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 15;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
+        angriffsgeschwindigkeit = 35;
         schaden = 10;
+        level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
       default:
@@ -395,6 +433,10 @@ class Herz implements Turm {
   @override
   int kosten = 150; // Kosten des Turms
   @override
+  int kostenU1 = 20; // Kosten des ersten Upgrades
+  @override
+  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  @override
   int effekt = 2; // Welche Effekte der Turm besitzt hier keine
   @override
   Position position; // Position des Turms
@@ -405,26 +447,31 @@ class Herz implements Turm {
   ///@param id = ID des Turms
   Herz(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-    var updates = data['Level'];
-    while (updates > 1) {
-      upgrade();
-      updates--;
-    }
+    upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
 
   ///Das Turmlevel wird hiermit erhöht
   @override
-  void upgrade() {
-    switch (level) {
+  void upgrade(num goal) {
+    switch (goal) {
+      case 1:
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 1;
+        break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 20;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        schaden = 8;
+        angriffsgeschwindigkeit = 35;
+        schaden = 10;
+        level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
       default:

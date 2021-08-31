@@ -46,12 +46,18 @@ class View {
 
   // KaufButton
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
+  // KaufButton
+  ElementList<HtmlElement> get upgradeButton => querySelectorAll('.upgrade_tower');
   // StartButton
   HtmlElement get startButton => querySelector('#startButton');
 
   HtmlElement get menueButton => querySelector('#menueButton');
 
   HtmlElement get restartButton => querySelector('#restartButton');
+
+  HtmlElement getTower(Turm turm) => querySelector('#${turm.name}_${turm.id}');
+
+  HtmlElement get backButton => querySelector('#back_button');
 
   /// Constructor der View
   View();
@@ -212,7 +218,7 @@ class View {
     ht += '\n<div class=${turm.name} id=${turm.name}_${turm.id}></div>';
     map.setInnerHtml(ht,
         validator: _validatorBuilder); // Fügt den Turm der Map hinzu
-    var points = querySelectorAll('.wp');
+    var points = towerPoints;
     points.style.display = 'none';
   }
 
@@ -224,8 +230,40 @@ class View {
       // Fügt den Button mit Namen und Kosten zum HTML File hinzu
       html +=
           "<div>\n<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n<div class='buy_text'>${t.kosten}</div>\n</div>";
-      buemenue.innerHtml += html; // Fügt den Button zum Menü hinzu
     }
+    buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
+  }
+
+  /// Erstellen des Upgrade auf er rechten seite des Bildschirms
+  void generateUpgradeMenu(Turm tower) {
+    var html = ''; // Leeres HTML Dokument
+    var u0;
+    var u1;
+    var u2;
+    switch (tower.level) {
+      case 1:
+        u0 = 0;
+        u1 = tower.kostenU1;
+        u2 = tower.kostenU1 + tower.kostenU2;
+        break;
+
+      case 2:
+        u0 = 0 - tower.kostenU1;
+        u1 = 0;
+        u2 = 0 + tower.kostenU2;
+        break;
+
+      case 3:
+        u0 = 0 - tower.kostenU1 - tower.kostenU2;
+        u1 = 0 - tower.kostenU2;
+        u2 = 0;
+        break;
+      default:
+    }
+    html += "<div>\n<button id='back_button'>Zurueck</button></div>\n<div></div>\n";
+      html += "<div>\n<button class='upgrade_tower' id='${tower.name}' value='${1}'></button>\n<div class='${u0 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u0 < 0 ? u0 * (-1) : u0}</div>\n</div>";
+      html += "<div>\n<button class='upgrade_tower' id='${tower.name}U1' value='${2}'></button>\n<div class='${u1 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u1 < 0 ? u1 * (-1) : u1}</div>\n</div>";
+      html += "<div>\n<button class='upgrade_tower' id='${tower.name}U2' value='${3}'></button>\n<div class='${u2 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u2 < 0 ? u2 * (-1) : u2}</div>\n</div>";
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
   }
 

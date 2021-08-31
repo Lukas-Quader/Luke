@@ -238,9 +238,53 @@ class Level {
     feinde.remove(f);
   }
 
+  bool upgrade(Turm tow, num lev) {
+    var temp = tow.level;
+    var done = true;
+    switch (temp) {
+      case 1:
+      if(lev == 1);
+      else if(lev == 2 && ak >= tow.kostenU1){
+           ak -= tow.kostenU1;
+           tow.upgrade(lev);
+        }
+        else if(lev == 3&& ak >= tow.kostenU1 + tow.kostenU2) {
+          ak -= (tow.kostenU1 + tow.kostenU2);
+          tow.upgrade(lev);
+        }
+        else done = false;
+        break;
+      case 2:
+        if(lev == 1){
+           ak += tow.kostenU1;
+           tow.upgrade(lev);
+        }
+        else if(lev == 2);
+        else if(lev == 3&& ak >= tow.kostenU2) {
+          ak -= tow.kostenU2;
+          tow.upgrade(lev);
+        }
+        else done = false;
+        break;
+      case 3:
+        if(lev == 1){
+           ak += tow.kostenU1 + tow.kostenU2;
+           tow.upgrade(lev);
+        }
+        else if(lev == 2) {
+          ak += tow.kostenU2;
+          tow.upgrade(lev);
+        }
+        else if(lev ==3);
+        else done = false;
+        break;
+    }
+    return done;
+  }
+
   // Das übergeben Level wird im LocalStorage des Browsers gespeichert.
   // Es ist eine Map mit einem Key/Value Paar
   void safeLevel(num l) {
-    window.localStorage['completeLevel'] = '$l';
+    if(int.parse(window.localStorage['completeLevel']) < l) window.localStorage['completeLevel'] = '$l';
   }
 }
