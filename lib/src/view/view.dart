@@ -21,6 +21,9 @@ class View {
 
   final buemenue = querySelector('#buymenu_wrapper'); // HTML-Teil des Kaufmenüs
 
+  final powerupmenu =
+      querySelector('#powerupMenu'); // HTML-Teil des Powerupmenu
+
   final menu = querySelector('#menu'); // HTML-Teil des Startmenüs
 
   final levelview = querySelector('#level'); // HTML-Teil der Levelview
@@ -138,11 +141,11 @@ class View {
     // Auswählen und darstellen der erstellten Punkte
     for (var p in way) {
       var pos = querySelector('#wp_$i');
-      if(int.parse(pos.getAttribute('value')) == 1) {
+      if (int.parse(pos.getAttribute('value')) == 1) {
         pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
-      pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
-      pos?.style?.display =
-          'block'; // Style wird auf Block gesetzt. Dadurch wird es Sichtbar
+        pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
+        pos?.style?.display =
+            'block'; // Style wird auf Block gesetzt. Dadurch wird es Sichtbar
       }
       i++;
     }
@@ -198,8 +201,8 @@ class View {
   }
 
   /// Erstellen der Karte
-  void generateMap(List<Turm> buy) {
-    generateBuyMenu(buy); // Erstellen des Kaufmenüs
+  void generateMap(List<Turm> buy, List<PowerUp> powerup) {
+    generateBuyMenu(buy, powerup); // Erstellen des Kaufmenüs
     levelview.style.display = 'grid'; // Levelview wird sichtbar gemacht
   }
 
@@ -234,7 +237,7 @@ class View {
   }
 
   /// Erstellen des Kaufmenüs auf er rechten seite des Bildschirms
-  void generateBuyMenu(List<Turm> tower) {
+  void generateBuyMenu(List<Turm> tower, List<PowerUp> powerups) {
     var html = ''; // Leeres HTML Dokument
     // Erstellen der Button der Türme
     for (var t in tower) {
@@ -243,6 +246,13 @@ class View {
           "<div>\n<button draggable='true' class='buy_tower' id='${t.name}' value='${t.kosten}'></button>\n<div class='buy_text'>${t.kosten}</div>\n</div>";
     }
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
+
+    var html2 = ''; // Leeres HTML Dokument
+    for (var up in powerups) {
+      html2 +=
+          "<div>\n<button draggable='true' class='powerup' id='${up.name}' value='${up.kosten}'></button></div>";
+    }
+    powerupmenu.innerHtml = html2; // Fügt den Button zum Menü hinzu
   }
 
   /// Erstellen des Upgrade auf er rechten seite des Bildschirms
@@ -357,6 +367,9 @@ class View {
     gameover.style.display = 'none';
     menueButton.style.display = 'none';
     restartButton.style.display = 'none';
+    for (var tower in towerPoints) {
+      tower.setAttribute('value', '1');
+    }
   }
 
   // Es wird ausgelesen, welches Level angewählt wird und setzt die Umrandung
