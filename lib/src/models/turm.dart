@@ -59,7 +59,7 @@ class Blutzelle implements Turm {
   ///@param id = ID des Turms
   Blutzelle(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-      upgrade(data['Level']);
+    upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }
@@ -253,7 +253,7 @@ class Niere implements Turm {
   ///@param id = ID des Turms
   Niere(Map<String, dynamic> data) {
     //das level des Turms wird erhöht um das level
-      upgrade(data['Level']);
+    upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
   }

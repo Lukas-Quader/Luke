@@ -243,48 +243,62 @@ class Level {
     var done = true;
     switch (temp) {
       case 1:
-      if(lev == 1);
-      else if(lev == 2 && ak >= tow.kostenU1){
-           ak -= tow.kostenU1;
-           tow.upgrade(lev);
-        }
-        else if(lev == 3&& ak >= tow.kostenU1 + tow.kostenU2) {
+        if (lev == 1)
+          ;
+        else if (lev == 2 && ak >= tow.kostenU1) {
+          ak -= tow.kostenU1;
+          tow.upgrade(lev);
+        } else if (lev == 3 && ak >= tow.kostenU1 + tow.kostenU2) {
           ak -= (tow.kostenU1 + tow.kostenU2);
           tow.upgrade(lev);
-        }
-        else done = false;
+        } else
+          done = false;
         break;
       case 2:
-        if(lev == 1){
-           ak += tow.kostenU1;
-           tow.upgrade(lev);
-        }
-        else if(lev == 2);
-        else if(lev == 3&& ak >= tow.kostenU2) {
+        if (lev == 1) {
+          ak += tow.kostenU1;
+          tow.upgrade(lev);
+        } else if (lev == 2)
+          ;
+        else if (lev == 3 && ak >= tow.kostenU2) {
           ak -= tow.kostenU2;
           tow.upgrade(lev);
-        }
-        else done = false;
+        } else
+          done = false;
         break;
       case 3:
-        if(lev == 1){
-           ak += tow.kostenU1 + tow.kostenU2;
-           tow.upgrade(lev);
-        }
-        else if(lev == 2) {
+        if (lev == 1) {
+          ak += tow.kostenU1 + tow.kostenU2;
+          tow.upgrade(lev);
+        } else if (lev == 2) {
           ak += tow.kostenU2;
           tow.upgrade(lev);
-        }
-        else if(lev ==3);
-        else done = false;
+        } else if (lev == 3)
+          ;
+        else
+          done = false;
         break;
     }
     return done;
   }
 
+  num sellTower(Turm tower, num value) {
+    var count = 0;
+    for(int i = 0; i < karte.felder.length; i++) {
+      if(karte.besetzt[i] && karte.felder[i].dist(tower.position) == 0) {
+        karte.besetzt[i] = false;
+        count = i;
+      }
+    }
+    turm.remove(tower);
+    ak += value;
+    return count;
+  }
+
   // Das übergeben Level wird im LocalStorage des Browsers gespeichert.
   // Es ist eine Map mit einem Key/Value Paar
   void safeLevel(num l) {
-    if(int.parse(window.localStorage['completeLevel']) < l) window.localStorage['completeLevel'] = '$l';
+    if (int.parse(window.localStorage['completeLevel']) < l)
+      window.localStorage['completeLevel'] = '$l';
   }
 }

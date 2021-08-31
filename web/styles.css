@@ -75,6 +75,16 @@ h1 {
   border-color: white;
 }
 
+.sell_tower {
+  margin: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px; 
+  background-color: green;
+  height: 70px;
+  width: 70px;
+  cursor: move;
+}
+
 .buy_tower {
   margin: 10px;
   padding-top: 30px;
@@ -100,12 +110,18 @@ h1 {
   color: greenyellow;
 }
 
+.sell_text {
+  text-align: center;
+  color: green;
+  background-color: rgba(0, 0, 0, 0.473);
+}
+
 .upgrade_cost {
   margin-left: 30%;
   margin-right: 30%;
   text-align: center;
   color: red;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.473);
 }
 
 .upgrade_gain {
@@ -113,7 +129,7 @@ h1 {
   margin-right: 30%;
   text-align: center;
   color: green;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.473);
 }
 
 .box_level {

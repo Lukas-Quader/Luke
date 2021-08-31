@@ -86,14 +86,10 @@ class Controller {
         view.showPoints(model.karte.felder);
         setClickForPoints();
       }
-      if (_upgrade) {
-        setClickListenerForUpgrade();
-      }
-
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
         view.portrait.style.display = 'none';
-        setClickForTowers(model.turm);
+        if (model.turm.isNotEmpty) setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
           //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
@@ -192,8 +188,7 @@ class Controller {
   void setClickForPoints() {
     view.towerPoints.onClick.listen((ev) {
       //es wird gespeichert auf welcher position geklickt wurde
-      var click = Position((ev.target as ButtonElement).offsetLeft,
-          (ev.target as ButtonElement).offsetTop);
+      var click = Position((ev.target as ButtonElement).offsetLeft, (ev.target as ButtonElement).offsetTop);
       //Wenn das Feld frei ist und vorher auf kauf gedrückt wurde
       if (model.karte.free() && tower != null) {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
@@ -214,44 +209,58 @@ class Controller {
   }
 
   void setClickForTowers(List<Turm> towers) {
-    for(var tower in towers) {
-    view.getTower(tower).onClick.listen((event) {
-      view.generateUpgradeMenu(tower);
-      _upgrade = true;
-      selectedTower = tower;
-    });
+    for (var tower in towers) {
+      view.getTower(tower).onClick.listen((event) {
+        view.generateUpgradeMenu(tower);
+        setClickListenerForUpgrade();
+        _upgrade = true;
+        selectedTower = tower;
+      });
     }
   }
 
   void setClickListenerForUpgrade() {
     view.backButton.onClick.listen((event) {
+      _upgrade = false;
       view.generateBuyMenu(model.kaufen);
       setClickListenerForLevel();
-      _upgrade = false;
     });
     //Variable um den Button zu speichern
     //onClick listener für den Kauf button
     view.upgradeButton.onClick.listen((event) {
-      if(event.target is Element) {
-      Element temp = event.target;
-      if(model.upgrade(selectedTower, int.parse(temp.getAttribute('value')))) {
-        switch (int.parse(temp.getAttribute('value'))) {
-          case 1:
-            view.getTower(selectedTower).className = selectedTower.name.toString();
-            break;
-          case 2:
-            view.getTower(selectedTower).className = selectedTower.name.toString() + 'U1';
-            break;
-          case 3:
-            view.getTower(selectedTower).className = selectedTower.name.toString() + 'U2';
-            break;
-          default:
+      if (event.target is Element) {
+        Element temp = event.target;
+        if (model.upgrade(
+            selectedTower, int.parse(temp.getAttribute('value')))) {
+          switch (int.parse(temp.getAttribute('value'))) {
+            case 1:
+              view.getTower(selectedTower).className =
+                  selectedTower.name.toString();
+              break;
+            case 2:
+              view.getTower(selectedTower).className =
+                  selectedTower.name.toString() + 'U1';
+              break;
+            case 3:
+              view.getTower(selectedTower).className =
+                  selectedTower.name.toString() + 'U2';
+              break;
+            default:
+          }
         }
-      }
       }
       view.generateBuyMenu(model.kaufen);
       setClickListenerForLevel();
       _upgrade = false;
+    });
+    view.sellButton.onClick.listen((event) {
+      if (event.target is Element) {
+        Element temp = event.target;
+        view.sellTower(selectedTower, model.sellTower(selectedTower, int.parse(temp.getAttribute('value'))));
+        view.generateBuyMenu(model.kaufen);
+        setClickListenerForLevel();
+        _upgrade = false;
+      }
     });
   }
 

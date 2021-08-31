@@ -2,6 +2,8 @@ part of ImmunityTD;
 
 class View {
   Level model;
+
+  var pointCounter = 0;
   // Der NodeValidator wird benötigt um zu Definieren, dass bestimmte attribute
   // im HTML code erlaubt sind.
   NodeValidatorBuilder _validatorBuilder = new NodeValidatorBuilder()
@@ -47,7 +49,8 @@ class View {
   // KaufButton
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
   // KaufButton
-  ElementList<HtmlElement> get upgradeButton => querySelectorAll('.upgrade_tower');
+  ElementList<HtmlElement> get upgradeButton =>
+      querySelectorAll('.upgrade_tower');
   // StartButton
   HtmlElement get startButton => querySelector('#startButton');
 
@@ -58,6 +61,8 @@ class View {
   HtmlElement getTower(Turm turm) => querySelector('#${turm.name}_${turm.id}');
 
   HtmlElement get backButton => querySelector('#back_button');
+
+  HtmlElement get sellButton => querySelector('.sell_tower');
 
   /// Constructor der View
   View();
@@ -133,10 +138,12 @@ class View {
     // Auswählen und darstellen der erstellten Punkte
     for (var p in way) {
       var pos = querySelector('#wp_$i');
-      pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
+      if(int.parse(pos.getAttribute('value')) == 1) {
+        pos?.style?.left = '${p.x}px'; // definierte x-Position setzen
       pos?.style?.top = '${p.y}px'; //  definierte y-Position setzen
       pos?.style?.display =
           'block'; // Style wird auf Block gesetzt. Dadurch wird es Sichtbar
+      }
       i++;
     }
   }
@@ -144,18 +151,22 @@ class View {
   /// Debugging Tool
   /// Erstellen von Punkten auf der Karte
   void generatePoints(num way) {
-    var i = 0;
     // Erstellen der Punkte
     for (var j = 0; j < way; j++) {
       // hinzufügen des Punktes zur innerHTML von map
-      map.innerHtml += '<button class=wp id=wp_$i></button>';
-      i++; // nächster Punkt
+      map.innerHtml += '<button class=wp id=wp_$pointCounter value=1></button>';
+      pointCounter++; // nächster Punkt
     }
+  }
+
+  void setPoint(num point) {
+    var pos = querySelector('#wp_$point');
+    pos.setAttribute('value', '1');
   }
 
   void removePoint(num point) {
     var pos = querySelector('#wp_$point');
-    pos.remove();
+    pos.setAttribute('value', '0');
   }
 
   /// Erstellen des Startmenüs
@@ -237,34 +248,49 @@ class View {
   /// Erstellen des Upgrade auf er rechten seite des Bildschirms
   void generateUpgradeMenu(Turm tower) {
     var html = ''; // Leeres HTML Dokument
+    var sell;
     var u0;
     var u1;
     var u2;
     switch (tower.level) {
       case 1:
+        sell = tower.kosten * (3 / 4);
         u0 = 0;
         u1 = tower.kostenU1;
         u2 = tower.kostenU1 + tower.kostenU2;
         break;
 
       case 2:
+        sell = (tower.kosten + tower.kostenU1) * (3 / 4);
         u0 = 0 - tower.kostenU1;
         u1 = 0;
         u2 = 0 + tower.kostenU2;
         break;
 
       case 3:
+        sell = (tower.kosten + tower.kostenU1 + tower.kostenU2) * (3 / 4);
         u0 = 0 - tower.kostenU1 - tower.kostenU2;
         u1 = 0 - tower.kostenU2;
         u2 = 0;
         break;
       default:
     }
-    html += "<div>\n<button id='back_button'>Zurueck</button></div>\n<div></div>\n";
-      html += "<div>\n<button class='upgrade_tower' id='${tower.name}' value='${1}'></button>\n<div class='${u0 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u0 < 0 ? u0 * (-1) : u0}</div>\n</div>";
-      html += "<div>\n<button class='upgrade_tower' id='${tower.name}U1' value='${2}'></button>\n<div class='${u1 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u1 < 0 ? u1 * (-1) : u1}</div>\n</div>";
-      html += "<div>\n<button class='upgrade_tower' id='${tower.name}U2' value='${3}'></button>\n<div class='${u2 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u2 < 0 ? u2 * (-1) : u2}</div>\n</div>";
+    html +=
+        "<div>\n<button id='back_button'>Zurueck</button></div>\n<div></div>\n";
+    html +=
+        "<div>\n<button class='sell_tower' value='${sell.round()}'></button>\n<div class='sell_text'>Verkaufen: ${sell.round()}</div>\n</div>";
+    html +=
+        "<div>\n<button class='upgrade_tower' id='${tower.name}' value='${1}'></button>\n<div class='${u0 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u0 < 0 ? u0 * (-1) : u0}</div>\n</div>";
+    html +=
+        "<div>\n<button class='upgrade_tower' id='${tower.name}U1' value='${2}'></button>\n<div class='${u1 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u1 < 0 ? u1 * (-1) : u1}</div>\n</div>";
+    html +=
+        "<div>\n<button class='upgrade_tower' id='${tower.name}U2' value='${3}'></button>\n<div class='${u2 > 0 ? 'upgrade_cost' : 'upgrade_gain'}'>${u2 < 0 ? u2 * (-1) : u2}</div>\n</div>";
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
+  }
+
+  void sellTower(Turm tower, num point) {
+    setPoint(point);
+    getTower(tower)?.remove();
   }
 
   /// Erstellen der Infobar im unteren Teil des Bildschirms
