@@ -102,7 +102,12 @@ class View {
         }
       }
       for (Feinde feind in killed) {
-        model.kill(feind); // entfernt Feind aus der Liste
+        var grip = model.kill(feind); // entfernt Feind aus der Liste
+        if(grip > 1) {
+          for(int i = 1; i < grip; i++) {
+          spawn(model.feinde[model.feinde.length - i]);
+        }
+        }
       }
     }
     // Gibt es Türme in der Liste?

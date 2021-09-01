@@ -626,6 +626,18 @@ h1 {
   position: absolute;
 }
 
+.grippling {
+  height: 7%;
+  width: 4%;
+  
+  /* Aussehen */
+  background-image: url(img/grippe.png); 
+  background-repeat: no-repeat;
+  background-size: contain;
+  /* Positionierung */ 
+  position: absolute;
+}
+
 .grippe.boss {
   height: 15%;
   width: 8%;

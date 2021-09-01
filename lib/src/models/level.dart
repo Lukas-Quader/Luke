@@ -247,9 +247,25 @@ class Level {
   }
 
   ///Killmethode:
-  ///Entfernt den Feind TODO: unnötig weil es die remove gibt?
-  void kill(Feinde f) {
+  ///Entfernt den Feind
+  int kill(Feinde f) {
+    var grip = 1;
+    if(f.name == 'grippe' && f.leben <= 0) {
+      for(int i = 0; i < 2; i++) {
+        if(f.boss) {
+          feinde.add(Grippe({'id': f.id + i, 'boss': false}));
+        } else {
+          feinde.add(Grippling({'id': f.id + i, 'boss': false}));
+        }
+        feinde.last.way = [];
+        feinde.last.way.addAll(f.way);
+        feinde.last.goal = Position(f.goal.x, f.goal.y);
+        feinde.last.pos = i%2 == 1 ? f.pos - f.dir * 10 : f.pos + f.dir * 10;
+        grip++;
+      }
+    }
     feinde.remove(f);
+    return grip;
   }
 
   bool upgrade(Turm tow, num lev) {
