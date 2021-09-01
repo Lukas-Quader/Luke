@@ -6,6 +6,7 @@ abstract class PowerUp {
   String name;
   int abklingzeit;
   double multiplikatorAG;
+  double multiplikatorDMG;
 }
 
 class Antibiotika implements PowerUp {
@@ -16,10 +17,12 @@ class Antibiotika implements PowerUp {
   int kosten = 200;
   @override
   String name = 'antibiotika';
+  double multiplikatorDMG;
 
   Antibiotika(Map<String, dynamic> data) {
     abklingzeit = data['Abklinkzeit'];
     multiplikatorAG = data['MultiplikatorAG'];
+    multiplikatorDMG = data['MultiplikatorDMG'];
     laufzeit = data['laufzeit'];
   }
 }
@@ -27,6 +30,7 @@ class Antibiotika implements PowerUp {
 class Adrenalin implements PowerUp {
   int abklingzeit;
   double multiplikatorAG;
+  double multiplikatorDMG;
   int laufzeit;
   @override
   int kosten = 150;
@@ -36,6 +40,7 @@ class Adrenalin implements PowerUp {
   Adrenalin(Map<String, dynamic> data) {
     abklingzeit = data['Abklinkzeit'];
     multiplikatorAG = data['MultiplikatorAG'];
+    multiplikatorDMG = data['MultiplikatorDMG'];
     laufzeit = data['laufzeit'];
   }
 }
