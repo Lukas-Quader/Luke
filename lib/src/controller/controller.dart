@@ -10,7 +10,7 @@ class Controller {
   View view = View();
   bool _buy = false;
   bool _powerup = false;
-  int powerUpTime;
+  int powerUpTime = 0;
   Element tower;
   PowerUp pushedPowerUp;
   Turm selectedTower;
@@ -99,7 +99,12 @@ class Controller {
       if (_powerup) {
         view.switchPowerUpStyle(true);
         powerUpTime--;
-        if (powerUpTime == 0) _powerup = false;
+        if (powerUpTime == 0) {
+          _powerup = false;
+          powerUpTime = pushedPowerUp.abklingzeit;
+        }
+      } else if (powerUpTime > 0) {
+        powerUpTime--;
       } else {
         view.switchPowerUpStyle(false);
       }
@@ -212,7 +217,7 @@ class Controller {
           if (p.name == (event.target as Element).id) pushedPowerUp = p;
         }
         // Die Abklingzeit wird gesetzt.
-        powerUpTime = pushedPowerUp.abklingzeit;
+        powerUpTime = pushedPowerUp.laufzeit;
         //Wird in der Mainloop benötigt und dort wieder auf false gesetzt
         _powerup = true;
       }
