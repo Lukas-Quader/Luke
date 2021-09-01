@@ -21,7 +21,7 @@ abstract class Turm {
 
   ///Methode welche einen Turm angreifen lässt.
   ///Ihr wird eine Liste von Feinden
-  List<Projektiel> angriff(List<Feinde> feinde);
+  List<Projektiel> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp);
 }
 
 ///Blutzellen Klasse
@@ -95,7 +95,8 @@ class Blutzelle implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(
+      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
@@ -108,7 +109,11 @@ class Blutzelle implements Turm {
           kill.add(
               Blutschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
-          agcount = angriffsgeschwindigkeit;
+          if (_powerup) {
+            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+          } else {
+            agcount = angriffsgeschwindigkeit;
+          }
           //Breack, damit nur der "nächste" Feind angegriffen wird.
           break;
         }
@@ -192,7 +197,8 @@ class Auge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(
+      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
@@ -205,7 +211,11 @@ class Auge implements Turm {
           kill.add(
               Augenschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
-          agcount = angriffsgeschwindigkeit;
+          if (_powerup) {
+            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+          } else {
+            agcount = angriffsgeschwindigkeit;
+          }
           //Break, damit nur der "nächste" Feind angegriffen wird.
           break;
         }
@@ -289,7 +299,8 @@ class Niere implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(
+      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
@@ -297,12 +308,17 @@ class Niere implements Turm {
       //Alle Feinde durchgehen
       for (var f in feinde) {
         //Prüfen ob ein Feind in Reichweite ist
-        if (position.dist(f.pos) <= reichweite && (f.countDOT <= 0 || agcount <= -10)) {
+        if (position.dist(f.pos) <= reichweite &&
+            (f.countDOT <= 0 || agcount <= -10)) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill.add(
-              Nierenschuss(id, position + Position(25, 25), f, effekt, schaden));
+          kill.add(Nierenschuss(
+              id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
-          agcount = angriffsgeschwindigkeit;
+          if (_powerup) {
+            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+          } else {
+            agcount = angriffsgeschwindigkeit;
+          }
           //Break, damit nur der "nächste" Feind angegriffen wird.
           break;
         }
@@ -386,7 +402,8 @@ class Lunge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(
+      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
@@ -399,7 +416,11 @@ class Lunge implements Turm {
           kill.add(
               Luftschuss(id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
-          agcount = angriffsgeschwindigkeit;
+          if (_powerup) {
+            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+          } else {
+            agcount = angriffsgeschwindigkeit;
+          }
           //Break, damit nur der "nächste" Feind angegriffen wird.
           break;
         }
@@ -483,7 +504,8 @@ class Herz implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(List<Feinde> feinde) {
+  List<Projektiel> angriff(
+      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
     //counter für id bei angriff von mehreren gegnern gleichzeitig
@@ -500,7 +522,11 @@ class Herz implements Turm {
         }
       }
       //agcount "resetten"
-      agcount = angriffsgeschwindigkeit;
+      if (_powerup) {
+        agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+      } else {
+        agcount = angriffsgeschwindigkeit;
+      }
     }
     //Angriffscounter einen runterzählen
     agcount--;

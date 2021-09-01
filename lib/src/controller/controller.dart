@@ -115,7 +115,7 @@ class Controller {
           spawncount = 25;
         }
         //Turmanhroff und feinde bewegen aufrufen
-        model.turmAngriff();
+        model.turmAngriff(_powerup, pushedPowerUp);
         model.feindeBewegen();
         if (model.shots.isNotEmpty) {
           for (var s in model.shots) {
