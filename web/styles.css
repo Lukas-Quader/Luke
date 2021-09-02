@@ -20,9 +20,36 @@
     background-color: cornflowerblue;
     font-size:15vw;
     text-align: center;
-    padding-top: 50%;
+    padding-top: 10%;
     text-shadow: rgba(0, 0, 255, 0.212);
   }
+
+  #rotate_img {
+    height: 30vh;
+    width: 30vh;
+    background-image: url(img/screen_rotate.png);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: rotation 6s infinite linear reverse;
+       
+  }
+  @keyframes rotation {    
+    from {
+      transform: rotate(0deg)
+    }
+    to {
+      transform: rotate(360deg)
+    }
+  }
+
+  #menu {
+    display: none;
+  }
+
 
   #level {
     display: none; 
