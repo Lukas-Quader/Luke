@@ -81,6 +81,68 @@
               {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
               {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
               {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
+    ],
+          "Wellen" : [
+            [
+              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+            ],
+            [
+              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+    
+            ],
+            [
+              {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
+            ]
+          ],
+          "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+          "Karte" : {"Felder" : [
+            {"Position" : {"x" : 1180, "y" : 215}}, 
+            {"Position" : {"x" : 1330, "y" : 215}},
+            {"Position" : {"x" : 950, "y" : 230}},
+            {"Position" : {"x" : 750, "y" : 230}}, 
+            {"Position" : {"x" : 600, "y" : 440}},
+            {"Position" : {"x" : 320, "y" : 440}},
+            {"Position" : {"x" : 980, "y" : 440}},
+            {"Position" : {"x" : 400, "y" : 230}},
+            {"Position" : {"x" : 200, "y" : 230}}
+            
+          ],
+          "Wege" : [[{"Position" : {"x" : 1250, "y" : 150}},
+            {"Position" : {"x" : 1440, "y" : 140}},
+            {"Position" : {"x" : 1440, "y" : 350}},
+            {"Position" : {"x" : 180, "y" : 355}},
+            {"Position" : {"x" : 220, "y" : 600}}
+            ]]}
+      }
+    },
+    {
+      "Level" : { 
+          "Antikörper" : 150,
+          "Turmkauf" : [{
+              "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+              {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+              {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+              {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+              {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
   ],
           "Wellen" : [
             [
@@ -310,60 +372,6 @@
       ],
       "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
       "Karte" : {"Felder" : [
-        {"Position" : {"x" : 80, "y" : 200}}, 
-        {"Position" : {"x" : 160, "y" : 480}}, 
-        {"Position" : {"x" : 670, "y" : 190}},
-        {"Position" : {"x" : 640, "y" : 480}},
-        {"Position" : {"x" : 1270, "y" : 180}},
-        {"Position" : {"x" : 1400, "y" : 435}}],
-  "Wege" : [[{"Position" : {"x" : 1600, "y" : 314}},
-      {"Position" : {"x" : 0, "y" : 350}}
-      ]]}
-  }
-},
-{
-  "Level" : { 
-      "Antikörper" : 150,
-      "Turmkauf" : [{
-          "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
-          {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
-          {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
-          {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
-          {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
-],
-      "Wellen" : [
-        [
-          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
-          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
-          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
-        ],
-        [
-          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
-          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
-          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
-          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
-          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
-
-        ],
-        [
-          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
-          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
-        ]
-      ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
-      "Karte" : {"Felder" : [
         {"Position" : {"x" : 330, "y" : 310}}, 
         {"Position" : {"x" : 600, "y" : 340}}, 
         {"Position" : {"x" : 810, "y" : 345}},
@@ -453,5 +461,292 @@
         {"Position" : {"x" : 1520, "y" : 333}}
         ]]}
   }
-}]
+},
+{
+  "Level" : { 
+      "Antikörper" : 150,
+      "Turmkauf" : [{
+          "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+          {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+          {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+          {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+          {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
+],
+      "Wellen" : [
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+        ],
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+
+        ],
+        [
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
+        ]
+      ],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "Karte" : {"Felder" : [
+        {"Position" : {"x" : 65, "y" : 65}}, 
+        {"Position" : {"x" : 60, "y" : 680}}, 
+        {"Position" : {"x" : 310, "y" : 210}},
+        {"Position" : {"x" : 280, "y" : 530}},
+        {"Position" : {"x" : 550, "y" : 85}}, 
+        {"Position" : {"x" : 510, "y" : 656}}, 
+        {"Position" : {"x" : 850, "y" : 65}},
+        {"Position" : {"x" : 850, "y" : 660}},
+        {"Position" : {"x" : 1180, "y" : 210}},
+        {"Position" : {"x" : 1180, "y" : 510}},
+        {"Position" : {"x" : 1460, "y" : 40}},
+        {"Position" : {"x" : 1460, "y" : 680}}
+      ],
+  "Wege" : [[
+      {"Position" : {"x" : 1, "y" : 160}},
+      {"Position" : {"x" : 130, "y" : 200}},
+      {"Position" : {"x" : 360, "y" : 420}},
+      {"Position" : {"x" : 500, "y" : 540}},
+      {"Position" : {"x" : 700, "y" : 600}},
+      {"Position" : {"x" : 860, "y" : 600}},
+      {"Position" : {"x" : 1070, "y" : 540}},
+      {"Position" : {"x" : 1420, "y" : 240}},
+      {"Position" : {"x" : 1530, "y" : 190}},
+      {"Position" : {"x" : 1600, "y" : 180}}
+      ],[{"Position" : {"x" : 1, "y" : 650}},
+        {"Position" : {"x" : 100, "y" : 630}},
+        {"Position" : {"x" : 480, "y" : 300}},
+        {"Position" : {"x" : 700, "y" : 200}},
+        {"Position" : {"x" : 960, "y" : 210}},
+        {"Position" : {"x" : 1500, "y" : 620}},
+        {"Position" : {"x" : 1600, "y" : 640}}
+        ]]}
+  }
+},
+{
+  "Level" : { 
+      "Antikörper" : 150,
+      "Turmkauf" : [{
+          "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+          {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+          {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+          {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+          {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
+],
+      "Wellen" : [
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+        ],
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+
+        ],
+        [
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
+        ]
+      ],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "Karte" : {"Felder" : [
+        {"Position" : {"x" : 730, "y" : 310}},
+        {"Position" : {"x" : 680, "y" : 5}},
+        {"Position" : {"x" : 910, "y" : 5}},
+        {"Position" : {"x" : 490, "y" : 660}},
+        {"Position" : {"x" : 920, "y" : 660}},
+        {"Position" : {"x" : 1180, "y" : 615}},
+        {"Position" : {"x" : 1360, "y" : 510}},
+        {"Position" : {"x" : 1440, "y" : 280}},
+        {"Position" : {"x" : 1180, "y" : 30}},
+        {"Position" : {"x" : 415, "y" : 20}},
+        {"Position" : {"x" : 50, "y" : 250}},
+        {"Position" : {"x" : 50, "y" : 480}},
+        {"Position" : {"x" : 260, "y" : 610}},
+        {"Position" : {"x" : 400, "y" : 310}},
+        {"Position" : {"x" : 1050, "y" : 310}}
+      ],
+  "Wege" : [[
+      {"Position" : {"x" : 0, "y" : 400}},
+      {"Position" : {"x" : 180, "y" : 390}},
+      {"Position" : {"x" : 270, "y" : 210}},
+      {"Position" : {"x" : 500, "y" : 150}},
+      {"Position" : {"x" : 870, "y" : 100}},
+      {"Position" : {"x" : 1100, "y" : 140}},
+      {"Position" : {"x" : 1260, "y" : 200}},
+      {"Position" : {"x" : 1360, "y" : 350}},
+      {"Position" : {"x" : 1260, "y" : 440}},
+      {"Position" : {"x" : 1050, "y" : 540}},
+      {"Position" : {"x" : 650, "y" : 570}},
+      {"Position" : {"x" : 370, "y" : 510}},
+      {"Position" : {"x" : 180, "y" : 390}},
+      {"Position" : {"x" : 0, "y" : 400}}
+      ],[{"Position" : {"x" : 580, "y" : 0}},
+        {"Position" : {"x" : 600, "y" : 100}},        
+        {"Position" : {"x" : 870, "y" : 100}},
+        {"Position" : {"x" : 1100, "y" : 140}},
+        {"Position" : {"x" : 1260, "y" : 200}},
+        {"Position" : {"x" : 1360, "y" : 350}},
+        {"Position" : {"x" : 1260, "y" : 440}},
+        {"Position" : {"x" : 1050, "y" : 540}},
+        {"Position" : {"x" : 650, "y" : 570}},
+        {"Position" : {"x" : 370, "y" : 510}},
+        {"Position" : {"x" : 180, "y" : 390}},
+        {"Position" : {"x" : 270, "y" : 210}},
+        {"Position" : {"x" : 500, "y" : 150}},        
+        {"Position" : {"x" : 600, "y" : 130}},
+        {"Position" : {"x" : 580, "y" : 0}}
+        ],[{"Position" : {"x" : 1080, "y" : 0}},
+          {"Position" : {"x" : 1070, "y" : 150}},
+          {"Position" : {"x" : 1260, "y" : 200}},
+          {"Position" : {"x" : 1360, "y" : 350}},
+          {"Position" : {"x" : 1260, "y" : 440}},
+          {"Position" : {"x" : 1050, "y" : 540}},
+          {"Position" : {"x" : 650, "y" : 570}},
+          {"Position" : {"x" : 370, "y" : 510}},
+          {"Position" : {"x" : 180, "y" : 390}},
+          {"Position" : {"x" : 270, "y" : 210}},
+          {"Position" : {"x" : 500, "y" : 150}},
+          {"Position" : {"x" : 870, "y" : 100}},
+          {"Position" : {"x" : 1030, "y" : 110}},
+          {"Position" : {"x" : 1080, "y" : 0}}
+        ],[
+          {"Position" : {"x" : 1520, "y" : 480}},
+          {"Position" : {"x" : 1380, "y" : 410}},          
+          {"Position" : {"x" : 1260, "y" : 440}},
+          {"Position" : {"x" : 1050, "y" : 540}},
+          {"Position" : {"x" : 650, "y" : 570}},
+          {"Position" : {"x" : 370, "y" : 510}},
+          {"Position" : {"x" : 180, "y" : 390}},
+          {"Position" : {"x" : 270, "y" : 210}},
+          {"Position" : {"x" : 500, "y" : 150}},        
+          {"Position" : {"x" : 870, "y" : 100}},
+          {"Position" : {"x" : 1100, "y" : 140}},
+          {"Position" : {"x" : 1260, "y" : 200}},
+          {"Position" : {"x" : 1360, "y" : 350}},
+          {"Position" : {"x" : 1380, "y" : 410}},
+          {"Position" : {"x" : 1520, "y" : 480}}
+        ],[
+          {"Position" : {"x" : 1100, "y" : 740}},
+          {"Position" : {"x" : 1050, "y" : 560}},
+          {"Position" : {"x" : 1050, "y" : 540}},
+          {"Position" : {"x" : 650, "y" : 570}},
+          {"Position" : {"x" : 370, "y" : 510}},
+          {"Position" : {"x" : 180, "y" : 390}},
+          {"Position" : {"x" : 270, "y" : 210}},
+          {"Position" : {"x" : 500, "y" : 150}},        
+          {"Position" : {"x" : 870, "y" : 100}},
+          {"Position" : {"x" : 1100, "y" : 140}},
+          {"Position" : {"x" : 1260, "y" : 200}},
+          {"Position" : {"x" : 1360, "y" : 350}},
+          {"Position" : {"x" : 1260, "y" : 440}},
+          {"Position" : {"x" : 1050, "y" : 560}},
+          {"Position" : {"x" : 1100, "y" : 740}}
+        ],[
+          {"Position" : {"x" : 360, "y" : 740}},
+          {"Position" : {"x" : 430, "y" : 560}},
+          {"Position" : {"x" : 370, "y" : 510}},
+          {"Position" : {"x" : 180, "y" : 390}},
+          {"Position" : {"x" : 270, "y" : 210}},
+          {"Position" : {"x" : 500, "y" : 150}},        
+          {"Position" : {"x" : 870, "y" : 100}},
+          {"Position" : {"x" : 1100, "y" : 140}},
+          {"Position" : {"x" : 1260, "y" : 200}},
+          {"Position" : {"x" : 1360, "y" : 350}},
+          {"Position" : {"x" : 1260, "y" : 440}},
+          {"Position" : {"x" : 1050, "y" : 540}},
+          {"Position" : {"x" : 650, "y" : 570}},
+          {"Position" : {"x" : 430, "y" : 560}},
+          {"Position" : {"x" : 360, "y" : 740}}
+        ]
+        ]}
+  }  
+},
+{
+  "Level" : { 
+      "Antikörper" : 150,
+      "Turmkauf" : [{
+          "Blutzelle" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 0}},
+          {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}},
+          {"Niere" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 2}},
+          {"Lunge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 3}},
+          {"Herz" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 4}}
+],
+      "Wellen" : [
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+        ],
+        [
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
+
+        ],
+        [
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
+        ]
+      ],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "Karte" : {"Felder" : [
+        {"Position" : {"x" : 80, "y" : 200}}, 
+        {"Position" : {"x" : 160, "y" : 480}}, 
+        {"Position" : {"x" : 670, "y" : 190}},
+        {"Position" : {"x" : 640, "y" : 480}},
+        {"Position" : {"x" : 1270, "y" : 180}},
+        {"Position" : {"x" : 1400, "y" : 435}}],
+  "Wege" : [[{"Position" : {"x" : 1600, "y" : 314}},
+      {"Position" : {"x" : 0, "y" : 350}}
+      ]]}
+  }
+}
+]
 }

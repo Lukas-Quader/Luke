@@ -846,6 +846,22 @@ h1 {
   background-size: 100% 100%;
 }
 
+#box_level_8 {
+  background-image: url(img/map_8.png);
+  background-size: 100% 100%;
+}
+
+#box_level_9 {
+  background-image: url(img/map_9.png);
+  background-size: 100% 100%;
+}
+
+#box_level_10 {
+  background-image: url(img/map_10.png);
+  background-size: 100% 100%;
+}
+
+
 #box_schloss {
   background-color: brown;
   background-image: url(img/schloss.png);

@@ -6,7 +6,7 @@ class Controller {
   //Variablen bekanntmachen und initialisieren
   Level model;
   List<Level> levels;
-  int spawncount = 70;
+  int spawncount = 10;
   View view = View();
   bool _buy = false;
   bool _powerup = false;
