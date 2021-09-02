@@ -463,6 +463,8 @@ class Grippling implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -478,6 +480,7 @@ class Grippling implements Feinde {
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = 8;
     wert = 5;
+    abstand = data['abstand'];
   }
 
   @override
