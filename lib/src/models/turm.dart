@@ -70,7 +70,7 @@ class Blutzelle implements Turm {
     switch (goal) {
       case 1:
         angriffsgeschwindigkeit = 20;
-        schaden = 10;
+        schaden = 8;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
@@ -297,10 +297,11 @@ class Niere implements Turm {
       //Alle Feinde durchgehen
       for (var f in feinde) {
         //Prüfen ob ein Feind in Reichweite ist
-        if (position.dist(f.pos) <= reichweite && (f.countDOT <= 0 || agcount <= -10)) {
+        if (position.dist(f.pos) <= reichweite &&
+            (f.countDOT <= 0 || agcount <= -10)) {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-          kill.add(
-              Nierenschuss(id, position + Position(25, 25), f, effekt, schaden));
+          kill.add(Nierenschuss(
+              id, position + Position(25, 25), f, effekt, schaden));
           //agcount "resetten"
           agcount = angriffsgeschwindigkeit;
           //Break, damit nur der "nächste" Feind angegriffen wird.
@@ -360,13 +361,13 @@ class Lunge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 35;
+        angriffsgeschwindigkeit = 30;
         int reichweite = 80;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 35;
+        angriffsgeschwindigkeit = 30;
         int reichweite = 160;
         level = 2;
         break;
