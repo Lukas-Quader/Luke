@@ -6,7 +6,7 @@ class Controller {
   //Variablen bekanntmachen und initialisieren
   Level model;
   List<Level> levels;
-  int spawncount = 25;
+  int spawncount = 70;
   View view = View();
   bool _buy = false;
   bool _powerup = false;
@@ -117,7 +117,12 @@ class Controller {
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
           //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
           generateEnemy();
-          spawncount = 25;
+          if (model.wellen.first.isNotEmpty) {
+            print(model.wellen.first.first.name);
+            spawncount = model.wellen.first.first.abstand;
+          } else {
+            spawncount = 20;
+          }
         }
         //Turmanhroff und feinde bewegen aufrufen
         model.turmAngriff(_powerup, pushedPowerUp);

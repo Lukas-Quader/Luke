@@ -70,7 +70,7 @@ class Blutzelle implements Turm {
     switch (goal) {
       case 1:
         angriffsgeschwindigkeit = 20;
-        schaden = 10;
+        schaden = 8;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
@@ -108,8 +108,9 @@ class Blutzelle implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Blutschuss(id, position + Position(25, 25), f, effekt,
-                schaden * powerUp.multiplikatorDMG as int));
-            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+                (schaden * powerUp.multiplikatorDMG) as int));
+            agcount =
+                (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
           } else {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Blutschuss(
@@ -212,8 +213,9 @@ class Auge implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Augenschuss(id, position + Position(25, 25), f, effekt,
-                schaden * powerUp.multiplikatorDMG as int));
-            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+                (schaden * powerUp.multiplikatorDMG) as int));
+            agcount =
+                (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
           } else {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Augenschuss(
@@ -317,8 +319,9 @@ class Niere implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Nierenschuss(id, position + Position(25, 25), f, effekt,
-                schaden * powerUp.multiplikatorDMG as int));
-            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+                (schaden * powerUp.multiplikatorDMG) as int));
+            agcount =
+                (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
           } else {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Nierenschuss(
@@ -382,13 +385,13 @@ class Lunge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 35;
+        angriffsgeschwindigkeit = 30;
         int reichweite = 80;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 35;
+        angriffsgeschwindigkeit = 30;
         int reichweite = 160;
         level = 2;
         break;
@@ -422,8 +425,9 @@ class Lunge implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Luftschuss(id, position + Position(25, 25), f, effekt,
-                schaden * powerUp.multiplikatorDMG as int));
-            agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+                (schaden * powerUp.multiplikatorDMG) as int));
+            agcount =
+                (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
           } else {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Luftschuss(
@@ -528,7 +532,7 @@ class Herz implements Turm {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
           if (_powerup) {
             kill.add(Herzschuss(idcount++, position + Position(25, 25), f,
-                effekt, schaden * powerUp.multiplikatorDMG as int));
+                effekt, (schaden * powerUp.multiplikatorDMG) as int));
           } else {
             kill.add(Herzschuss(
                 idcount++, position + Position(25, 25), f, effekt, schaden));
@@ -537,7 +541,7 @@ class Herz implements Turm {
       }
       //agcount "resetten"
       if (_powerup) {
-        agcount = angriffsgeschwindigkeit / powerUp.multiplikatorAG as int;
+        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
       } else {
         agcount = angriffsgeschwindigkeit;
       }

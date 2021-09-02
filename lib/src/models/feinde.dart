@@ -16,6 +16,7 @@ abstract class Feinde {
   int slowtime = 0;
   int countDOT = 0;
   bool get hitted;
+  int abstand;
   // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
   void bewegen(); // Bewegung der Feinde
@@ -53,6 +54,8 @@ class Corona implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -67,7 +70,8 @@ class Corona implements Feinde {
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
-    wert = boss ? 50 : 10;
+    wert = boss ? 50 : 5;
+    abstand = data['abstand'];
   }
 
   @override
@@ -195,6 +199,8 @@ class MRSA implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -206,10 +212,11 @@ class MRSA implements Feinde {
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
-    leben = boss ? 200 : 5; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
+    leben = boss ? 200 : 7; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
-    wert = boss ? 60 : 20;
+    wert = boss ? 60 : 5;
+    abstand = data['abstand'];
   }
 
   @override
@@ -311,6 +318,8 @@ class Grippe implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -326,6 +335,7 @@ class Grippe implements Feinde {
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
     wert = boss ? 50 : 10;
+    abstand = data['abstand'];
   }
 
   @override
@@ -594,6 +604,8 @@ class HSV implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -611,6 +623,7 @@ class HSV implements Feinde {
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
     wert = boss ? 50 : 10;
+    abstand = data['abstand'];
   }
 
   void onSpawn(int anzFeinde) => leben += anzFeinde * 5;
@@ -740,6 +753,8 @@ class Clostridien implements Feinde {
   int slowtime = 0;
   @override
   int countDOT = 0;
+  @override
+  int abstand;
 
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
@@ -753,8 +768,9 @@ class Clostridien implements Feinde {
     boss = data['boss'];
     leben = boss ? 50 : 5; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
-    laufgeschwindigkeit = boss ? 4 : 7;
+    laufgeschwindigkeit = boss ? 4 : 8;
     wert = boss ? 25 : 5;
+    abstand = data['abstand'];
   }
 
   @override
@@ -820,11 +836,11 @@ class Clostridien implements Feinde {
     // Verlangsamungseffekt
     switch (effekt) {
       case 1:
-        laufgeschwindigkeit = boss ? 1 : 2;
+        laufgeschwindigkeit = boss ? 2 : 3;
         slowtime = boss ? 20 : 35;
         break;
       case 2:
-        laufgeschwindigkeit = boss ? 2 : 5;
+        laufgeschwindigkeit = boss ? 4 : 7;
         break;
       case 3:
         countDOT = 30;
