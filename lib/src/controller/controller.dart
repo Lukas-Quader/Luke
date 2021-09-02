@@ -10,7 +10,7 @@ class Controller {
   View view = View();
   bool _buy = false;
   bool _powerup = false;
-  int powerUpTime;
+  int powerUpTime = 0;
   Element tower;
   PowerUp pushedPowerUp;
   Turm selectedTower;
@@ -99,7 +99,12 @@ class Controller {
       if (_powerup) {
         view.switchPowerUpStyle(true);
         powerUpTime--;
-        if (powerUpTime == 0) _powerup = false;
+        if (powerUpTime == 0) {
+          _powerup = false;
+          powerUpTime = pushedPowerUp.abklingzeit;
+        }
+      } else if (powerUpTime > 0) {
+        powerUpTime--;
       } else {
         view.switchPowerUpStyle(false);
       }
@@ -112,10 +117,14 @@ class Controller {
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
           //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
           generateEnemy();
-          spawncount = 25;
+          if (model.wellen.first.isNotEmpty) {
+            spawncount = model.wellen.first.first.abstand;
+          } else {
+            spawncount = 20;
+          }
         }
         //Turmanhroff und feinde bewegen aufrufen
-        model.turmAngriff();
+        model.turmAngriff(_powerup, pushedPowerUp);
         model.feindeBewegen();
         if (model.shots.isNotEmpty) {
           for (var s in model.shots) {
@@ -212,7 +221,7 @@ class Controller {
           if (p.name == (event.target as Element).id) pushedPowerUp = p;
         }
         // Die Abklingzeit wird gesetzt.
-        powerUpTime = pushedPowerUp.abklingzeit;
+        powerUpTime = pushedPowerUp.laufzeit;
         //Wird in der Mainloop benötigt und dort wieder auf false gesetzt
         _powerup = true;
       }
