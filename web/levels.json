@@ -11,40 +11,40 @@
     ],
             "Wellen" : [
               [
-                {"HSV" : {"id" : 0, "boss" : false}},
-                {"Clostridien" : {"id" : 10, "boss" : false}},
-                {"Clostridien" : {"id" : 11, "boss" : false}},
-                {"Clostridien" : {"id" : 12, "boss" : false}},
-                {"HSV" : {"id" : 2, "boss" : false}},
-                {"MRSA" : {"id" : 3, "boss" : false}},
-                {"Corona" : {"id" : 4, "boss" : false}},
-                {"Corona" : {"id" : 5, "boss" : false}},
-                {"MRSA" : {"id" : 6, "boss" : false}},
-                {"Corona" : {"id" : 7, "boss" : false}},
-                {"Corona" : {"id" : 8, "boss" : false}},
-                {"Grippe" : {"id" : 9, "boss" : false}}
+                {"HSV" : {"id" : 0, "boss" : false , "abstand" : 10}},
+                {"Clostridien" : {"id" : 10, "boss" : false , "abstand" : 30}},
+                {"Clostridien" : {"id" : 11, "boss" : false , "abstand" : 10}},
+                {"Clostridien" : {"id" : 12, "boss" : false , "abstand" : 90}},
+                {"HSV" : {"id" : 2, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 200}},
+                {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+                {"Grippe" : {"id" : 9, "boss" : false , "abstand" : 20}}
               ],
               [
-                {"Clostridien" : {"id" : 14, "boss" : true}},
-                {"MRSA" : {"id" : 0, "boss" : false}},
-                {"MRSA" : {"id" : 1, "boss" : false}},
-                {"MRSA" : {"id" : 2, "boss" : false}},
-                {"Corona" : {"id" : 3, "boss" : false}},
-                {"Corona" : {"id" : 4, "boss" : false}},
-                {"Corona" : {"id" : 5, "boss" : false}},
-                {"MRSA" : {"id" : 6, "boss" : false}},
-                {"MRSA" : {"id" : 7, "boss" : false}},
-                {"MRSA" : {"id" : 8, "boss" : false}},
-                {"Corona" : {"id" : 9, "boss" : false}},
-                {"MRSA" : {"id" : 10, "boss" : false}},
-                {"Corona" : {"id" : 11, "boss" : false}},
-                {"MRSA" : {"id" : 12, "boss" : false}},
-                {"Corona" : {"id" : 13, "boss" : false}}
+                {"Clostridien" : {"id" : 14, "boss" : true , "abstand" : 20}},
+                {"MRSA" : {"id" : 0, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 1, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 8, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 10, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 11, "boss" : false , "abstand" : 20}},
+                {"MRSA" : {"id" : 12, "boss" : false , "abstand" : 20}},
+                {"Corona" : {"id" : 13, "boss" : false , "abstand" : 20}}
 
               ],
               [
-                {"MRSA" : {"id" : 1, "boss" : true}},
-                {"Corona" : {"id" : 2, "boss" : true}}  
+                {"MRSA" : {"id" : 1, "boss" : true , "abstand" : 20}},
+                {"Corona" : {"id" : 2, "boss" : true , "abstand" : 20}}  
               ]
             ],
             "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 500, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 30}},
@@ -80,33 +80,33 @@
   ],
           "Wellen" : [
             [
-              {"Corona" : {"id" : 0, "boss" : false}},
-              {"Corona" : {"id" : 1, "boss" : false}},
-              {"Corona" : {"id" : 2, "boss" : false}},
-              {"MRSA" : {"id" : 3, "boss" : false}},
-              {"Corona" : {"id" : 4, "boss" : false}},
-              {"Corona" : {"id" : 5, "boss" : false}},
-              {"MRSA" : {"id" : 6, "boss" : false}},
-              {"Corona" : {"id" : 7, "boss" : false}},
-              {"Corona" : {"id" : 8, "boss" : false}},
-              {"Corona" : {"id" : 9, "boss" : false}}
+              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
             ],
             [
-              {"Corona" : {"id" : 0, "boss" : false}},
-              {"Corona" : {"id" : 1, "boss" : false}},
-              {"MRSA" : {"id" : 2, "boss" : false}},
-              {"Corona" : {"id" : 3, "boss" : false}},
-              {"Corona" : {"id" : 4, "boss" : false}},
-              {"MRSA" : {"id" : 5, "boss" : false}},
-              {"Corona" : {"id" : 6, "boss" : false}},
-              {"MRSA" : {"id" : 7, "boss" : false}},
-              {"Corona" : {"id" : 8, "boss" : false}},
-              {"Corona" : {"id" : 9, "boss" : false}}
+              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+              {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+              {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
             ],
             [
-              {"MRSA" : {"id" : 7, "boss" : true}},
-              {"Corona" : {"id" : 8, "boss" : true}}  
+              {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+              {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
             ]
           ],
           "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 10}},
@@ -140,33 +140,33 @@
 ],
         "Wellen" : [
           [
-            {"Corona" : {"id" : 0, "boss" : false}},
-            {"Corona" : {"id" : 1, "boss" : false}},
-            {"Corona" : {"id" : 2, "boss" : false}},
-            {"MRSA" : {"id" : 3, "boss" : false}},
-            {"Corona" : {"id" : 4, "boss" : false}},
-            {"Corona" : {"id" : 5, "boss" : false}},
-            {"MRSA" : {"id" : 6, "boss" : false}},
-            {"Corona" : {"id" : 7, "boss" : false}},
-            {"Corona" : {"id" : 8, "boss" : false}},
-            {"Corona" : {"id" : 9, "boss" : false}}
+            {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+            {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+            {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
           ],
           [
-            {"Corona" : {"id" : 0, "boss" : false}},
-            {"Corona" : {"id" : 1, "boss" : false}},
-            {"MRSA" : {"id" : 2, "boss" : false}},
-            {"Corona" : {"id" : 3, "boss" : false}},
-            {"Corona" : {"id" : 4, "boss" : false}},
-            {"MRSA" : {"id" : 5, "boss" : false}},
-            {"Corona" : {"id" : 6, "boss" : false}},
-            {"MRSA" : {"id" : 7, "boss" : false}},
-            {"Corona" : {"id" : 8, "boss" : false}},
-            {"Corona" : {"id" : 9, "boss" : false}}
+            {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+            {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+            {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+            {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+            {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
           ],
           [
-            {"MRSA" : {"id" : 7, "boss" : true}},
-            {"Corona" : {"id" : 8, "boss" : true}}  
+            {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+            {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
           ]
         ],
         "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
@@ -205,33 +205,33 @@
 ],
       "Wellen" : [
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"Corona" : {"id" : 2, "boss" : false}},
-          {"MRSA" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"Corona" : {"id" : 5, "boss" : false}},
-          {"MRSA" : {"id" : 6, "boss" : false}},
-          {"Corona" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
         ],
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"MRSA" : {"id" : 2, "boss" : false}},
-          {"Corona" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"MRSA" : {"id" : 5, "boss" : false}},
-          {"Corona" : {"id" : 6, "boss" : false}},
-          {"MRSA" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
         ],
         [
-          {"MRSA" : {"id" : 7, "boss" : true}},
-          {"Corona" : {"id" : 8, "boss" : true}}  
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
         ]
       ],
       "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
@@ -275,33 +275,33 @@
 ],
       "Wellen" : [
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"Corona" : {"id" : 2, "boss" : false}},
-          {"MRSA" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"Corona" : {"id" : 5, "boss" : false}},
-          {"MRSA" : {"id" : 6, "boss" : false}},
-          {"Corona" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
         ],
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"MRSA" : {"id" : 2, "boss" : false}},
-          {"Corona" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"MRSA" : {"id" : 5, "boss" : false}},
-          {"Corona" : {"id" : 6, "boss" : false}},
-          {"MRSA" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
         ],
         [
-          {"MRSA" : {"id" : 7, "boss" : true}},
-          {"Corona" : {"id" : 8, "boss" : true}}  
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
         ]
       ],
       "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
@@ -329,33 +329,33 @@
 ],
       "Wellen" : [
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"Corona" : {"id" : 2, "boss" : false}},
-          {"MRSA" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"Corona" : {"id" : 5, "boss" : false}},
-          {"MRSA" : {"id" : 6, "boss" : false}},
-          {"Corona" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
         ],
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"MRSA" : {"id" : 2, "boss" : false}},
-          {"Corona" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"MRSA" : {"id" : 5, "boss" : false}},
-          {"Corona" : {"id" : 6, "boss" : false}},
-          {"MRSA" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
         ],
         [
-          {"MRSA" : {"id" : 7, "boss" : true}},
-          {"Corona" : {"id" : 8, "boss" : true}}  
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
         ]
       ],
       "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
@@ -388,33 +388,33 @@
 ],
       "Wellen" : [
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"Corona" : {"id" : 2, "boss" : false}},
-          {"MRSA" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"Corona" : {"id" : 5, "boss" : false}},
-          {"MRSA" : {"id" : 6, "boss" : false}},
-          {"Corona" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
         ],
         [
-          {"Corona" : {"id" : 0, "boss" : false}},
-          {"Corona" : {"id" : 1, "boss" : false}},
-          {"MRSA" : {"id" : 2, "boss" : false}},
-          {"Corona" : {"id" : 3, "boss" : false}},
-          {"Corona" : {"id" : 4, "boss" : false}},
-          {"MRSA" : {"id" : 5, "boss" : false}},
-          {"Corona" : {"id" : 6, "boss" : false}},
-          {"MRSA" : {"id" : 7, "boss" : false}},
-          {"Corona" : {"id" : 8, "boss" : false}},
-          {"Corona" : {"id" : 9, "boss" : false}}
+          {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 1, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 4, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 5, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 6, "boss" : false , "abstand" : 20}},
+          {"MRSA" : {"id" : 7, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : false , "abstand" : 20}},
+          {"Corona" : {"id" : 9, "boss" : false , "abstand" : 20}}
 
         ],
         [
-          {"MRSA" : {"id" : 7, "boss" : true}},
-          {"Corona" : {"id" : 8, "boss" : true}}  
+          {"MRSA" : {"id" : 7, "boss" : true , "abstand" : 20}},
+          {"Corona" : {"id" : 8, "boss" : true , "abstand" : 20}}  
         ]
       ],
       "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],

@@ -117,7 +117,11 @@ class Controller {
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
           //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
           generateEnemy();
-          spawncount = 25;
+          if (model.wellen.first.isNotEmpty) {
+            spawncount = model.wellen.first.first.abstand;
+          } else {
+            spawncount = 20;
+          }
         }
         //Turmanhroff und feinde bewegen aufrufen
         model.turmAngriff(_powerup, pushedPowerUp);
