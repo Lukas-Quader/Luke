@@ -9,9 +9,8 @@ class Controller {
   int spawncount = 25;
   View view = View();
   bool _buy = false;
-  bool _upgrade = false;
   bool _powerup = false;
-  int powerUpTime;
+  int powerUpTime = 0;
   Element tower;
   PowerUp pushedPowerUp;
   Turm selectedTower;
@@ -27,6 +26,7 @@ class Controller {
   ///Main Methode
   ///Sie ist der Eintrittspunkt in das Spiel
   void main() async {
+    // Abfrage zum Initialisieren des LocalStorage
     if (!window.localStorage.containsKey('completeLevel')) {
       window.localStorage['completeLevel'] = '0';
     }
@@ -63,16 +63,21 @@ class Controller {
       }
     });
 
+    //Onclick für den Menübutton nach dem Spiel
     view.menueButton.onClick.listen((event) async {
+      //Buttons werden ausgeblendet und das Menü neu generiert.
       view.switchToMenu();
       view.generateMenu(levels);
-      l = 0;
-      levels = await loadLevelFromData();
+      l = 0; // benötigt, da sonst ein Level direkt ausgewählt ist.
+      levels = await loadLevelFromData(); //neuladen der Json
     });
 
+    //Onclick für den Restartbutton nach dem Spiel
     view.restartButton.onClick.listen((event) async {
-      levels = await loadLevelFromData();
+      levels = await loadLevelFromData(); //neuladen der Json
+      // Das Win oder Gameober wird ausgeblendet
       view.resetWinGameover();
+      //erneutes starten des Levels
       mainLoop(l);
     });
   }
@@ -85,17 +90,25 @@ class Controller {
     setClickListenerForLevel();
     //Einen timer starten welcher alls 70 milisekunden aktualisiert
     Timer.periodic(Duration(milliseconds: 50), (timer) {
+      //Solange ein Turm im Menü ausgewählt ist, werden die Turmorte angezeigt
       if (_buy) {
         view.showPoints(model.karte.felder);
         setClickForPoints();
       }
+      //Die Powerups werden nach benutzen für eine bestimmte Abklingzeit ausgeblendet
       if (_powerup) {
         view.switchPowerUpStyle(true);
         powerUpTime--;
-        if (powerUpTime == 0) _powerup = false;
+        if (powerUpTime == 0) {
+          _powerup = false;
+          powerUpTime = pushedPowerUp.abklingzeit;
+        }
+      } else if (powerUpTime > 0) {
+        powerUpTime--;
       } else {
         view.switchPowerUpStyle(false);
       }
+
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
         view.portrait.style.display = 'none';
@@ -107,7 +120,7 @@ class Controller {
           spawncount = 25;
         }
         //Turmanhroff und feinde bewegen aufrufen
-        model.turmAngriff();
+        model.turmAngriff(_powerup, pushedPowerUp);
         model.feindeBewegen();
         if (model.shots.isNotEmpty) {
           for (var s in model.shots) {
@@ -158,8 +171,9 @@ class Controller {
       //spawn in der view wird aufgerufen und der Feind übergeben
       view.spawn(model.feinde.last);
       //falls mehrere wege existieren
-      if (model.karte.wege.length > 1)
+      if (model.karte.wege.length > 1) {
         wayNow = (wayNow >= model.karte.wege.length - 1) ? 0 : wayNow + 1;
+      }
       //der Weg wird den Feinden übergeben
       model.feinde.last.setWay(generateWay(model.karte.wege[wayNow]));
     }
@@ -193,12 +207,18 @@ class Controller {
         _buy = true;
       }
     });
+    //onClick für die PowerUp Buttons
     view.powerUpButton.onClick.listen((event) {
+      //Das ausgewählte Element wird ausgelesen
       if (event.target is Element) {
-        for (PowerUp p in model.powerup) {
+        //Alle vorhandenen Powerups werden mit der id des Buttons verglichen
+        //und das entsprechende Powerup wird gespeichert.
+        for (var p in model.powerup) {
           if (p.name == (event.target as Element).id) pushedPowerUp = p;
         }
-        powerUpTime = pushedPowerUp.abklingzeit;
+        // Die Abklingzeit wird gesetzt.
+        powerUpTime = pushedPowerUp.laufzeit;
+        //Wird in der Mainloop benötigt und dort wieder auf false gesetzt
         _powerup = true;
       }
     });
@@ -228,12 +248,12 @@ class Controller {
     });
   }
 
+  //onClick Methode für die Türme auf dem Feld um Upgrade/Verkäufe auszuführen
   void setClickForTowers(List<Turm> towers) {
     for (var tower in towers) {
       view.getTower(tower).onClick.listen((event) {
         view.generateUpgradeMenu(tower);
         setClickListenerForUpgrade();
-        _upgrade = true;
         selectedTower = tower;
       });
     }
@@ -241,7 +261,6 @@ class Controller {
 
   void setClickListenerForUpgrade() {
     view.backButton.onClick.listen((event) {
-      _upgrade = false;
       view.generateBuyMenu(model.kaufen, model.powerup);
       setClickListenerForLevel();
     });
@@ -271,7 +290,6 @@ class Controller {
       }
       view.generateBuyMenu(model.kaufen, model.powerup);
       setClickListenerForLevel();
-      _upgrade = false;
     });
     view.sellButton.onClick.listen((event) {
       if (event.target is Element) {
@@ -282,7 +300,6 @@ class Controller {
                 selectedTower, int.parse(temp.getAttribute('value'))));
         view.generateBuyMenu(model.kaufen, model.powerup);
         setClickListenerForLevel();
-        _upgrade = false;
       }
     });
   }

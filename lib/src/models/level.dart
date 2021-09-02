@@ -130,13 +130,13 @@ class Level {
   }
 
   ///Methode für Turmangriffe
-  void turmAngriff() {
+  void turmAngriff(bool _powerup, PowerUp powerup) {
     //Abfrage zum Prüfen ob turm oder feinde leer ist
     if (turm.isNotEmpty && feinde.isNotEmpty) {
       //Alle existerenden Türme angreifen lassen
       for (var t in turm) {
         //merken ob der Angriff getötet hat
-        var shot = t.angriff(feinde);
+        var shot = t.angriff(feinde, _powerup, powerup);
         //falls der Angriff getötet hat 10 Antikörper gutschreiben
         if (shot.isNotEmpty) {
           shots.addAll(shot);

@@ -486,7 +486,7 @@ h1 {
 }
 
 #antibiotika {
-  background-image: url(img/powerUp_1.png);
+  background-image: url(img/powerUp_2.png);
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
@@ -501,7 +501,7 @@ h1 {
 }
 
 #adrenalin {
-  background-image: url(img/powerUp_2.png);
+  background-image: url(img/powerUp_1.png);
   background-repeat: no-repeat;
   background-size: contain;
   border-radius: 10px;
