@@ -26,6 +26,14 @@ class View {
 
   final menu = querySelector('#menu'); // HTML-Teil des Startmenüs
 
+  final tutorial = querySelector('#tutorialBook'); // HTML-Teil des Tutorials
+
+  final tutorialPicture = querySelector('#tutorialPicture'); // Tutorial Bild
+
+  final tutorialShort = querySelector('#tutorialShort'); // Tutorial kurzer Text
+
+  final tutorialText = querySelector('#tutorialText'); // Tutorial langer Text
+
   final levelview = querySelector('#level'); // HTML-Teil der Levelview
 
   final map = querySelector('#map'); // HTML-Teil der Karte
@@ -56,6 +64,14 @@ class View {
       querySelectorAll('.upgrade_tower');
   // StartButton
   HtmlElement get startButton => querySelector('#startButton');
+  
+  HtmlElement get tutorialButton => querySelector('#tutorialButton');
+  
+  HtmlElement get tutorialBack => querySelector('#tutorialBack');
+  
+  HtmlElement get tutorialLeft => querySelector('#tpleft');
+  
+  HtmlElement get tutorialRight => querySelector('#tpright');
 
   HtmlElement get menueButton => querySelector('#menueButton');
 
@@ -365,6 +381,7 @@ class View {
   void switchToMenu() {
     levelview.style.display = 'none';
     menu.style.display = 'grid';
+    tutorial.style.display = 'none';
     resetWinGameover();
   }
 
@@ -377,6 +394,17 @@ class View {
     for (var tower in towerPoints) {
       tower.setAttribute('value', '1');
     }
+  }
+
+  /// Methode um zum Menü zurück zu kehren
+  void switchToTutorial(Map<String,dynamic> tutorials) {
+    levelview.style.display = 'none';
+    menu.style.display = 'none';
+    tutorial.style.display = 'grid';
+    tutorialShort.innerHtml = tutorials['Short'];
+    tutorialText.innerHtml = tutorials['Long'];
+    tutorialPicture?.style?.backgroundImage = 'url("${tutorials['Picture']}")';
+    resetWinGameover();
   }
 
   // Es wird ausgelesen, welches Level angewählt wird und setzt die Umrandung

@@ -92,6 +92,16 @@ h1 {
   background-image: url("img/background_monster.png"); 
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: bottom;
+}
+
+#tutorialBook {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 #buttons {
@@ -188,6 +198,82 @@ h1 {
 #startButton {
   margin: 30% 5% 5% 5% ;
   padding: 5% 40% 5% 40%;
+  background-color: yellow;
+  font-size: larger;
+  border-radius: 10px; 
+}
+
+#tutorialPicture {
+  position: absolute;
+  margin: 5% 10% 50% 25%;
+  padding: 7%;
+  background-image: url(img/corona.png);
+  background-color: darkred;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  border-radius: 10px;
+  border-color: black;
+  border-style: solid;
+}
+
+#tutorialShort {
+  position: absolute;
+  margin: 23% 51% 60% 15%;
+  padding: 1%;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  font-size: larger;
+  color: white;
+}
+
+#tutorialText {
+  position: absolute;
+  margin: 3% 15% 60% 51%;
+  padding: 1%;
+  background-color: rgba(0, 0, 0, 0.4);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  font-size: larger;
+  color: white;
+}
+
+#tutorialButton {
+  margin: 1% 5% 5% 5% ;
+  padding: 5% 37% 5% 37%;
+  background-color: yellow;
+  font-size: larger;
+  border-radius: 10px; 
+}
+
+#tpleft {
+  margin-top: 38%;
+  margin-left: 1%;
+  padding: 2%;
+  position: absolute;
+  background-color: yellow;
+  font-size: larger;
+  border-radius: 10px; 
+}
+
+#tutorialBack {
+  margin-top: 1%;
+  margin-left: 1%;
+  padding: 2%;
+  position: absolute;
+  background-color: yellow;
+  font-size: larger;
+  border-radius: 10px; 
+}
+
+#tpright {
+  margin-top: 38%;
+  margin-left: 90%;
+  padding: 2%;
+  position: absolute;
   background-color: yellow;
   font-size: larger;
   border-radius: 10px; 

@@ -385,19 +385,19 @@ class Lunge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 30;
+        angriffsgeschwindigkeit = 20;
         int reichweite = 80;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 30;
+        angriffsgeschwindigkeit = 20;
         int reichweite = 160;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 20;
+        angriffsgeschwindigkeit = 10;
         int reichweite = 160;
         level = 3;
         break;
