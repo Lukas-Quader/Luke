@@ -45,9 +45,9 @@ class Blutzelle implements Turm {
   @override
   int kosten = 50; // Kosten des Turms
   @override
-  int kostenU1 = 20; // Kosten des ersten Upgrades
+  int kostenU1 = 50; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 30; // Kosten des zweiten Upgrades
+  int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
   int effekt = 0; // Welche Effekte der Turm besitzt hier keine
   @override
@@ -62,7 +62,7 @@ class Blutzelle implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -76,14 +76,14 @@ class Blutzelle implements Turm {
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 15;
+        angriffsgeschwindigkeit = 13;
         schaden = 10;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 15;
-        schaden = 15;
+        angriffsgeschwindigkeit = 8;
+        schaden = 10;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -139,7 +139,7 @@ class Auge implements Turm {
   @override
   int id; //id um die Türme zu unterscheiden
   @override
-  int angriffsgeschwindigkeit = 35; // Angriffsgeschwindigkeit
+  int angriffsgeschwindigkeit = 30; // Angriffsgeschwindigkeit
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
@@ -151,9 +151,9 @@ class Auge implements Turm {
   @override
   int kosten = 75; // Kosten des Turms
   @override
-  int kostenU1 = 50; // Kosten des ersten Upgrades
+  int kostenU1 = 75; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 50; // Kosten des zweiten Upgrades
+  int kostenU2 = 75; // Kosten des zweiten Upgrades
   @override
   int effekt = 0; // Welche Effekte der Turm besitzt hier keine
   @override
@@ -168,7 +168,7 @@ class Auge implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -179,18 +179,21 @@ class Auge implements Turm {
         reichweite = 200;
         schaden = 10;
         level = 1;
+        angriffsgeschwindigkeit = 30;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
         reichweite = 400;
-        schaden = 10;
+        schaden = 11;
         level = 2;
+        angriffsgeschwindigkeit = 25;
         break;
       //Der Schaden wird erhöht
       case 3:
         reichweite = 400;
-        schaden = 15;
+        schaden = 16;
         level = 3;
+        angriffsgeschwindigkeit = 25;
         break;
       //Falls level 1 bleibt alles unverändert
       default:
@@ -245,11 +248,11 @@ class Niere implements Turm {
   @override
   int id; //id um die Türme zu unterscheiden
   @override
-  int angriffsgeschwindigkeit = 20; // Angriffsgeschwindigkeit
+  int angriffsgeschwindigkeit = 10; // Angriffsgeschwindigkeit
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
-  int schaden = 2; // Initialer Schaden
+  int schaden = 1; // Initialer Schaden
   @override
   int reichweite = 150; // Initiale Reichweite
   @override
@@ -257,7 +260,7 @@ class Niere implements Turm {
   @override
   int kosten = 75; // Kosten des Turms
   @override
-  int kostenU1 = 30; // Kosten des ersten Upgrades
+  int kostenU1 = 75; // Kosten des ersten Upgrades
   @override
   int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
@@ -274,7 +277,7 @@ class Niere implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -352,11 +355,11 @@ class Lunge implements Turm {
   @override
   int id; //id um die Türme zu unterscheiden
   @override
-  int angriffsgeschwindigkeit = 20; // Angriffsgeschwindigkeit
+  int angriffsgeschwindigkeit = 15; // Angriffsgeschwindigkeit
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
-  int schaden = 3; // Initialer Schaden
+  int schaden = 2; // Initialer Schaden
   @override
   int reichweite = 80; // Initiale Reichweite
   @override
@@ -364,9 +367,9 @@ class Lunge implements Turm {
   @override
   int kosten = 100; // Kosten des Turms
   @override
-  int kostenU1 = 50; // Kosten des ersten Upgrades
+  int kostenU1 = 100; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 70; // Kosten des zweiten Upgrades
+  int kostenU2 = 50; // Kosten des zweiten Upgrades
   @override
   int effekt = 1; // Welche Effekte der Turm besitzt Slow
   @override
@@ -381,7 +384,7 @@ class Lunge implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -389,20 +392,20 @@ class Lunge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 20;
-        int reichweite = 80;
+        angriffsgeschwindigkeit = 15;
+        reichweite = 100;
         level = 1;
         break;
-      //Erhöhung der Angriffsgeschwindigkeit
+      //Erhöhung der Reichweite und Flaechenangriff
       case 2:
-        angriffsgeschwindigkeit = 20;
-        int reichweite = 160;
+        angriffsgeschwindigkeit = 15;
+        reichweite = 110;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 10;
-        int reichweite = 160;
+        angriffsgeschwindigkeit = 12;
+        reichweite = 160;
         level = 3;
         break;
       //Falls level 1 bleibt alles unverändert
@@ -419,6 +422,8 @@ class Lunge implements Turm {
       List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
     List<Projektiel> kill = [];
+    //counter für die Id
+    var idcount = 0;
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -428,19 +433,22 @@ class Lunge implements Turm {
           //agcount "resetten"
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
-            kill.add(Luftschuss(id, position + Position(25, 25), f, effekt,
-                (schaden * powerUp.multiplikatorDMG) as int));
-            agcount =
-                (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
+            kill.add(Luftschuss(idcount++, position + Position(25, 25), f,
+                effekt, (schaden * powerUp.multiplikatorDMG) as int));
           } else {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Luftschuss(
-                id, position + Position(25, 25), f, effekt, schaden));
-            agcount = angriffsgeschwindigkeit;
+                idcount++, position + Position(25, 25), f, effekt, schaden));
           }
           //Break, damit nur der "nächste" Feind angegriffen wird.
-          break;
+          if (level <= 1) break;
         }
+      }
+      //agcount "resetten"
+      if (_powerup) {
+        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
+      } else {
+        agcount = angriffsgeschwindigkeit;
       }
     }
     //Angriffscounter einen runterzählen
@@ -465,15 +473,15 @@ class Herz implements Turm {
   @override
   int schaden = 4; // Initialer Schaden
   @override
-  int reichweite = 70; // Initiale Reichweite
+  int reichweite = 60; // Initiale Reichweite
   @override
   int level = 1; // Initiales Level
   @override
   int kosten = 125; // Kosten des Turms
   @override
-  int kostenU1 = 50; // Kosten des ersten Upgrades
+  int kostenU1 = 125; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 50; // Kosten des zweiten Upgrades
+  int kostenU2 = 100; // Kosten des zweiten Upgrades
   @override
   int effekt = 2; // Welche Effekte der Turm besitzt hier keine
   @override
@@ -488,7 +496,7 @@ class Herz implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -499,18 +507,21 @@ class Herz implements Turm {
         angriffsgeschwindigkeit = 20;
         reichweite = 100;
         level = 1;
+        schaden = 4;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 10;
+        angriffsgeschwindigkeit = 15;
         reichweite = 100;
         level = 2;
+        schaden = 5;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 10;
+        angriffsgeschwindigkeit = 12;
         reichweite = 150;
         level = 3;
+        schaden = 6;
         break;
       //Falls level 1 bleibt alles unverändert
       default:

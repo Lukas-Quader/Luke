@@ -114,7 +114,7 @@ class Luftschuss implements Projektiel {
     dir = (enemy.pos - pos).uni(); // Richtung in x und y Koordinaten
     dmg = schaden;
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
-    fluggeschwindigkeit = 10;
+    fluggeschwindigkeit = 15;
     effect = eff;
   }
 

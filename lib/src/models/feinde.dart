@@ -121,7 +121,7 @@ class Corona implements Feinde {
     //Schaden über Zeit
     if (countDOT > 0) {
       countDOT--;
-      if (countDOT % 10 == 0) treffer(1, 0);
+      if (countDOT % 5 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -262,7 +262,7 @@ class MRSA implements Feinde {
     //Schaden über Zeit
     if (countDOT > 0) {
       countDOT--;
-      if (countDOT % 10 == 0) treffer(1, 0);
+      if (countDOT % 5 == 0) treffer(1, 0);
     }
     // Abfrage ob noch Wegpunkte in der Liste sind
     if (way.isNotEmpty) {
@@ -380,7 +380,7 @@ class Grippe implements Feinde {
     //Schaden über Zeit
     if (countDOT > 0) {
       countDOT--;
-      if (countDOT % 10 == 0) treffer(1, 0);
+      if (countDOT % 5 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -523,7 +523,7 @@ class Grippling implements Feinde {
     //Schaden über Zeit
     if (countDOT > 0) {
       countDOT--;
-      if (countDOT % 10 == 0) treffer(1, 0);
+      if (countDOT % 5 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
@@ -658,7 +658,7 @@ class HSV implements Feinde {
     abstand = data['abstand'];
   }
 
-  void onSpawn(int anzFeinde) => leben += anzFeinde * 5;
+  void onSpawn(int anzFeinde) => leben += anzFeinde * 3;
 
   @override
   // Bewegen der Feinde
@@ -669,7 +669,7 @@ class HSV implements Feinde {
     //Schaden über Zeit
     if (countDOT > 0) {
       countDOT--;
-      if (countDOT % 10 == 0) treffer(1, 0);
+      if (countDOT % 5 == 0) treffer(1, 0);
     }
     // Falls von Verlangsamungseffekt betroffen -> Cooldown
     if (slowtime <= 0) {
