@@ -69,7 +69,7 @@ class Corona implements Feinde {
     boss = data['boss'];
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
-    laufgeschwindigkeit = boss ? 2 : 5;
+    laufgeschwindigkeit = boss ? 2 : 4;
     wert = boss ? 50 : 5;
     abstand = data['abstand'];
   }
@@ -141,7 +141,7 @@ class Corona implements Feinde {
         slowtime = boss ? 20 : 35;
         break;
       case 2:
-        laufgeschwindigkeit = boss ? 2 : 5;
+        laufgeschwindigkeit = boss ? 2 : 4;
         break;
       case 3:
         countDOT = 30;
@@ -331,7 +331,7 @@ class Grippe implements Feinde {
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
-    leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
+    leben = boss ? 105 : 8; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 5;
     wert = boss ? 50 : 10;
@@ -471,12 +471,12 @@ class Grippling implements Feinde {
 
   Grippling(
       // Constructor
-      Map<String, dynamic> data){
+      Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
     boss = data['boss'];
-    leben = 5; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
+    leben = 4; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = 8;
     wert = 5;
@@ -577,6 +577,7 @@ class Grippling implements Feinde {
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
+
 class HSV implements Feinde {
   // Feindklasse HSV
   @override
