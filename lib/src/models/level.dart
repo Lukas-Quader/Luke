@@ -5,19 +5,41 @@ part of ImmunityTD;
 ///Models.
 class Level {
   //Variablen bekanntmachen
+  /// beinhaltet das aktuelle Leben
   int leben = 100;
+
+  ///Liste der Feindwellen
   List<dynamic> wellen;
+
+  /// gibt an ob Verloren wurde
   bool gameOver;
+
+  /// gibt an ob Gewonnen wurde
   bool win;
+
+  /// beinhaltet die Antikörper (Währung)
   num ak;
+
+  ///Eine Liste mit Türmen, welche in dem Level kaufbar sind.
   List<Turm> kaufen = [];
+
+  ///Eine Liste mit Türmen, welche in dem Level platziert wurden.
   List<Turm> turm = [];
+
+  ///Eine Liste mit Powerups, welche in dem Level benutzbar sind
   List<PowerUp> powerup = [];
+
+  ///Beinhaltet die Karte des Levels
   Karte karte;
+
+  ///Eine Liste mit Feinden, welche in dem Level auftauchen.
   List<Feinde> feinde = [];
+
+  ///Eine Liste mit Projektilen, welche aktuell in dem Level sind.
   List<Projektiel> shots = [];
 
-  ///Constructor:
+  ///Constructor: Hier werden alle variablen initiert und die Daten aus der Json
+  ///in den Variablen zugeordnet und gespeichert
   ///@param anti = Antikörper
   ///@param kauf = kaufen
   ///@param welle = Welle
@@ -25,6 +47,7 @@ class Level {
   ///@param k = Karte
   Level(Map<String, dynamic> data, num width, num height) {
     var waves = [];
+    //Schelife zum einlesen der Daten aus der Json
     for (var wave in data['Wellen']) {
       var welle = [];
       for (Map feind in wave) {
@@ -89,6 +112,7 @@ class Level {
     feinde = [];
   }
 
+  ///Methode zum laden des Levels. (Wird für die Json benötigt)
   Level from(Level l) {
     wellen = l.wellen;
     gameOver = false;
@@ -160,7 +184,8 @@ class Level {
   ///@param position übergibt die Position auf der der Turm stehen soll
   ///@param lvl übergibt das Turmlevel
   ///@param id übergibt die TurmID
-  num turmPlazieren(String name, Position position, int lvl, int id, num width, num height) {
+  num turmPlazieren(
+      String name, Position position, int lvl, int id, num width, num height) {
     var pos = Position(0, 0); //initialisieren der Variable pos als Position
     num count = -1; //initialisieren der Variable count
     //For-Schleife um ermitteln der Position, welche am nähsten am Klick und frei ist
@@ -250,9 +275,9 @@ class Level {
   ///Entfernt den Feind
   int kill(Feinde f) {
     var grip = 1;
-    if(f.name == 'grippe' && f.leben <= 0) {
-      for(int i = 0; i < 2; i++) {
-        if(f.boss) {
+    if (f.name == 'grippe' && f.leben <= 0) {
+      for (int i = 0; i < 2; i++) {
+        if (f.boss) {
           feinde.add(Grippe({'id': f.id + i, 'boss': false}));
         } else {
           feinde.add(Grippling({'id': f.id + i, 'boss': false}));
@@ -260,7 +285,7 @@ class Level {
         feinde.last.way = [];
         feinde.last.way.addAll(f.way);
         feinde.last.goal = Position(f.goal.x, f.goal.y);
-        feinde.last.pos = i%2 == 1 ? f.pos - f.dir * 10 : f.pos + f.dir * 10;
+        feinde.last.pos = i % 2 == 1 ? f.pos - f.dir * 10 : f.pos + f.dir * 10;
         grip++;
       }
     }
@@ -268,9 +293,14 @@ class Level {
     return grip;
   }
 
+  ///Upgrademethode der Türme. Hier können Upgrades und gekauft/verkauft werden.
+  ///Wenn es erfolgreich ist, gibt es True zurück ansonsten False.
+  ///@param tow gibt an welcher Turm geupdatet oder verkauft werden soll
+  ///@param lev übergibt das aktuelle level
   bool upgrade(Turm tow, num lev) {
-    var temp = tow.level;
-    var done = true;
+    var temp = tow.level; // übergibt welches level der aktuelle Turm hat
+    var done = true; // gibt an ob ein Upgrade erfolgreich war
+    //Switch entscheidet welches Turmlevel gewählt wird.
     switch (temp) {
       case 1:
         if (lev == 1)
@@ -312,8 +342,10 @@ class Level {
     return done;
   }
 
+  ///Methode um Türme zu verkaufen.
   num sellTower(Turm tower, num value) {
     var count = 0;
+    //In der Schleife wird ausgewählt welcher Turm genau verkauft wird.
     for (int i = 0; i < karte.felder.length; i++) {
       if (karte.besetzt[i] && karte.felder[i].dist(tower.position) == 0) {
         karte.besetzt[i] = false;
