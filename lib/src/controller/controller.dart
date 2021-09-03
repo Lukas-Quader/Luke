@@ -50,7 +50,7 @@ class Controller {
       if (event.target is Element) {
         //merken welches Level gewählt wird
         Element button = event.target;
-        //Schleife um zu prüfen welches Level gewählt wurde
+        //Schleife um zu prüfen welches Level gewählt wurde,
         for (num i = 1; i <= levels.length; i++) {
           if (button.id == 'box_level_$i') {
             if (l != 0) view.unselectLevel(l);
@@ -131,13 +131,14 @@ class Controller {
     });
   }
 
+  ///Die Mainloop wird aufgerufen um die Level zu starten.
   void mainLoop(num l) {
     //loadlevel starten und die nummer des levels übergeben
     loadLevel(l);
     view.generatePoints(model.karte.felder.length);
     //setClickListenerForLevel aufrufen und towers übergeben
     setClickListenerForLevel();
-    //Einen timer starten welcher alls 70 milisekunden aktualisiert
+    //Einen timer starten welcher alls 50 milisekunden aktualisiert
     Timer.periodic(Duration(milliseconds: 50), (timer) {
       //Solange ein Turm im Menü ausgewählt ist, werden die Turmorte angezeigt
       if (_buy) {
@@ -145,6 +146,7 @@ class Controller {
         setClickForPoints();
       }
       //Die Powerups werden nach benutzen für eine bestimmte Abklingzeit ausgeblendet
+      //_powerup zeigt ob ein Powerup aktiv ist
       if (_powerup) {
         view.switchPowerUpStyle(true);
         powerUpTime--;
@@ -161,13 +163,15 @@ class Controller {
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
         view.portraitNone();
+        //Falles es Türme gibt, wird ein Listener dafür erstellt
         if (model.turm.isNotEmpty) setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
-          //generateEnemy aufrufen und Spawncount auf 25 zurücksetzen
+          //generateEnemy aufrufen und Spawncount auf den nächsten Feind zurücksetzen
           generateEnemy();
+          //Falls es eine weitere nicht leere Welle gibt. wird der abstand des
+          //nächsten Feindes als Spawncount gesetzt. Ansonsten ist dieser pauschal 20
           if (model.wellen.first.isNotEmpty) {
-            print(model.wellen.first.first.name);
             spawncount = model.wellen.first.first.abstand;
           } else {
             spawncount = 20;
@@ -278,6 +282,8 @@ class Controller {
     });
   }
 
+  ///Clicklistener Methode für die Punkte, auf welchen die Türme platziert
+  ///werden können
   void setClickForPoints() {
     view.towerPoints.onClick.listen((ev) {
       //es wird gespeichert auf welcher position geklickt wurde
@@ -303,7 +309,7 @@ class Controller {
     });
   }
 
-  //onClick Methode für die Türme auf dem Feld um Upgrade/Verkäufe auszuführen
+  ///onClick Methode für die Türme auf dem Feld um Upgrade/Verkäufe auszuführen
   void setClickForTowers(List<Turm> towers) {
     for (var tower in towers) {
       view.getTower(tower).onClick.listen((event) {
@@ -314,6 +320,7 @@ class Controller {
     }
   }
 
+  ///Methode um die Clicklistener für die Upgrades der Türme zu setzen.
   void setClickListenerForUpgrade() {
     view.backButton.onClick.listen((event) {
       view.generateBuyMenu(model.kaufen, model.powerup);
@@ -382,7 +389,10 @@ class Controller {
     return tut;
   }
 
+  ///Methode um die Bildschirmorientierung zu Prüfen.
+  ///True = Landscape
+  ///False = Portait
   bool checkScreenOrientation() {
-    return view.height < view.width ? true : false; //Landscape = True
+    return view.height < view.width ? true : false;
   }
 }

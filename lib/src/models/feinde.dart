@@ -1,27 +1,66 @@
 part of ImmunityTD;
 
 abstract class Feinde {
-  String name; // Name des Feindtyps
-  bool boss; // handelt es sich um einen Boss?
-  num id; // Identifikationsnummer des Feindes
-  int laufgeschwindigkeit; // Bewegungsgeschwindingkeit des Feindes
-  int leben; // lebenspunkte des Feindes
-  Position pos; // aktuelle Position
-  Position dir; // aktuelle Richtung
-  List<dynamic> way; // Liste der Wegpunkte
-  Position goal; // aktueller Zielpunkt
-  bool fin; // ziel erreicht
+  /// Name des Feindtyps
+  String name;
+
+  /// handelt es sich um einen Boss?
+  bool boss;
+
+  /// Identifikationsnummer des Feindes
+  num id;
+
+  /// Bewegungsgeschwindingkeit des Feindes
+  int laufgeschwindigkeit;
+
+  /// lebenspunkte des Feindes
+  int leben;
+
+  /// aktuelle Position
+  Position pos;
+
+  /// aktuelle Richtung
+  Position dir;
+
+  /// Liste der Wegpunkte
+  List<dynamic> way;
+
+  /// aktueller Zielpunkt
+  Position goal;
+
+  /// ziel erreicht
+  bool fin;
+
+  /// Anzahl an AK die nach dem Tode gutgeschrieben werden
   num wert;
+
+  /// Zählt nach einem Treffer wie lange ein Feind als getroffen gilt (wichtig
+  ///  für die Animation)
   int _hit = 0;
-  int slowtime = 0;
-  int countDOT = 0;
+
+  /// gibt einen Wahrheitswert ob der Feind als getroffen gilt
   bool get hitted;
+
+  /// Ist der Abstand zum nachfolgenden Feind.
   int abstand;
-  // bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
+
+  /// Gibt an wie lange ein Feind verlangsamt ist.
+  int slowtime = 0;
+
+  /// gibt an wie lange Schaden über Zeit hinzugefügt wird.
+  int countDOT = 0;
+
+  /// bool -> Gegner am Leben, verarbeitung von Schaden und Effekt bei treffer
   bool treffer(int schaden, int effekt);
-  void bewegen(); // Bewegung der Feinde
-  void redirect(); // Anpassung der Richtung während der Laufzeit
-  void setWay(List<dynamic> w); //Setzen des Weges
+
+  /// Bewegung der Feinde
+  void bewegen();
+
+  /// Anpassung der Richtung während der Laufzeit
+  void redirect();
+
+  ///Setzen des Weges
+  void setWay(List<dynamic> w);
 }
 
 class Corona implements Feinde {
@@ -60,22 +99,21 @@ class Corona implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  Corona(
-      // Constructor
-      Map<String, dynamic> data) {
-    id = data['id'];
+  ///Constructor
+  Corona(Map<String, dynamic> data) {
+    id = data['id']; // Einlesen der Daten
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
-    boss = data['boss'];
+    boss = data['boss']; // Einlesen der Daten
     leben = boss ? 200 : 10; // Falls Feind ein Boss ist hat er 200 Lebenspunkte
     // Falls Feind ein Boss ist hat er 2 Laufgeschwindigkeit
     laufgeschwindigkeit = boss ? 2 : 4;
     wert = boss ? 50 : 5;
-    abstand = data['abstand'];
+    abstand = data['abstand']; // Einlesen der Daten
   }
 
+  /// Bewegen der Feinde
   @override
-  // Bewegen der Feinde
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
@@ -154,23 +192,23 @@ class Corona implements Feinde {
     return kill; // Rückgabe, ob der Feind getötet wurde
   }
 
-  // Anpassung der Richtung während der Laufzeit
+  /// Anpassung der Richtung während der Laufzeit
   @override
   void redirect() {
     dir = (goal - pos).uni();
   }
 
+  /// Setzen des Weges
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
 
+/// Feindklasse Corona
 class MRSA implements Feinde {
-  // Feindklasse Corona
   @override
   String name = 'mrsa';
   @override
@@ -205,9 +243,7 @@ class MRSA implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  MRSA(
-      // Constructor
-      Map<String, dynamic> data) {
+  MRSA(Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
@@ -282,14 +318,13 @@ class MRSA implements Feinde {
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
 
+/// Feindklasse Grippe
 class Grippe implements Feinde {
-  // Feindklasse Grippe
   @override
   String name = 'grippe';
   @override
@@ -324,9 +359,7 @@ class Grippe implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  Grippe(
-      // Constructor
-      Map<String, dynamic> data) {
+  Grippe(Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
@@ -338,8 +371,8 @@ class Grippe implements Feinde {
     abstand = data['abstand'];
   }
 
+  /// Bewegen der Feinde
   @override
-  // Bewegen der Feinde
   void bewegen() {
     if (_hit >= 1) {
       _hit++;
@@ -380,7 +413,7 @@ class Grippe implements Feinde {
     }
   }
 
-  // Verarbeitung der Treffer an Feinde
+  /// Verarbeitung der Treffer an Feinde
   @override
   bool treffer(int schaden, int effekt) {
     var kill = false; //
@@ -427,14 +460,13 @@ class Grippe implements Feinde {
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
 
+/// Feindklasse Grippe
 class Grippling implements Feinde {
-  // Feindklasse Grippe
   @override
   String name = 'grippling';
   @override
@@ -469,9 +501,8 @@ class Grippling implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  Grippling(
-      // Constructor
-      Map<String, dynamic> data) {
+  /// Constructor
+  Grippling(Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
@@ -572,14 +603,13 @@ class Grippling implements Feinde {
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
 
+/// Feindklasse HSV
 class HSV implements Feinde {
-  // Feindklasse HSV
   @override
   String name = 'hsv';
   @override
@@ -614,10 +644,8 @@ class HSV implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  HSV(
-      // Constructor
-      Map<String, dynamic> data,
-      int anzFeinde) {
+  /// Constructor
+  HSV(Map<String, dynamic> data, int anzFeinde) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
@@ -721,14 +749,13 @@ class HSV implements Feinde {
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
 }
 
+/// Feindklasse Clostridien
 class Clostridien implements Feinde {
-  // Feindklasse Clostridien
   @override
   String name = 'clostridien';
   @override
@@ -763,9 +790,8 @@ class Clostridien implements Feinde {
   @override
   bool get hitted => _hit >= 1 && _hit <= 10;
 
-  Clostridien(
-      // Constructor
-      Map<String, dynamic> data) {
+  /// Constructor
+  Clostridien(Map<String, dynamic> data) {
     id = data['id'];
     pos = Position(0, 0); // Position in x und y Koordinaten
     dir = Position(0, 0); // Richtung in x und y Koordinaten
@@ -866,7 +892,6 @@ class Clostridien implements Feinde {
   @override
   void setWay(List<dynamic> w) {
     way = w;
-    //way.removeAt(0); // Wegpunkt wird gelöscht
     goal = way[0]; // Nächster Wegpunkt wird als Ziel gesetzt
     pos = goal; // Erster Wegpunkt wird als die aktuelle Position gesetzt
   }
