@@ -36,7 +36,7 @@ class Level {
   List<Feinde> feinde = [];
 
   ///Eine Liste mit Projektilen, welche aktuell in dem Level sind.
-  List<Projektiel> shots = [];
+  List<Projektil> shots = [];
 
   ///Constructor: Hier werden alle variablen initiert und die Daten aus der Json
   ///in den Variablen zugeordnet und gespeichert

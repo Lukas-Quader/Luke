@@ -3,17 +3,40 @@ part of ImmunityTD;
 ///Abstrakte Klasse Turm
 ///Sie wird um die speziellen Türme erweitert.
 abstract class Turm {
+  ///Name des Turms
   String name;
+
+  ///id des Turms
   int id;
+
+  ///Angriffsgeschwindigkeit des Turms
   int angriffsgeschwindigkeit;
-  int agcount; //Counter um die Angriffsgeschwindigkeit zu berechnen
+
+  ///Zähler um die Angriffsgeschwindigkeit zu berechnen
+  int agcount;
+
+  /// Schaden welcher der Turm verursacht
   int schaden;
+
+  /// Reichweite des Turms
   int reichweite;
+
+  /// Upgradelevel des Turms
   int level;
+
+  /// Kosten des Turms
   int kosten;
+
+  ///Kosten für das erste Upgrade
   int kostenU1;
+
+  ///Kosten für das Zweite Upgrade
   int kostenU2;
+
+  /// Effekt welcher der Turm hat
   int effekt;
+
+  /// Position des Turms
   Position position;
 
   ///Methode um einen Turm zu upgraden
@@ -21,7 +44,7 @@ abstract class Turm {
 
   ///Methode welche einen Turm angreifen lässt.
   ///Ihr wird eine Liste von Feinden
-  List<Projektiel> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp);
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp);
 }
 
 ///Blutzellen Klasse
@@ -96,10 +119,9 @@ class Blutzelle implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(
-      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
-    List<Projektiel> kill = [];
+    List<Projektil> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -205,10 +227,9 @@ class Auge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(
-      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
-    List<Projektiel> kill = [];
+    List<Projektil> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -311,10 +332,9 @@ class Niere implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(
-      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
-    List<Projektiel> kill = [];
+    List<Projektil> kill = [];
     //Wenn der counter 0 wird erfolgt ein Angriff
     if (agcount <= 0) {
       //Alle Feinde durchgehen
@@ -418,10 +438,9 @@ class Lunge implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(
-      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
-    List<Projektiel> kill = [];
+    List<Projektil> kill = [];
     //counter für die Id
     var idcount = 0;
     //Wenn der counter 0 wird erfolgt ein Angriff
@@ -533,10 +552,9 @@ class Herz implements Turm {
   ///Falls der Schaden zum Tod führt gibt die Methode True zurück.
   ///@param feinde = Liste aus Feinden
   @override
-  List<Projektiel> angriff(
-      List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
+  List<Projektil> angriff(List<Feinde> feinde, bool _powerup, PowerUp powerUp) {
     //var kill auf auf false setzen
-    List<Projektiel> kill = [];
+    List<Projektil> kill = [];
     //counter für id bei angriff von mehreren gegnern gleichzeitig
     var idcount = 0;
     //Wenn der counter 0 wird erfolgt ein Angriff

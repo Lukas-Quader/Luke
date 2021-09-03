@@ -1,16 +1,15 @@
 part of ImmunityTD;
 
 class View {
+  ///Des Level wird als Model gespeichert
   Level model;
 
-  var pointCounter = 0;
-  // Der NodeValidator wird benötigt um zu Definieren, dass bestimmte attribute
-  // im HTML code erlaubt sind.
+  /// Der NodeValidator wird benötigt um zu Definieren, dass bestimmte attribute
+  /// im HTML code erlaubt sind.
   NodeValidatorBuilder _validatorBuilder = new NodeValidatorBuilder()
     ..allowHtml5()
     ..allowElement('DIV', attributes: ['style'])
     ..allowElement("BUTTON", attributes: ['style']);
-
   final portrait = querySelector('#portrait');
 
   final text = querySelector('#text'); // HTML-Teil des Textes
@@ -52,25 +51,28 @@ class View {
   // HTML-Teil der Feindwellenanzeige(Infoleiste)
   final wavecount = querySelector('#wavecount');
 
-  // KaufButton
-  ElementList<HtmlElement> get towerPoints => querySelectorAll('.wp');
-
+  /// Die maximale Anzahl der Wellen
   int wavemax = 0;
 
-  // KaufButton
+  // Es folgen diverse Getter Methoden.
+
+  ElementList<HtmlElement> get towerPoints => querySelectorAll('.wp');
+
   ElementList<HtmlElement> get kaufButton => querySelectorAll('.buy_tower');
-  // KaufButton
+
   ElementList<HtmlElement> get upgradeButton =>
       querySelectorAll('.upgrade_tower');
-  // StartButton
+
+  ElementList<HtmlElement> get powerUpButton => querySelectorAll('.powerup');
+
   HtmlElement get startButton => querySelector('#startButton');
-  
+
   HtmlElement get tutorialButton => querySelector('#tutorialButton');
-  
+
   HtmlElement get tutorialBack => querySelector('#tutorialBack');
-  
+
   HtmlElement get tutorialLeft => querySelector('#tpleft');
-  
+
   HtmlElement get tutorialRight => querySelector('#tpright');
 
   HtmlElement get menueButton => querySelector('#menueButton');
@@ -83,7 +85,13 @@ class View {
 
   HtmlElement get sellButton => querySelector('.sell_tower');
 
-  ElementList<HtmlElement> get powerUpButton => querySelectorAll('.powerup');
+  num get mapWidth => map.getBoundingClientRect().width.toDouble();
+
+  num get mapHeight => map.getBoundingClientRect().height.toDouble();
+
+  num get width => body.getBoundingClientRect().width.toDouble();
+
+  num get height => body.getBoundingClientRect().height.toDouble();
 
   /// Constructor der View
   View();
@@ -106,7 +114,7 @@ class View {
         var feind = querySelector('#${f.name}_${f.id}');
         feind?.style?.left = '${f.pos.x}px'; // nächste x position
         feind?.style?.top = '${f.pos.y}px'; // nächste y position
-        feind.classes.remove('dmg');
+        feind.classes.remove('dmg'); //dmg Tag wird entfernt
         if (f.hitted) feind.classes.add('dmg');
         feind.classes.remove('boss');
         if (f.boss) feind.classes.add('boss');
@@ -119,10 +127,10 @@ class View {
       }
       for (Feinde feind in killed) {
         var grip = model.kill(feind); // entfernt Feind aus der Liste
-        if(grip > 1) {
-          for(int i = 1; i < grip; i++) {
-          spawn(model.feinde[model.feinde.length - i]);
-        }
+        if (grip > 1) {
+          for (int i = 1; i < grip; i++) {
+            spawn(model.feinde[model.feinde.length - i]);
+          }
         }
       }
     }
@@ -137,8 +145,8 @@ class View {
     }
 
     if (model.shots.isNotEmpty) {
-      List<Projektiel> hits = [];
-      // Durchgehen der Projektielliste
+      List<Projektil> hits = [];
+      // Durchgehen der Projektilliste
       for (var s in model.shots) {
         var schuss = querySelector('#${s.name}_${s.id}');
         schuss?.style?.left = '${s.pos.x}px'; // definierte x-Position setzen
@@ -180,16 +188,17 @@ class View {
     // Erstellen der Punkte
     for (var j = 0; j < way; j++) {
       // hinzufügen des Punktes zur innerHTML von map
-      map.innerHtml += '<button class=wp id=wp_$pointCounter value=1></button>';
-      pointCounter++; // nächster Punkt
+      map.innerHtml += '<button class=wp id=wp_$j value=1></button>';
     }
   }
 
+  /// setzt die Punkte, auf welchen die Türme platziert werden können
   void setPoint(num point) {
     var pos = querySelector('#wp_$point');
     pos.setAttribute('value', '1');
   }
 
+  ///Entfernt die Punkte, auf welchen die Türme platziert werden können
   void removePoint(num point) {
     var pos = querySelector('#wp_$point');
     pos.setAttribute('value', '0');
@@ -238,14 +247,14 @@ class View {
         validator: _validatorBuilder); // Fügt den Feind der Map hinzu
   }
 
-  void shoot(Projektiel projektiel) {
+  void shoot(Projektil projektil) {
     var ht = map.innerHtml; // zwischenspeichern der innerHTML von map
     // Fügt den Feind mit Namen und id zum HTML File hinzu
     ht +=
-        '\n<div class=${projektiel.name} id=${projektiel.name}_${projektiel.id}></div>';
+        '\n<div class=${projektil.name} id=${projektil.name}_${projektil.id}></div>';
     map.setInnerHtml(ht,
         validator: _validatorBuilder); // Fügt den Feind der Map hinzu
-    projektiel.flying = true;
+    projektil.flying = true;
   }
 
   /// Erstellen von Türmen
@@ -273,7 +282,7 @@ class View {
     var html2 = ''; // Leeres HTML Dokument
     for (var up in powerups) {
       html2 +=
-          "<div>\n<button draggable='true' class='powerup' id='${up.name}' value='${up.kosten}'></button></div>";
+          "<div>\n<button draggable='true' class='powerup' id='${up.name}'></button></div>";
     }
     powerupmenu.innerHtml = html2; // Fügt den Button zum Menü hinzu
   }
@@ -321,6 +330,7 @@ class View {
     buemenue.innerHtml = html; // Fügt den Button zum Menü hinzu
   }
 
+  ///Entfernt einen Tower
   void sellTower(Turm tower, num point) {
     setPoint(point);
     getTower(tower)?.remove();
@@ -355,7 +365,7 @@ class View {
       var turm = querySelector('#${t.name}_${t.id}'); //
       turm.remove(); // Turm entfernen
     }
-    for (Projektiel s in model.shots) {
+    for (Projektil s in model.shots) {
       var schuss = querySelector('#${s.name}_${s.id}'); //
       schuss.remove(); // Turm entfernen
     }
@@ -397,7 +407,7 @@ class View {
   }
 
   /// Methode um zum Menü zurück zu kehren
-  void switchToTutorial(Map<String,dynamic> tutorials) {
+  void switchToTutorial(Map<String, dynamic> tutorials) {
     levelview.style.display = 'none';
     menu.style.display = 'none';
     tutorial.style.display = 'grid';
@@ -407,19 +417,21 @@ class View {
     resetWinGameover();
   }
 
-  // Es wird ausgelesen, welches Level angewählt wird und setzt die Umrandung
-  // auf Gelb
+  /// Es wird ausgelesen, welches Level angewählt wird und setzt die Umrandung
+  /// auf Gelb
   void selectLevel(num l) {
     var levelButton = querySelector('#box_level_$l');
     levelButton.style.borderColor = 'yellow';
   }
 
-  // Es wenn ein Level abgewählt wird, wird die Umrandungsfarbe unsichtbar
+  /// Es wenn ein Level abgewählt wird, wird die Umrandungsfarbe unsichtbar
   void unselectLevel(num l) {
     var levelButton = querySelector('#box_level_$l');
     levelButton.style.borderColor = 'transparent';
   }
 
+  ///Blendet Powerups ein oder aus
+  ///@param bool True = ausgeblendet, false = eingeblendet
   void switchPowerUpStyle(bool bool) {
     for (var b in powerUpButton) {
       if (bool) {
@@ -430,20 +442,13 @@ class View {
     }
   }
 
+  ///Ausblenden der Portraitwarnung
   void portraitNone() {
     portrait.style.display = 'none';
   }
 
+  ///Einblenden der Portraitwarnung
   void portraitGrid() {
     portrait.style.display = 'grid';
   }
-
-  // Es folgen diverse Getter Methoden.
-  num get mapWidth => map.getBoundingClientRect().width.toDouble();
-
-  num get mapHeight => map.getBoundingClientRect().height.toDouble();
-
-  num get width => body.getBoundingClientRect().width.toDouble();
-
-  num get height => body.getBoundingClientRect().height.toDouble();
 }
