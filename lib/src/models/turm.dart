@@ -3,17 +3,40 @@ part of ImmunityTD;
 ///Abstrakte Klasse Turm
 ///Sie wird um die speziellen Türme erweitert.
 abstract class Turm {
+  ///Name des Turms
   String name;
+
+  ///id des Turms
   int id;
+
+  ///Angriffsgeschwindigkeit des Turms
   int angriffsgeschwindigkeit;
-  int agcount; //Counter um die Angriffsgeschwindigkeit zu berechnen
+
+  ///Zähler um die Angriffsgeschwindigkeit zu berechnen
+  int agcount;
+
+  /// Schaden welcher der Turm verursacht
   int schaden;
+
+  /// Reichweite des Turms
   int reichweite;
+
+  /// Upgradelevel des Turms
   int level;
+
+  /// Kosten des Turms
   int kosten;
+
+  ///Kosten für das erste Upgrade
   int kostenU1;
+
+  ///Kosten für das Zweite Upgrade
   int kostenU2;
+
+  /// Effekt welcher der Turm hat
   int effekt;
+
+  /// Position des Turms
   Position position;
 
   ///Methode um einen Turm zu upgraden
@@ -62,7 +85,7 @@ class Blutzelle implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -168,7 +191,7 @@ class Auge implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -274,7 +297,7 @@ class Niere implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -381,7 +404,7 @@ class Lunge implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -488,7 +511,7 @@ class Herz implements Turm {
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
-    reichweite = (reichweite * width/620).round();
+    reichweite = (reichweite * width / 620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht

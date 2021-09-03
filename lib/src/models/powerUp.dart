@@ -1,25 +1,34 @@
 part of ImmunityTD;
 
-///PowerUp Klasse
+///PowerUp Klasse: Jedes Powerup kann in den Fähigkeiten variieren.
 abstract class PowerUp {
-  int kosten;
+  ///Name des PowerUps
   String name;
+
+  ///Abklingzeiten der PowerUps
   int abklingzeit;
+
+  ///Laufzeit des PowerUps
   int laufzeit;
+
+  ///Multiplikator der Angriffsgeschwindigkeit
   double multiplikatorAG;
+
+  ///Multiplikator des Schadens
   double multiplikatorDMG;
 }
 
+///Antibiotikaklasse: Sie soll den Schaden der Türme erhöhen
 class Antibiotika implements PowerUp {
   int abklingzeit;
   double multiplikatorAG;
   int laufzeit;
   @override
-  int kosten = 200;
-  @override
   String name = 'antibiotika';
   double multiplikatorDMG;
 
+  ///Constructor: initialisiert die Variablen mit den Daten aus der Json
+  ///@param date die Daten aus der Json
   Antibiotika(Map<String, dynamic> data) {
     abklingzeit = data['Abklingzeit'];
     multiplikatorAG = data['MultiplikatorAG'];
@@ -28,16 +37,17 @@ class Antibiotika implements PowerUp {
   }
 }
 
+/// Adrenalinklase: Sie soll die Geschwindigkeit der Tower erhöhen
 class Adrenalin implements PowerUp {
   int abklingzeit;
   double multiplikatorAG;
   double multiplikatorDMG;
   int laufzeit;
   @override
-  int kosten = 150;
-  @override
   String name = 'adrenalin';
 
+  ///Constructor: initialisiert die Variablen mit den Daten aus der Json
+  ///@param date die Daten aus der Json
   Adrenalin(Map<String, dynamic> data) {
     abklingzeit = data['Abklingzeit'];
     multiplikatorAG = data['MultiplikatorAG'];
