@@ -70,7 +70,7 @@ class Blutzelle implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 20;
+        angriffsgeschwindigkeit = 15;
         schaden = 8;
         level = 1;
         break;
@@ -82,7 +82,7 @@ class Blutzelle implements Turm {
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 20;
+        angriffsgeschwindigkeit = 15;
         schaden = 15;
         level = 3;
         break;
@@ -463,13 +463,13 @@ class Herz implements Turm {
   @override
   int agcount = 0; // Count für die Angriffsgeschwindigkeit
   @override
-  int schaden = 5; // Initialer Schaden
+  int schaden = 4; // Initialer Schaden
   @override
   int reichweite = 70; // Initiale Reichweite
   @override
   int level = 1; // Initiales Level
   @override
-  int kosten = 150; // Kosten des Turms
+  int kosten = 125; // Kosten des Turms
   @override
   int kostenU1 = 50; // Kosten des ersten Upgrades
   @override
@@ -497,13 +497,13 @@ class Herz implements Turm {
     switch (goal) {
       case 1:
         angriffsgeschwindigkeit = 20;
-        reichweite = 70;
+        reichweite = 100;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
         angriffsgeschwindigkeit = 10;
-        reichweite = 70;
+        reichweite = 100;
         level = 2;
         break;
       //Der Schaden wird erhöht
