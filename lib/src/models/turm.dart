@@ -481,7 +481,7 @@ class Herz implements Turm {
   @override
   int kostenU1 = 125; // Kosten des ersten Upgrades
   @override
-  int kostenU2 = 100; // Kosten des zweiten Upgrades
+  int kostenU2 = 150; // Kosten des zweiten Upgrades
   @override
   int effekt = 2; // Welche Effekte der Turm besitzt hier keine
   @override
@@ -548,7 +548,7 @@ class Herz implements Turm {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
           if (_powerup) {
             kill.add(Herzschuss(idcount++, position + Position(25, 25), f,
-                effekt, (schaden * powerUp.multiplikatorDMG) as int));
+                effekt, (schaden * powerUp.multiplikatorDMG).round()));
           } else {
             kill.add(Herzschuss(
                 idcount++, position + Position(25, 25), f, effekt, schaden));
@@ -557,7 +557,7 @@ class Herz implements Turm {
       }
       //agcount "resetten"
       if (_powerup) {
-        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
+        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
       } else {
         agcount = angriffsgeschwindigkeit;
       }

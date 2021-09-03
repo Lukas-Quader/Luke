@@ -7,7 +7,7 @@ class Controller {
   Level model;
   List<Level> levels;
   List<dynamic> tutorials;
-  int spawncount = 70;
+  int spawncount = 100;
   View view = View();
   bool _buy = false;
   bool _powerup = false;
@@ -93,22 +93,24 @@ class Controller {
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialRight.onClick.listen((_) {
-      if (int.parse(window.localStorage['tutorialact']) <
-          int.parse(window.localStorage['tutorialITD'])) {
-        view.switchToTutorial(
-            tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
-        window.localStorage['tutorialact'] =
-            (int.parse(window.localStorage['tutorialact']) + 1).toString();
-      } else if (int.parse(window.localStorage['tutorialact']) ==
-              int.parse(window.localStorage['tutorialITD']) &&
-          (int.parse(window.localStorage['tutorialITD']) - 6) <=
-              int.parse(window.localStorage['completeLevel'])) {
-        view.switchToTutorial(
-            tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
-        window.localStorage['tutorialact'] =
-            (int.parse(window.localStorage['tutorialact']) + 1).toString();
-        window.localStorage['tutorialITD'] =
-            (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+      if (int.parse(window.localStorage['tutorialact']) <= 16) {
+        if (int.parse(window.localStorage['tutorialact']) <
+            int.parse(window.localStorage['tutorialITD'])) {
+          view.switchToTutorial(
+              tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
+          window.localStorage['tutorialact'] =
+              (int.parse(window.localStorage['tutorialact']) + 1).toString();
+        } else if (int.parse(window.localStorage['tutorialact']) ==
+                int.parse(window.localStorage['tutorialITD']) &&
+            (int.parse(window.localStorage['tutorialITD']) - 6) <=
+                int.parse(window.localStorage['completeLevel'])) {
+          view.switchToTutorial(
+              tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
+          window.localStorage['tutorialact'] =
+              (int.parse(window.localStorage['tutorialact']) + 1).toString();
+          window.localStorage['tutorialITD'] =
+              (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+        }
       }
     });
 
@@ -125,6 +127,7 @@ class Controller {
     view.restartButton.onClick.listen((event) async {
       levels = await loadLevelFromData(); //neuladen der Json
       // Das Win oder Gameober wird ausgeblendet
+      spawncount = 100;
       view.resetWinGameover();
       //erneutes starten des Levels
       mainLoop(l);
@@ -138,8 +141,8 @@ class Controller {
     view.generatePoints(model.karte.felder.length);
     //setClickListenerForLevel aufrufen und towers übergeben
     setClickListenerForLevel();
-    //Einen timer starten welcher alls 50 milisekunden aktualisiert
-    Timer.periodic(Duration(milliseconds: 50), (timer) {
+    //Einen timer starten welcher alls 60 milisekunden aktualisiert
+    Timer.periodic(Duration(milliseconds: 60), (timer) {
       //Solange ein Turm im Menü ausgewählt ist, werden die Turmorte angezeigt
       if (_buy) {
         view.showPoints(model.karte.felder);

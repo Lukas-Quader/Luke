@@ -7,7 +7,7 @@
                 {"Auge" :{"Level" : 1, "Position" : {"x" : 0, "y" : 0}, "id" : 1}}    ],
             "Wellen" : [
               [
-                {"Corona" : {"id" : 0, "boss" : false , "abstand" : 20}},                
+                {"Corona" : {"id" : 0, "boss" : false , "abstand" : 130}},                
                 {"Corona" : {"id" : 2, "boss" : false , "abstand" : 20}},
                 {"Corona" : {"id" : 3, "boss" : false , "abstand" : 20}},
                 {"Corona" : {"id" : 4, "boss" : false , "abstand" : 60}},
@@ -19,7 +19,7 @@
                 {"MRSA" : {"id" : 10, "boss" : false , "abstand" : 20}}                                            
               ],
               [
-                {"Clostridien" : {"id" : 0, "boss" : false , "abstand" : 5}},
+                {"Clostridien" : {"id" : 0, "boss" : false , "abstand" : 70}},
                 {"Clostridien" : {"id" : 1, "boss" : false , "abstand" : 5}},
                 {"Clostridien" : {"id" : 2, "boss" : false , "abstand" : 5}},
                 {"Clostridien" : {"id" : 3, "boss" : false , "abstand" : 40}},
@@ -39,7 +39,7 @@
                 {"Clostridien" : {"id" : 17, "boss" : false , "abstand" : 5}}
               ],
               [
-                {"MRSA" : {"id" : 0, "boss" : false , "abstand" : 5}},
+                {"MRSA" : {"id" : 0, "boss" : false , "abstand" : 70}},
                 {"Clostridien" : {"id" : 1, "boss" : false , "abstand" : 5}},
                 {"MRSA" : {"id" : 2, "boss" : false , "abstand" : 5}},
                 {"Clostridien" : {"id" : 3, "boss" : false , "abstand" : 5}},
@@ -59,7 +59,7 @@
                 {"Clostridien" : {"id" : 17, "boss" : false , "abstand" : 5}}
               ],
               [              
-                {"MRSA" : {"id" : 1, "boss" : true , "abstand" : 60}}, 
+                {"MRSA" : {"id" : 1, "boss" : true , "abstand" : 90}}, 
                 {"Corona" : {"id" : 2, "boss" : true , "abstand" : 60}} 
               ]
             ],
@@ -98,7 +98,7 @@
     ],
           "Wellen" : [
             [
-              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 10}},
+              {"Corona" : {"id" : 0, "boss" : false , "abstand" : 100}},
               {"Corona" : {"id" : 1, "boss" : false , "abstand" : 10}},
               {"Corona" : {"id" : 2, "boss" : false , "abstand" : 10}},
               {"MRSA" : {"id" : 3, "boss" : false , "abstand" : 50}},
@@ -113,7 +113,7 @@
               {"Grippe" : {"id" : 12, "boss" : false , "abstand" : 50}}
             ],
             [
-              {"Grippe" : {"id" : 0, "boss" : false , "abstand" : 60}},
+              {"Grippe" : {"id" : 0, "boss" : false , "abstand" : 70}},
               {"Clostridien" : {"id" : 1, "boss" : false , "abstand" : 5}},
               {"Clostridien" : {"id" : 2, "boss" : false , "abstand" : 5}},
               {"Clostridien" : {"id" : 3, "boss" : false , "abstand" : 40}},
@@ -156,7 +156,7 @@
               {"Corona" : {"id" : 17, "boss" : false , "abstand" : 5}}
             ],
             [
-              {"Grippe" : {"id" : 0, "boss" : false , "abstand" : 10}},
+              {"Grippe" : {"id" : 0, "boss" : false , "abstand" : 70}},
               {"Corona" : {"id" : 1, "boss" : false , "abstand" : 10}},
               {"Corona" : {"id" : 2, "boss" : false , "abstand" : 10}},
               {"Grippe" : {"id" : 3, "boss" : false , "abstand" : 10}},
@@ -185,7 +185,7 @@
               {"Clostridien" : {"id" : 3, "boss" : true , "abstand" : 40}}  
             ]
           ],
-          "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+          "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  3, "laufzeit" : 100}}],
           "Karte" : {"Felder" : [
             {"Position" : {"x" : 1180, "y" : 215}}, 
             {"Position" : {"x" : 1330, "y" : 215}},
@@ -217,7 +217,7 @@
   ],
           "Wellen" : [
             [
-              {"HSV" : {"id" : 0, "boss" : false , "abstand" : 10}},
+              {"HSV" : {"id" : 0, "boss" : false , "abstand" : 100}},
               {"Corona" : {"id" : 1, "boss" : false , "abstand" : 40}},
               {"Corona" : {"id" : 2, "boss" : false , "abstand" : 10}},
               {"Corona" : {"id" : 3, "boss" : false , "abstand" : 10}},
@@ -271,7 +271,7 @@
               {"Clostridien" : {"id" : 30, "boss" : false , "abstand" : 5}}              
             ],            
             [
-              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 5}},
+              {"Corona" : {"id" : 1, "boss" : false , "abstand" : 70}},
               {"Corona" : {"id" : 2, "boss" : false , "abstand" : 5}},
               {"Corona" : {"id" : 3, "boss" : false , "abstand" : 5}},
               {"Corona" : {"id" : 4, "boss" : false , "abstand" : 5}},
@@ -367,7 +367,7 @@
                             
             ],
             [
-              {"MRSA" : {"id" : 0, "boss" : true , "abstand" : 20}},
+              {"MRSA" : {"id" : 0, "boss" : true , "abstand" : 70}},
               {"Corona" : {"id" : 1, "boss" : true , "abstand" : 20}},  
               {"Grippe" : {"id" : 2, "boss" : true , "abstand" : 20}},
               {"HSV" : {"id" : 3, "boss" : true , "abstand" : 20}},
@@ -377,7 +377,8 @@
               {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
             ]
           ],
-          "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+          "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+                        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
           "Karte" : {"Felder" : [
             {"Position" : {"x" : 380, "y" : 310}}, 
             {"Position" : {"x" : 600, "y" : 450}}, 
@@ -572,7 +573,8 @@
             {"Clostridien" : {"id" : 9, "boss" : true , "abstand" : 0}}
           ]
         ],
-        "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+        "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+          {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
         "Karte" : {"Felder" : [          
           {"Position" : {"x" : 380, "y" : 40}},
           {"Position" : {"x" : 380, "y" : 325}},
@@ -771,7 +773,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 750, "y" : 650}}, 
         {"Position" : {"x" : 300, "y" : 430}},
@@ -977,7 +980,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 310, "y" : 300}}, 
         {"Position" : {"x" : 590, "y" : 330}}, 
@@ -1172,7 +1176,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 270, "y" : 100}}, 
         {"Position" : {"x" : 550, "y" : 100}}, 
@@ -1377,7 +1382,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 65, "y" : 65}}, 
         {"Position" : {"x" : 60, "y" : 680}}, 
@@ -1585,7 +1591,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 730, "y" : 310}},
         {"Position" : {"x" : 680, "y" : 5}},
@@ -1871,7 +1878,8 @@
           {"Clostridien" : {"id" : 1, "boss" : true , "abstand" : 10}}
         ]
       ],
-      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 50, "MultiplikatorAG" : 4, "MultiplikatorDMG" :  2, "laufzeit" : 10}}],
+      "PowerUps" : [{"Antibiotika" : {"Abklingzeit" : 200, "MultiplikatorAG" : 1, "MultiplikatorDMG" :  2, "laufzeit" : 100}},
+        {"Adrenalin" : {"Abklingzeit" : 200, "MultiplikatorAG" : 3, "MultiplikatorDMG" :  1, "laufzeit" : 100}}],
       "Karte" : {"Felder" : [
         {"Position" : {"x" : 80, "y" : 200}}, 
         {"Position" : {"x" : 160, "y" : 480}}, 
@@ -1941,6 +1949,27 @@
       "Picture": "img/mrsa.png",
       "Short": "MRNA. Ein recht schwacher erregen, jedoch unglaublich resistent gegen alle möglichen Mittel.",
       "Long": "Mrsa ist ein Erreger, wlcher leicht zu vernichten ist. Er ist dichschnittlich Schnell und hält nicht viel aus. Seine allgemeinen Resistenz gegen alles möglich machen in jedoch zu einer ernst zu nehmenden Bedrohung. Nim dich vor seiner BOSS-Variante in Acht."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/powerUp_1.png",
+      "Short": "PowerUps sind die Rettung in der Not. Deine Türme greifen für eine kurze Zeit schneller an oder machen mehr Schaden",
+      "Long": "Haben die blöden Spieldesingner mal wieder das Spiel viel zu schwer gemacht? Ja? Dann brauchst du PowerUps. Verstärke deine Tower und vernichte deine Feinde. Kommt dir ein Boss zu nehe? REIN MIT DER SPRITZE!!!!"
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/powerUp_1.png",
+      "Short": "Adrenalin macht deine müden Tower munter. SPEEEEEEEEEEEEEEEED",
+      "Long": "Sind die Gegner zu schnell und deine Türme zu lahm? Adrenalin kickt besser als der stärkste Kaffee. Aber benutze es weise. Lange halt die Wirkung nicht"
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/powerUp_2.png",
+      "Short": "MEHR SCHADEN!!!11!1!!",
+      "Long": "Mit Antibiotika fliegen nur so die Respektschellen. Aber auch hier ist eins wichtig: Timing"
     }
   },
   {
