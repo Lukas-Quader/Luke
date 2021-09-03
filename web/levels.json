@@ -954,5 +954,106 @@
       ]]}
   }
 }
+],
+"Tutorials": [
+  {
+    "Tutorial": {
+      "Picture": "img/background_monster.png",
+      "Short": "Guten Tag und Wilkommen bei IMMUNUTY TD.",
+      "Long": "Auf den folgenden Seiten findest du erklärungen zu allen Einzelheiten des Spiels. Du kannst jederzeit zum Hauptmenü zurückkeren mit dem 'Menu' Button da oben rechts. Falls du zum ersten Mal hier bist empfehlen wir, dass du zunächst auf 'next' tippst umd das Spiel grundlegend zu verstehen."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/background_monster.png",
+      "Short": "Im allgemeinen handelt es sich bie 'Immunity TD' um ein 'Tower Defense'-Spiel.",
+      "Long": "Das Bedeutet du hast eine angegebene Menge an Einheite, welche du für einen Preis erwerben und an vorgegebenen Positionen platzieren kannst. Diese 'Türme' feuern auf einkommende Wellen von Gegnern."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/blutzelleU1.png",
+      "Short": "Die Türme von Immunity TD einmal im Allgemeinen Überblick",
+      "Long": "Jeder Turm hat 3 Stufen und kann nach dem platzieren aufgewertet wieder verkauft werden. Ein aufgewerteter Turm kann kann abgewertet werden und der volle preis für die aufwertung wird erstattet. Beim verkauf erhältst du nur 3/4 des preises zurück."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/corona.png",
+      "Short": "Die Feinde im Überblick",
+      "Long": "Die Feinde erscheinen an einem Punkt auf der Karte und laufen dann den gegebenen Weg entlang. Jeder Treffer zieht einem Feind Leben ab. Ein Feind ohne Leben stirbt. Sollte ein Feind das Ziel erreichen werdem dem Spieler Leben in höhe des Restlebens des Feindes abgezogen. Von jedem Feind existiert eine BOSS variante die langsamer aber robuster ist."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/blutzelle.png",
+      "Short": "Die Blutzelle ist der die Erste Verteidigungslinie gegen alle einkimmenden Krankheiten.",
+      "Long": "Der erste Turm, welcher dir bereits zu beginn zur Verfügung steht ist die Blutzelle. Sie hat eine durchschnittliche Reichweite, Angriffsgeschwindigkeit und Schaden. Beim aufweiten wird ihre Angriffsgeschwindigkeit und ihr Schaden Moderat verbessert um schneller und  effizienter Krankheiten abzuwehren."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/auge.png",
+      "Short": "Das gesunde Auge ist zwar etwas langsam, trifft gegner dafür aber auch auf große Entfernung.",
+      "Long": "Der zweite Turm, welcher dir zu Beginn bereitgestellt wird ist das Auge. Es hat zwar eine geringe Angriffsgeschwindigkeit, gleicht diese jedoch durch enorme Reichweite und guten Schaden aus. Beim Aufwerten wird die Reichweite nochmal enoerm erhöht und Schaden ebenfalls verbessert."
+
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/corona.png",
+      "Short": "CORONA. Der aktuell am häufigsten aufkommende Feind den du finden kannst.",
+      "Long": "Bei Corona handelt es sich um den ersten Feind, mit dem du warscheinlich in kontakt kommst. Er ist nicht besonders stark und verfügt über keinerlei spezielle Fähigkeiten, kommt aber, wie für eine kollosale Nervensäge üblich, immer wieder wenn man ihn nicht braucht."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/mrsa.png",
+      "Short": "MRNA. Ein recht schwacher erregen, jedoch unglaublich resistent gegen alle möglichen Mittel.",
+      "Long": "Mrsa ist ein Erreger, wlcher leicht zu vernichten ist. Er ist dichschnittlich Schnell und hält nicht viel aus. Seine allgemeinen Resistenz gegen alles möglich machen in jedoch zu einer ernst zu nehmenden Bedrohung. Nim dich vor seiner BOSS-Variante in Acht."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/niere.png",
+      "Short": "Die Niere ist ein Helfer welcher Gegnern langsam aber stätig zusetzt.",
+      "Long": "Die Niere ist ein Garstiger geselle mit moderater Angriffsgeschwindigkeit und Reichweite, sowie geringem Schaden. Diesen macht sie durch ihre Fähigkeit, gegner über zeit zu zermürben jedoch mehr als wett. Bei einem Upgrade wird ihre Reichweite größer und ihre fähigkeit hällt länger an."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/lunge.png",
+      "Short": "Durch die Atmung kann jede Krankheit verlangsamt werden.",
+      "Long": "Die Lunge hat geringen Schaden und eine Geringe Feuerrate. Was macht sie also Kaufenswert? Sie kann Gegner bei einem Treffer für begrenzte Zeit verlangsamen. Bei einem Upgrade erhöhen sich Reichweite und Feuerrate verhältnissmäßig drastisch."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/herz.png",
+      "Short": "Das Herz ist das Zentrale Verteilungsorgan und kämpft an mehreren Fronten gleichzeitig.",
+      "Long": "Das Herz hat eine moderate Angriffsgeschwindigkeit und entsprechend moderaten schaden, sowie eine geringe Reichweite. Dafür greift es in dieser Reichweie alles an, was es in die methaphorischen Finger bekommt. Bei einem Upgrade erhähen sich Angriffsgeschwindigkeit und Reichweite wodurch nichts mehr sicher ist."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/clostridien.png",
+      "Short": "Ein schwacher aber enorm schneller Erreger.",
+      "Long": "Clostridien sind eine recht schwache, jedoch schnell arbeitende Erreger. Sie sind wesentlich schneller als der durchschnittserreger und haben ußerdem die lästige Angewohnheit in Kleinen Gruppen aufzutauchen wodurch es schwer ist sie restlos auszurotten."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/hsv.png",
+      "Short": "HSV, der bei Stress auftauchende Herpes-Virus.",
+      "Long": "Der HSV unterscheided sich in Kraft, Geschwindigkeit und Ausdauer nicht von gewöhnlichen Durchschnittserreger. Bei starkem Stress kann er sich jedoch zu einem unangenehmen Gesellen etwickeln. Hüte dich sollte er als Letzter auf einem vollen Feld erscheinen."
+    }
+  },
+  {
+    "Tutorial": {
+      "Picture": "img/grippe.png",
+      "Short": "Die Grippe ist die warscheinlich ansteckendste Krankheit der Welt.",
+      "Long": "Die Grippe ist einer der unangenehmsten gesellen. Sie ist Schwach, aber enorm schnell. Und genau in dem Moment wo du meinst sie los zu sein, setzt sie noch einen drauf. Grippe-Viren sind wie Fliegen, vernichtest die eine komen zwei neue nach. ;)"
+    }
+  }
 ]
 }

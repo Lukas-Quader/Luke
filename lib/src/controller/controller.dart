@@ -6,6 +6,7 @@ class Controller {
   //Variablen bekanntmachen und initialisieren
   Level model;
   List<Level> levels;
+  List<dynamic> tutorials;
   int spawncount = 70;
   View view = View();
   bool _buy = false;
@@ -30,10 +31,16 @@ class Controller {
     if (!window.localStorage.containsKey('completeLevel')) {
       window.localStorage['completeLevel'] = '0';
     }
+    if (!window.localStorage.containsKey('tutorialITD')) {
+      window.localStorage['tutorialITD'] = '0';
+      window.localStorage['tutorialact'] = '0';
+    }
     //Variable um den Türmen ihre ID zu geben
     towers = 0;
     //Die Level werden geladen
     levels = await loadLevelFromData();
+    //Tutorials werden geladen
+    tutorials = await loadTutorialsFromData();
     //Die Level werden an das Menü in der View übergeben
     view.generateMenu(levels);
     //Variable um das gewählte Level zu speichern
@@ -60,6 +67,48 @@ class Controller {
       //Falls kein Level gewählt wurde passiert nichts
       if (l != 0) {
         mainLoop(l);
+      }
+    });
+
+    //Eventlistener zum prüfen ob tutorial gedrückt wurde
+    view.tutorialButton.onClick.listen((_) {
+      view.switchToTutorial(
+          tutorials[int.parse(window.localStorage['tutorialact'])]);
+    });
+
+    //Eventlistener zum prüfen ob tutorial gedrückt wurde
+    view.tutorialBack.onClick.listen((_) {
+      view.switchToMenu();
+    });
+
+    //Eventlistener zum prüfen ob tutorial gedrückt wurde
+    view.tutorialLeft.onClick.listen((_) {
+      if (int.parse(window.localStorage['tutorialact']) > 0) {
+        view.switchToTutorial(
+            tutorials[int.parse(window.localStorage['tutorialact']) - 1]);
+        window.localStorage['tutorialact'] =
+            (int.parse(window.localStorage['tutorialact']) - 1).toString();
+      }
+    });
+
+    //Eventlistener zum prüfen ob tutorial gedrückt wurde
+    view.tutorialRight.onClick.listen((_) {
+      if (int.parse(window.localStorage['tutorialact']) <
+          int.parse(window.localStorage['tutorialITD'])) {
+        view.switchToTutorial(
+            tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
+        window.localStorage['tutorialact'] =
+            (int.parse(window.localStorage['tutorialact']) + 1).toString();
+      } else if (int.parse(window.localStorage['tutorialact']) ==
+              int.parse(window.localStorage['tutorialITD']) &&
+          (int.parse(window.localStorage['tutorialITD']) - 6) <=
+              int.parse(window.localStorage['completeLevel'])) {
+        view.switchToTutorial(
+            tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
+        window.localStorage['tutorialact'] =
+            (int.parse(window.localStorage['tutorialact']) + 1).toString();
+        window.localStorage['tutorialITD'] =
+            (int.parse(window.localStorage['tutorialITD']) + 1).toString();
       }
     });
 
@@ -111,7 +160,7 @@ class Controller {
 
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
-        view.portrait.style.display = 'none';
+        view.portraitNone();
         if (model.turm.isNotEmpty) setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
@@ -149,7 +198,7 @@ class Controller {
         }
       } else {
         // Portraitmodus wird Sichtbar. Das Fenster ist nun geblockt.
-        view.portrait.style.display = 'grid';
+        view.portraitGrid();
       }
     });
   }
@@ -239,7 +288,8 @@ class Controller {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(tower.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          var which = model.turmPlazieren(tower.id, click, 1, towers++);
+          var which = model.turmPlazieren(
+              tower.id, click, 1, towers++, view.mapWidth, view.mapHeight);
           if (which >= 0) {
             view.removePoint(which);
             //Der Turm wird an die View übergeben
@@ -315,10 +365,21 @@ class Controller {
     var lev = <Level>[];
     Map data = json.jsonDecode(await HttpRequest.getString('levels.json'));
     for (var lvl in data['Levels']) {
-      lev.add(Level(lvl['Level']));
+      lev.add(Level(lvl['Level'], view.mapWidth, view.mapHeight));
     }
 
     return lev;
+  }
+
+  ///Methode um Tutorials zu Laden.
+  ///Hier wird im verlauf die JSON Datei geladen
+  Future<List<dynamic>> loadTutorialsFromData() async {
+    var tut = [];
+    Map data = json.jsonDecode(await HttpRequest.getString('levels.json'));
+    for (var tutorial in data['Tutorials']) {
+      tut.add(tutorial['Tutorial']);
+    }
+    return tut;
   }
 
   bool checkScreenOrientation() {

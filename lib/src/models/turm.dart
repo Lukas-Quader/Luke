@@ -57,11 +57,12 @@ class Blutzelle implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Blutzelle(Map<String, dynamic> data) {
+  Blutzelle(Map<String, dynamic> data, num width, num height) {
     //das level des Turms wird erhöht um das level
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
+    reichweite = (reichweite * width/620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -162,11 +163,12 @@ class Auge implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Auge(Map<String, dynamic> data) {
+  Auge(Map<String, dynamic> data, num width, num height) {
     //das level des Turms wird erhöht um das level
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
+    reichweite = (reichweite * width/620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -267,11 +269,12 @@ class Niere implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Niere(Map<String, dynamic> data) {
+  Niere(Map<String, dynamic> data, num width, num height) {
     //das level des Turms wird erhöht um das level
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
+    reichweite = (reichweite * width/620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -373,11 +376,12 @@ class Lunge implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Lunge(Map<String, dynamic> data) {
+  Lunge(Map<String, dynamic> data, num width, num height) {
     //das level des Turms wird erhöht um das level
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
+    reichweite = (reichweite * width/620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
@@ -385,19 +389,19 @@ class Lunge implements Turm {
   void upgrade(num goal) {
     switch (goal) {
       case 1:
-        angriffsgeschwindigkeit = 30;
+        angriffsgeschwindigkeit = 20;
         int reichweite = 80;
         level = 1;
         break;
       //Erhöhung der Angriffsgeschwindigkeit
       case 2:
-        angriffsgeschwindigkeit = 30;
+        angriffsgeschwindigkeit = 20;
         int reichweite = 160;
         level = 2;
         break;
       //Der Schaden wird erhöht
       case 3:
-        angriffsgeschwindigkeit = 20;
+        angriffsgeschwindigkeit = 10;
         int reichweite = 160;
         level = 3;
         break;
@@ -479,11 +483,12 @@ class Herz implements Turm {
   ///@param lvl = Turmlevel
   ///@param pos = Position des Turms
   ///@param id = ID des Turms
-  Herz(Map<String, dynamic> data) {
+  Herz(Map<String, dynamic> data, num width, num height) {
     //das level des Turms wird erhöht um das level
     upgrade(data['Level']);
     position = Position(data['Position']['x'], data['Position']['y']);
     id = data['id'];
+    reichweite = (reichweite * width/620).round();
   }
 
   ///Das Turmlevel wird hiermit erhöht
