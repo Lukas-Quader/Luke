@@ -149,7 +149,7 @@ class Controller {
 
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
-        view.portrait.style.display = 'none';
+        view.portraitNone();
         if (model.turm.isNotEmpty) setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
         if (spawncount <= 0 && model.wellen.isNotEmpty) {
@@ -187,7 +187,7 @@ class Controller {
         }
       } else {
         // Portraitmodus wird Sichtbar. Das Fenster ist nun geblockt.
-        view.portrait.style.display = 'grid';
+        view.portraitGrid();
       }
     });
   }
@@ -277,7 +277,7 @@ class Controller {
         //Es wird geprüft ob genug Antikörper für den Kauf zur verfügung stehen
         if (model.ak - int.parse(tower.attributes['value']) >= 0) {
           //Es wird ein Turm plaziert
-          var which = model.turmPlazieren(tower.id, click, 1, towers++);
+          var which = model.turmPlazieren(tower.id, click, 1, towers++, view.mapWidth, view.mapHeight);
           if (which >= 0) {
             view.removePoint(which);
             //Der Turm wird an die View übergeben
@@ -353,7 +353,7 @@ class Controller {
     var lev = <Level>[];
     Map data = json.jsonDecode(await HttpRequest.getString('levels.json'));
     for (var lvl in data['Levels']) {
-      lev.add(Level(lvl['Level']));
+      lev.add(Level(lvl['Level'], view.mapWidth, view.mapHeight));
     }
 
     return lev;

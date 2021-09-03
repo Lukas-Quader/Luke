@@ -752,28 +752,28 @@
 "Tutorials": [
   {
     "Tutorial": {
-      "Picture": "img/tutorial.png",
+      "Picture": "img/background_monster.png",
       "Short": "Guten Tag und Wilkommen bei IMMUNUTY TD.",
       "Long": "Auf den folgenden Seiten findest du erklärungen zu allen Einzelheiten des Spiels. Du kannst jederzeit zum Hauptmenü zurückkeren mit dem 'Menu' Button da oben rechts. Falls du zum ersten Mal hier bist empfehlen wir, dass du zunächst auf 'next' tippst umd das Spiel grundlegend zu verstehen."
     }
   },
   {
     "Tutorial": {
-      "Picture": "img/tutorial.png",
+      "Picture": "img/background_monster.png",
       "Short": "Im allgemeinen handelt es sich bie 'Immunity TD' um ein 'Tower Defense'-Spiel.",
       "Long": "Das Bedeutet du hast eine angegebene Menge an Einheite, welche du für einen Preis erwerben und an vorgegebenen Positionen platzieren kannst. Diese 'Türme' feuern auf einkommende Wellen von Gegnern."
     }
   },
   {
     "Tutorial": {
-      "Picture": "img/turm.png",
+      "Picture": "img/blutzelleU1.png",
       "Short": "Die Türme von Immunity TD einmal im Allgemeinen Überblick",
       "Long": "Jeder Turm hat 3 Stufen und kann nach dem platzieren aufgewertet wieder verkauft werden. Ein aufgewerteter Turm kann kann abgewertet werden und der volle preis für die aufwertung wird erstattet. Beim verkauf erhältst du nur 3/4 des preises zurück."
     }
   },
   {
     "Tutorial": {
-      "Picture": "img/feind.png",
+      "Picture": "img/corona.png",
       "Short": "Die Feinde im Überblick",
       "Long": "Die Feinde erscheinen an einem Punkt auf der Karte und laufen dann den gegebenen Weg entlang. Jeder Treffer zieht einem Feind Leben ab. Ein Feind ohne Leben stirbt. Sollte ein Feind das Ziel erreichen werdem dem Spieler Leben in höhe des Restlebens des Feindes abgezogen. Von jedem Feind existiert eine BOSS variante die langsamer aber robuster ist."
     }
@@ -837,7 +837,7 @@
   },
   {
     "Tutorial": {
-      "Picture": "img/HSV.png",
+      "Picture": "img/hsv.png",
       "Short": "HSV, der bei Stress auftauchende Herpes-Virus.",
       "Long": "Der HSV unterscheided sich in Kraft, Geschwindigkeit und Ausdauer nicht von gewöhnlichen Durchschnittserreger. Bei starkem Stress kann er sich jedoch zu einem unangenehmen Gesellen etwickeln. Hüte dich sollte er als Letzter auf einem vollen Feld erscheinen."
     }

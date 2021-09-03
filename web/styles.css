@@ -17,7 +17,7 @@
     grid-area: auto;
     height: 100%;
     width: 100%;
-    background-color: cornflowerblue;
+    background-color: darkred;
     font-size:15vw;
     text-align: center;
     padding-top: 10%;
@@ -63,7 +63,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: cornflowerblue;
+  background-color: darkred;
   background-image: url(img/background_level.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -73,7 +73,7 @@ html, body {
   display: none;
   height: 100%;
   width: 100%;
-  background-color: cornflowerblue;
+  background-color: darkred;
 }
 
 h1 {
@@ -271,7 +271,7 @@ h1 {
 
 #tpright {
   margin-top: 38%;
-  margin-left: 90%;
+  margin-left: 87%;
   padding: 2%;
   position: absolute;
   background-color: yellow;

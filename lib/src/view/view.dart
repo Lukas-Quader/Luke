@@ -430,6 +430,14 @@ class View {
     }
   }
 
+  void portraitNone() {
+    portrait.style.display = 'none';
+  }
+
+  void portraitGrid() {
+    portrait.style.display = 'grid';
+  }
+
   // Es folgen diverse Getter Methoden.
   num get mapWidth => map.getBoundingClientRect().width.toDouble();
 

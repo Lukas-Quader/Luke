@@ -23,7 +23,7 @@ class Level {
   ///@param welle = Welle
   ///@param pu = PowerUps
   ///@param k = Karte
-  Level(Map<String, dynamic> data) {
+  Level(Map<String, dynamic> data, num width, num height) {
     var waves = [];
     for (var wave in data['Wellen']) {
       var welle = [];
@@ -56,19 +56,19 @@ class Level {
     for (var tower in data['Turmkauf']) {
       switch (tower.keys.first) {
         case 'Blutzelle':
-          kaufen.add(Blutzelle(tower['Blutzelle']));
+          kaufen.add(Blutzelle(tower['Blutzelle'], width, height));
           break;
         case 'Auge':
-          kaufen.add(Auge(tower['Auge']));
+          kaufen.add(Auge(tower['Auge'], width, height));
           break;
         case 'Niere':
-          kaufen.add(Niere(tower['Niere']));
+          kaufen.add(Niere(tower['Niere'], width, height));
           break;
         case 'Lunge':
-          kaufen.add(Lunge(tower['Lunge']));
+          kaufen.add(Lunge(tower['Lunge'], width, height));
           break;
         case 'Herz':
-          kaufen.add(Herz(tower['Herz']));
+          kaufen.add(Herz(tower['Herz'], width, height));
           break;
         default:
       }
@@ -160,7 +160,7 @@ class Level {
   ///@param position übergibt die Position auf der der Turm stehen soll
   ///@param lvl übergibt das Turmlevel
   ///@param id übergibt die TurmID
-  num turmPlazieren(String name, Position position, int lvl, int id) {
+  num turmPlazieren(String name, Position position, int lvl, int id, num width, num height) {
     var pos = Position(0, 0); //initialisieren der Variable pos als Position
     num count = -1; //initialisieren der Variable count
     //For-Schleife um ermitteln der Position, welche am nähsten am Klick und frei ist
@@ -181,35 +181,35 @@ class Level {
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id
-          }));
+          }, width, height));
           break;
         case 'auge':
           turm.add(Auge({
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id
-          }));
+          }, width, height));
           break;
         case 'niere':
           turm.add(Niere({
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id
-          }));
+          }, width, height));
           break;
         case 'lunge':
           turm.add(Lunge({
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id
-          }));
+          }, width, height));
           break;
         case 'herz':
           turm.add(Herz({
             'Level': lvl,
             'Position': {'x': pos.x, 'y': pos.y},
             'id': id
-          }));
+          }, width, height));
           break;
         default:
       }
