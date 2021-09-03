@@ -1,6 +1,6 @@
 part of ImmunityTD;
 
-abstract class Projektiel {
+abstract class Projektil {
   /// Name des Feindtyps
   String name;
 
@@ -36,7 +36,7 @@ abstract class Projektiel {
 }
 
 /// Projektilklasse Blutschuss
-class Blutschuss implements Projektiel {
+class Blutschuss implements Projektil {
   @override
   String name = 'blutschuss';
   @override
@@ -95,7 +95,7 @@ class Blutschuss implements Projektiel {
 }
 
 /// Projektilklasse Luftschuss
-class Luftschuss implements Projektiel {
+class Luftschuss implements Projektil {
   @override
   String name = 'luftschuss';
   @override
@@ -128,7 +128,7 @@ class Luftschuss implements Projektiel {
     effect = eff;
   }
 
-  /// Bewegen der Projektiele
+  /// Bewegen der Projektile
   @override
   num fly() {
     var kill = 0;
@@ -154,7 +154,7 @@ class Luftschuss implements Projektiel {
 }
 
 /// Projektilklasse
-class Augenschuss implements Projektiel {
+class Augenschuss implements Projektil {
   @override
   String name = 'augenschuss';
   @override
@@ -213,7 +213,7 @@ class Augenschuss implements Projektiel {
 }
 
 /// Projektilklasse Herzschuss
-class Herzschuss implements Projektiel {
+class Herzschuss implements Projektil {
   @override
   String name = 'herzschuss';
   @override
@@ -271,7 +271,7 @@ class Herzschuss implements Projektiel {
 }
 
 /// Projektilklasse Nierenschuss
-class Nierenschuss implements Projektiel {
+class Nierenschuss implements Projektil {
   @override
   String name = 'nierenschuss';
   @override
