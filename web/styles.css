@@ -17,7 +17,7 @@
     grid-area: auto;
     height: 100%;
     width: 100%;
-    background-color: darkred;
+    background-color: cornflowerblue;
     font-size:15vw;
     text-align: center;
     padding-top: 10%;
@@ -45,13 +45,8 @@
     }
   }
 
-  #menu {
+  #menu, #level, #tutorialBack, #tpleft, #tpright  {
     display: none;
-  }
-
-
-  #level {
-    display: none; 
   }
 }
 
@@ -112,48 +107,52 @@ h1 {
 }
 
 .sell_tower {
-  margin: 10px;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  margin: 8%;
+  padding-top: 3%;
+  padding-bottom: 70%; 
   background-color: green;
-  height: 70px;
-  width: 70px;
+  background-position: center;
+  width: 80%;
   cursor: move;
 }
 
 .buy_tower {
-  margin: 10px;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  margin: 8%;
+  padding-top: 3%;
+  padding-bottom: 70%; 
   background-color: pink;
-  height: 70px;
-  width: 70px;
+  background-position: center;
+  width: 80%;
   cursor: move;
 }
 
 .powerup {
-  margin: 5px;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  margin: 10%;
+  padding-top: 3%;
+  padding-bottom: 65%; 
   background-color: pink;
-  height: 70px;
-  width: 70px;
+  background-position: center;
+  width: 75%;
   cursor: move;
 }
 
 .upgrade_tower {
-  margin: 10px;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  margin: 8%;
+  padding-top: 3%;
+  padding-bottom: 70%; 
   background-color: pink;
-  height: 70px;
-  width: 70px;
+  background-position: center;
+  width: 80%;
   cursor: move;
 }
 
 .buy_text {
+  margin-left: 20%;
+  margin-right: 20%;
   text-align: center;
-  color: greenyellow;
+  font-size: medium;
+  color: yellow;
+  background-color: rgba(0, 0, 0, 0.473);
 }
 
 .sell_text {
@@ -179,11 +178,12 @@ h1 {
 }
 
 .box_level {
-  margin: 10px;
-  padding-top: 30px;
-  padding-bottom: 30px; 
+  margin: 8%;
+  padding-top: 3%;
+  padding-bottom: 70%; 
+  font-size: medium;
   color: yellow;
-  height: 100px;
+  width: 90%
 }
 
 .tower_spot {
@@ -196,9 +196,10 @@ h1 {
 
 #startButton {
   margin: 30% 5% 5% 5% ;
-  padding: 5% 40% 5% 40%;
+  padding: 4%;
   background-color: yellow;
   font-size: larger;
+  width: 95%;
   border-radius: 10px; 
 }
 
@@ -242,16 +243,18 @@ h1 {
 
 #tutorialButton {
   margin: 1% 5% 5% 5% ;
-  padding: 5% 37% 5% 37%;
+  padding: 4%;
   background-color: yellow;
   font-size: larger;
+  width: 95%;
+  bottom: 0;
   border-radius: 10px; 
 }
 
 #tpleft {
-  margin-top: 38%;
   margin-left: 1%;
   padding: 2%;
+  bottom: 3%;
   position: absolute;
   background-color: yellow;
   font-size: larger;
@@ -269,17 +272,17 @@ h1 {
 }
 
 #tpright {
-  margin-top: 38%;
   margin-left: 87%;
   padding: 2%;
   position: absolute;
   background-color: yellow;
   font-size: larger;
+  bottom: 3%;
   border-radius: 10px; 
 }
 
 #back_button {
-  margin: 5% 50% 5% 50% ;
+  margin: 5% 40% 5% 40% ;
   padding: 10% 5% 10% 5%;
   background-color: darkred;
   color: yellowgreen;

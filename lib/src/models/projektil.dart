@@ -29,7 +29,7 @@ abstract class Projektil {
   num dmg;
 
   /// Bewegung der Projektile
-  num fly();
+  void fly();
 
   /// Anpassung der Richtung während der Laufzeit
   void redirect();
@@ -71,7 +71,7 @@ class Blutschuss implements Projektil {
 
   /// Bewegen der Projektile
   @override
-  num fly() {
+  void fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
     // Abfrage ob die Distanz geringer als die Fluggeschwindigkeit ist
@@ -84,7 +84,7 @@ class Blutschuss implements Projektil {
       pos += dir * fluggeschwindigkeit;
       redirect(); // Anpassen der Laufrichtung an das Ziel
     }
-    return kill;
+    
   }
 
   // Anpassung der Richtung während der Laufzeit
@@ -130,7 +130,7 @@ class Luftschuss implements Projektil {
 
   /// Bewegen der Projektile
   @override
-  num fly() {
+  void fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
     // Abfrage ob die Distanz geringer als die Fluggeschwindigkeit ist
@@ -143,7 +143,7 @@ class Luftschuss implements Projektil {
       pos += dir * fluggeschwindigkeit;
       redirect(); // Anpassen der Laufrichtung an das Ziel
     }
-    return kill;
+    
   }
 
   // Anpassung der Richtung während der Laufzeit
@@ -189,7 +189,7 @@ class Augenschuss implements Projektil {
 
   /// Bewegen der Projektile
   @override
-  num fly() {
+  void fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
     // Abfrage ob die Distanz geringer als die Fluggeschwindigkeit ist
@@ -202,7 +202,7 @@ class Augenschuss implements Projektil {
       pos += dir * fluggeschwindigkeit;
       redirect(); // Anpassen der Laufrichtung an das Ziel
     }
-    return kill;
+    
   }
 
   // Anpassung der Richtung während der Laufzeit
@@ -247,7 +247,7 @@ class Herzschuss implements Projektil {
 
   /// Bewegen der Projektile
   @override
-  num fly() {
+  void fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
     // Abfrage ob die Distanz geringer als die Fluggeschwindigkeit ist
@@ -260,7 +260,7 @@ class Herzschuss implements Projektil {
       pos += dir * fluggeschwindigkeit;
       redirect(); // Anpassen der Laufrichtung an das Ziel
     }
-    return kill;
+    
   }
 
   // Anpassung der Richtung während der Laufzeit
@@ -306,7 +306,7 @@ class Nierenschuss implements Projektil {
   @override
 
   /// Bewegen der Projektile
-  num fly() {
+  void fly() {
     var kill = 0;
     var goal = enemy.pos + Position(17, 17);
     // Abfrage ob die Distanz geringer als die Fluggeschwindigkeit ist
@@ -319,7 +319,7 @@ class Nierenschuss implements Projektil {
       pos += dir * fluggeschwindigkeit;
       redirect(); // Anpassen der Laufrichtung an das Ziel
     }
-    return kill;
+    
   }
 
   // Anpassung der Richtung während der Laufzeit

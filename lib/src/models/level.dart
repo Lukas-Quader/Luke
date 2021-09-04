@@ -167,10 +167,7 @@ class Level {
         }
       }
       for (var pro in shots) {
-        var kill = pro.fly();
-        if (kill > 0) {
-          ak += kill;
-        }
+        pro.fly();
       }
     }
     // Prüfen ob der Angriff zum Sieg geführt hat
@@ -289,6 +286,7 @@ class Level {
         grip++;
       }
     }
+    if(f.leben <= 0) ak += f.wert;
     feinde.remove(f);
     return grip;
   }
