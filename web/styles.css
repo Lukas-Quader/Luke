@@ -30,7 +30,7 @@
     background-image: url(img/screen_rotate.png);
     position: absolute;
     top: 50%;
-    left: center;
+    left: 20%;
     background-repeat: no-repeat;
     background-size: contain;
     animation: rotation 6s infinite linear reverse;
