@@ -566,7 +566,7 @@ class Herz implements Turm {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
           if (_powerup) {
             kill.add(Herzschuss(idcount++, position + Position(25, 25), f,
-                effekt, (schaden * powerUp.multiplikatorDMG).round()));
+                effekt, (schaden * powerUp.multiplikatorDMG) as int));
           } else {
             kill.add(Herzschuss(
                 idcount++, position + Position(25, 25), f, effekt, schaden));
@@ -575,7 +575,7 @@ class Herz implements Turm {
       }
       //agcount "resetten"
       if (_powerup) {
-        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
+        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
       } else {
         agcount = angriffsgeschwindigkeit;
       }

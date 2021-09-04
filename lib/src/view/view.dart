@@ -416,24 +416,34 @@ class View {
     tutorialShort.innerHtml = tutorials['Short'];
     tutorialText.innerHtml = tutorials['Long'];
     tutorialPicture?.style?.backgroundImage = 'url("${tutorials['Picture']}")';
-    if(window.localStorage['tutorialact'] == '0') tutorialLeft.style.display = 'none';
-    else tutorialLeft.style.display = 'grid';
+    if (window.localStorage['tutorialact'] == '0')
+      tutorialLeft.style.display = 'none';
+    else
+      tutorialLeft.style.display = 'grid';
     switch (int.parse(window.localStorage['completeLevel'])) {
-      case 0 :
-      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 9 : 8)) tutorialRight.style.display = 'none';
-        else tutorialRight.style.display = 'grid';
+      case 0:
+        if (int.parse(window.localStorage['tutorialact']) >= (ingame ? 9 : 8))
+          tutorialRight.style.display = 'none';
+        else
+          tutorialRight.style.display = 'grid';
         break;
-        case 1 :
-      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 13 : 12)) tutorialRight.style.display = 'none';
-        else tutorialRight.style.display = 'grid';
+      case 1:
+        if (int.parse(window.localStorage['tutorialact']) >= (ingame ? 13 : 12))
+          tutorialRight.style.display = 'none';
+        else
+          tutorialRight.style.display = 'grid';
         break;
-        case 2 :
-      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 16 : 15)) tutorialRight.style.display = 'none';
-        else tutorialRight.style.display = 'grid';
+      case 2:
+        if (int.parse(window.localStorage['tutorialact']) >= (ingame ? 16 : 15))
+          tutorialRight.style.display = 'none';
+        else
+          tutorialRight.style.display = 'grid';
         break;
       default:
-      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 17 : 16)) tutorialRight.style.display = 'none';
-        else tutorialRight.style.display = 'grid';
+        if (int.parse(window.localStorage['tutorialact']) >= (ingame ? 17 : 16))
+          tutorialRight.style.display = 'none';
+        else
+          tutorialRight.style.display = 'grid';
     }
     resetWinGameover();
   }
@@ -471,5 +481,15 @@ class View {
   ///Einblenden der Portraitwarnung
   void portraitGrid() {
     portrait.style.display = 'grid';
+  }
+
+  /// Blendet die Levelview aus
+  void switchLvlOff() {
+    levelview.style.display = 'none';
+  }
+
+  /// Blendet die Levelview wieder ein
+  void switchLvlOn() {
+    levelview.style.display = 'grid';
   }
 }

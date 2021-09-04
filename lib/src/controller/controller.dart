@@ -68,46 +68,47 @@ class Controller {
       //Falls kein Level gewählt wurde passiert nichts
       if (l != 0) {
         //abfrage falls neue Informationen aufkommen
-        if(l - 1 == int.parse(window.localStorage['completeLevel'])){
+        if (l - 1 == int.parse(window.localStorage['completeLevel'])) {
           switch (l) {
             case 1:
-              if(int.parse(window.localStorage['tutorialITD']) <= 8) {
+              if (int.parse(window.localStorage['tutorialITD']) <= 8) {
                 _tutInGame = true;
-                if(int.parse(window.localStorage['tutorialITD']) < 2) window.localStorage['tutorialITD'] = '2';
+                if (int.parse(window.localStorage['tutorialITD']) < 2)
+                  window.localStorage['tutorialITD'] = '2';
                 window.localStorage['tutorialact'] = '2';
                 view.switchToTutorial(tutorials[2], _tutInGame);
-              }
-              else mainLoop(l);
+              } else
+                mainLoop(l);
               break;
             case 2:
-              if(int.parse(window.localStorage['tutorialITD']) <= 12) {
+              if (int.parse(window.localStorage['tutorialITD']) <= 12) {
                 _tutInGame = true;
                 window.localStorage['tutorialact'] = '9';
                 view.switchToTutorial(tutorials[9], _tutInGame);
-              }
-              else mainLoop(l);
+              } else
+                mainLoop(l);
               break;
             case 3:
-              if(int.parse(window.localStorage['tutorialITD']) <= 15) {
+              if (int.parse(window.localStorage['tutorialITD']) <= 15) {
                 _tutInGame = true;
                 window.localStorage['tutorialact'] = '13';
                 view.switchToTutorial(tutorials[13], _tutInGame);
-              }
-              else mainLoop(l);
+              } else
+                mainLoop(l);
               break;
             case 4:
-              if(int.parse(window.localStorage['tutorialITD']) <= 16) {
+              if (int.parse(window.localStorage['tutorialITD']) <= 16) {
                 _tutInGame = true;
                 window.localStorage['tutorialact'] = '16';
                 view.switchToTutorial(tutorials[16], _tutInGame);
-              }
-              else mainLoop(l);
+              } else
+                mainLoop(l);
               break;
             default:
               mainLoop(l);
           }
-        }
-        else mainLoop(l);
+        } else
+          mainLoop(l);
       }
     });
 
@@ -124,44 +125,55 @@ class Controller {
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialLeft.onClick.listen((_) {
-      if(int.parse(window.localStorage['tutorialact']) > 0) {
-        window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) - 1).toString();
-        view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
-      }     
+      if (int.parse(window.localStorage['tutorialact']) > 0) {
+        window.localStorage['tutorialact'] =
+            (int.parse(window.localStorage['tutorialact']) - 1).toString();
+        view.switchToTutorial(
+            tutorials[int.parse(window.localStorage['tutorialact'])],
+            _tutInGame);
+      }
     });
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialRight.onClick.listen((_) {
-      if(_tutInGame) {
-        if(int.parse(window.localStorage['tutorialITD']) == 8) {
+      if (_tutInGame) {
+        if (int.parse(window.localStorage['tutorialITD']) == 8) {
           window.localStorage['tutorialITD'] = '9';
           view.switchToMenu();
           mainLoop(l);
-        } 
-        else if(int.parse(window.localStorage['tutorialITD']) == 12) {
+        } else if (int.parse(window.localStorage['tutorialITD']) == 12) {
           window.localStorage['tutorialITD'] = '13';
           view.switchToMenu();
           mainLoop(l);
-        }  
-        else if(int.parse(window.localStorage['tutorialITD']) == 15) {
+        } else if (int.parse(window.localStorage['tutorialITD']) == 15) {
           window.localStorage['tutorialITD'] = '16';
           view.switchToMenu();
           mainLoop(l);
-        }  
-        else if(int.parse(window.localStorage['tutorialITD']) == 16) {
+        } else if (int.parse(window.localStorage['tutorialITD']) == 16) {
           window.localStorage['tutorialITD'] = '17';
           view.switchToMenu();
           mainLoop(l);
-        } 
-        else {
-          if(window.localStorage['tutorialITD'] == window.localStorage['tutorialact']) window.localStorage['tutorialITD'] = (int.parse(window.localStorage['tutorialITD']) + 1).toString();
-          window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) + 1).toString();
-          view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
+        } else {
+          if (window.localStorage['tutorialITD'] ==
+              window.localStorage['tutorialact'])
+            window.localStorage['tutorialITD'] =
+                (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+          window.localStorage['tutorialact'] =
+              (int.parse(window.localStorage['tutorialact']) + 1).toString();
+          view.switchToTutorial(
+              tutorials[int.parse(window.localStorage['tutorialact'])],
+              _tutInGame);
         }
       } else {
-          if(window.localStorage['tutorialITD'] == window.localStorage['tutorialact']) window.localStorage['tutorialITD'] = (int.parse(window.localStorage['tutorialITD']) + 1).toString();
-          window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) + 1).toString();
-          view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
+        if (window.localStorage['tutorialITD'] ==
+            window.localStorage['tutorialact'])
+          window.localStorage['tutorialITD'] =
+              (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+        window.localStorage['tutorialact'] =
+            (int.parse(window.localStorage['tutorialact']) + 1).toString();
+        view.switchToTutorial(
+            tutorials[int.parse(window.localStorage['tutorialact'])],
+            _tutInGame);
       }
     });
 
@@ -171,6 +183,14 @@ class Controller {
       view.switchToMenu();
       view.generateMenu(levels);
       l = 0; // benötigt, da sonst ein Level direkt ausgewählt ist.
+      Timer.periodic(Duration(milliseconds: 60), (timer) {
+        if (checkScreenOrientation()) {
+          view.portraitNone();
+        } else {
+          view.portraitGrid();
+        }
+      });
+
       levels = await loadLevelFromData(); //neuladen der Json
     });
 
@@ -217,6 +237,7 @@ class Controller {
       if (checkScreenOrientation()) {
         //Portraitmodus anzeige auf unsichtbar
         view.portraitNone();
+        view.switchLvlOn();
         //Falles es Türme gibt, wird ein Listener dafür erstellt
         if (model.turm.isNotEmpty) setClickForTowers(model.turm);
         //wenn noch wellen da in bestimmten abständen Gegner spawnen
@@ -257,6 +278,7 @@ class Controller {
       } else {
         // Portraitmodus wird Sichtbar. Das Fenster ist nun geblockt.
         view.portraitGrid();
+        view.switchLvlOff();
       }
     });
   }
