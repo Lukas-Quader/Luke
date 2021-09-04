@@ -182,6 +182,9 @@ class View {
     }
   }
 
+  //Verstecken der Punkte
+  void hidePoints() => towerPoints.style.display = 'none';
+
   /// Debugging Tool
   /// Erstellen von Punkten auf der Karte
   void generatePoints(num way) {
@@ -222,10 +225,10 @@ class View {
         //solange die Anzahl der geschafften Level größer ist aks die Anzahl aller
         //wird das Level hinzugefügt. Ansonsten nur das Schlosssymbol
         level =
-            "<button class='box_level' id='box_level_$lev'>Level $lev</button>\n";
+            "<div>\n<div class='buy_text'>Level $lev</div>\n<button class='box_level' id='box_level_$lev'></button>\n</div>\n";
       } else {
         level =
-            "<button class='box_level' id='box_schloss'>Level $lev</button>\n";
+            "<div>\n<div class='buy_text'>Level $lev</div>\n<button class='box_level' id='box_schloss'></button>\n</div>\n";
       }
       // Button wird der innerHTML von Button beigefügt
       buttons.innerHtml += level;
@@ -264,8 +267,7 @@ class View {
     ht += '\n<div class=${turm.name} id=${turm.name}_${turm.id}></div>';
     map.setInnerHtml(ht,
         validator: _validatorBuilder); // Fügt den Turm der Map hinzu
-    var points = towerPoints;
-    points.style.display = 'none';
+    hidePoints();
   }
 
   /// Erstellen des Kaufmenüs auf er rechten seite des Bildschirms
@@ -318,7 +320,7 @@ class View {
       default:
     }
     html +=
-        "<div>\n<button id='back_button'>Zurueck</button></div>\n<div></div>\n";
+        "<div>\n<button id='back_button'>Zurück</button></div>\n<div></div>\n";
     html +=
         "<div>\n<button class='sell_tower' value='${sell.round()}'></button>\n<div class='sell_text'>Verkaufen: ${sell.round()}</div>\n</div>";
     html +=
@@ -407,13 +409,32 @@ class View {
   }
 
   /// Methode um zum Menü zurück zu kehren
-  void switchToTutorial(Map<String, dynamic> tutorials) {
+  void switchToTutorial(Map<String, dynamic> tutorials, bool ingame) {
     levelview.style.display = 'none';
     menu.style.display = 'none';
     tutorial.style.display = 'grid';
     tutorialShort.innerHtml = tutorials['Short'];
     tutorialText.innerHtml = tutorials['Long'];
     tutorialPicture?.style?.backgroundImage = 'url("${tutorials['Picture']}")';
+    if(window.localStorage['tutorialact'] == '0') tutorialLeft.style.display = 'none';
+    else tutorialLeft.style.display = 'grid';
+    switch (int.parse(window.localStorage['completeLevel'])) {
+      case 0 :
+      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 9 : 8)) tutorialRight.style.display = 'none';
+        else tutorialRight.style.display = 'grid';
+        break;
+        case 1 :
+      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 13 : 12)) tutorialRight.style.display = 'none';
+        else tutorialRight.style.display = 'grid';
+        break;
+        case 2 :
+      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 16 : 15)) tutorialRight.style.display = 'none';
+        else tutorialRight.style.display = 'grid';
+        break;
+      default:
+      if(int.parse(window.localStorage['tutorialact']) >= (ingame ? 17 : 16)) tutorialRight.style.display = 'none';
+        else tutorialRight.style.display = 'grid';
+    }
     resetWinGameover();
   }
 

@@ -17,6 +17,7 @@ class Controller {
   Turm selectedTower;
   num towers;
   num wayNow = 0;
+  bool _tutInGame = false;
 
   ///Constructor
   ///Ruft die Main Methode auf
@@ -66,14 +67,54 @@ class Controller {
     view.startButton.onClick.listen((_) {
       //Falls kein Level gewählt wurde passiert nichts
       if (l != 0) {
-        mainLoop(l);
+        //abfrage falls neue Informationen aufkommen
+        if(l - 1 == int.parse(window.localStorage['completeLevel'])){
+          switch (l) {
+            case 1:
+              if(int.parse(window.localStorage['tutorialITD']) <= 8) {
+                _tutInGame = true;
+                if(int.parse(window.localStorage['tutorialITD']) < 2) window.localStorage['tutorialITD'] = '2';
+                window.localStorage['tutorialact'] = '2';
+                view.switchToTutorial(tutorials[2], _tutInGame);
+              }
+              else mainLoop(l);
+              break;
+            case 2:
+              if(int.parse(window.localStorage['tutorialITD']) <= 12) {
+                _tutInGame = true;
+                window.localStorage['tutorialact'] = '9';
+                view.switchToTutorial(tutorials[9], _tutInGame);
+              }
+              else mainLoop(l);
+              break;
+            case 3:
+              if(int.parse(window.localStorage['tutorialITD']) <= 15) {
+                _tutInGame = true;
+                window.localStorage['tutorialact'] = '13';
+                view.switchToTutorial(tutorials[13], _tutInGame);
+              }
+              else mainLoop(l);
+              break;
+            case 4:
+              if(int.parse(window.localStorage['tutorialITD']) <= 16) {
+                _tutInGame = true;
+                window.localStorage['tutorialact'] = '16';
+                view.switchToTutorial(tutorials[16], _tutInGame);
+              }
+              else mainLoop(l);
+              break;
+            default:
+              mainLoop(l);
+          }
+        }
+        else mainLoop(l);
       }
     });
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialButton.onClick.listen((_) {
       view.switchToTutorial(
-          tutorials[int.parse(window.localStorage['tutorialact'])]);
+          tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
     });
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
@@ -83,34 +124,44 @@ class Controller {
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialLeft.onClick.listen((_) {
-      if (int.parse(window.localStorage['tutorialact']) > 0) {
-        view.switchToTutorial(
-            tutorials[int.parse(window.localStorage['tutorialact']) - 1]);
-        window.localStorage['tutorialact'] =
-            (int.parse(window.localStorage['tutorialact']) - 1).toString();
-      }
+      if(int.parse(window.localStorage['tutorialact']) > 0) {
+        window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) - 1).toString();
+        view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
+      }     
     });
 
     //Eventlistener zum prüfen ob tutorial gedrückt wurde
     view.tutorialRight.onClick.listen((_) {
-      if (int.parse(window.localStorage['tutorialact']) <= 16) {
-        if (int.parse(window.localStorage['tutorialact']) <
-            int.parse(window.localStorage['tutorialITD'])) {
-          view.switchToTutorial(
-              tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
-          window.localStorage['tutorialact'] =
-              (int.parse(window.localStorage['tutorialact']) + 1).toString();
-        } else if (int.parse(window.localStorage['tutorialact']) ==
-                int.parse(window.localStorage['tutorialITD']) &&
-            (int.parse(window.localStorage['tutorialITD']) - 6) <=
-                int.parse(window.localStorage['completeLevel'])) {
-          view.switchToTutorial(
-              tutorials[int.parse(window.localStorage['tutorialact']) + 1]);
-          window.localStorage['tutorialact'] =
-              (int.parse(window.localStorage['tutorialact']) + 1).toString();
-          window.localStorage['tutorialITD'] =
-              (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+      if(_tutInGame) {
+        if(int.parse(window.localStorage['tutorialITD']) == 8) {
+          window.localStorage['tutorialITD'] = '9';
+          view.switchToMenu();
+          mainLoop(l);
+        } 
+        else if(int.parse(window.localStorage['tutorialITD']) == 12) {
+          window.localStorage['tutorialITD'] = '13';
+          view.switchToMenu();
+          mainLoop(l);
+        }  
+        else if(int.parse(window.localStorage['tutorialITD']) == 15) {
+          window.localStorage['tutorialITD'] = '16';
+          view.switchToMenu();
+          mainLoop(l);
+        }  
+        else if(int.parse(window.localStorage['tutorialITD']) == 16) {
+          window.localStorage['tutorialITD'] = '17';
+          view.switchToMenu();
+          mainLoop(l);
+        } 
+        else {
+          if(window.localStorage['tutorialITD'] == window.localStorage['tutorialact']) window.localStorage['tutorialITD'] = (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+          window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) + 1).toString();
+          view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
         }
+      } else {
+          if(window.localStorage['tutorialITD'] == window.localStorage['tutorialact']) window.localStorage['tutorialITD'] = (int.parse(window.localStorage['tutorialITD']) + 1).toString();
+          window.localStorage['tutorialact'] = (int.parse(window.localStorage['tutorialact']) + 1).toString();
+          view.switchToTutorial(tutorials[int.parse(window.localStorage['tutorialact'])], _tutInGame);
       }
     });
 
@@ -281,6 +332,13 @@ class Controller {
         powerUpTime = pushedPowerUp.laufzeit;
         //Wird in der Mainloop benötigt und dort wieder auf false gesetzt
         _powerup = true;
+      }
+    });
+    //klick auf die Map um platzierpunkte verschwinen zu lassen
+    view.map.onClick.listen((event) {
+      if (view.towerPoints.style.display == 'block') {
+        _buy = false;
+        view.hidePoints();
       }
     });
   }
