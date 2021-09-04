@@ -131,7 +131,7 @@ class Blutzelle implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Blutschuss(id, position + Position(25, 25), f, effekt,
-                (schaden * powerUp.multiplikatorDMG) as int));
+                (schaden * powerUp.multiplikatorDMG).round()));
             agcount =
                 (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
           } else {
@@ -239,7 +239,7 @@ class Auge implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Augenschuss(id, position + Position(25, 25), f, effekt,
-                (schaden * powerUp.multiplikatorDMG) as int));
+                (schaden * powerUp.multiplikatorDMG).round()));
             agcount =
                 (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
           } else {
@@ -345,7 +345,7 @@ class Niere implements Turm {
           if (_powerup) {
             //Feind mit Schaden und Effekt treffen und speichern ob tödlich
             kill.add(Nierenschuss(id, position + Position(25, 25), f, effekt,
-                (schaden * powerUp.multiplikatorDMG) as int));
+                (schaden * powerUp.multiplikatorDMG).round()));
             agcount =
                 (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
           } else {
@@ -566,7 +566,7 @@ class Herz implements Turm {
           //Feind mit Schaden und Effekt treffen und speichern ob tödlich
           if (_powerup) {
             kill.add(Herzschuss(idcount++, position + Position(25, 25), f,
-                effekt, (schaden * powerUp.multiplikatorDMG) as int));
+                effekt, (schaden * powerUp.multiplikatorDMG).round()));
           } else {
             kill.add(Herzschuss(
                 idcount++, position + Position(25, 25), f, effekt, schaden));
@@ -575,7 +575,7 @@ class Herz implements Turm {
       }
       //agcount "resetten"
       if (_powerup) {
-        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG) as int;
+        agcount = (angriffsgeschwindigkeit / powerUp.multiplikatorAG).round();
       } else {
         agcount = angriffsgeschwindigkeit;
       }
